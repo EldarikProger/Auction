@@ -9,10 +9,14 @@ public class AuthorizedUser implements User {
 
     private String name;
     private String password;
+    private List<Good> myGoods;
+    private List<Bid> myBids;
 
     public AuthorizedUser(String name, String password) {
         this.name = name;
         this.password = password;
+        myGoods = null;
+        myBids = null;
     }
 
     public String getPassword() {
