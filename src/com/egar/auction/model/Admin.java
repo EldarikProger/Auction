@@ -7,6 +7,11 @@ import java.util.List;
  */
 public class Admin implements User {
 
+
+
+
+    
+
     private String name;
     private String password;
 
