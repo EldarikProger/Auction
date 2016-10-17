@@ -3,9 +3,7 @@ package com.egar.auction.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Эльдар on 15.10.2016.
- */
+
 public class AuthorizedUser implements User {
 
     private String name;

@@ -3,9 +3,7 @@ package com.egar.auction.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Эльдар on 17.10.2016.
- */
+
 public class AuctionDatabase {
     private List<AuthorizedUser> authorizedUsers;
     private List<Admin> admins;
