@@ -7,18 +7,15 @@ import java.util.List;
  */
 public class Admin implements User {
 
-
-
-
-    
-
     private String name;
     private String password;
+    private AuctionDatabase database;
 
 
-    public Admin(String name, String password) {
+    public Admin(String name, String password, AuctionDatabase database) {
         this.name = name;
         this.password = password;
+        this.database = database;
     }
 
     public String getName() {

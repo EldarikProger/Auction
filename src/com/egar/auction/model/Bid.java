@@ -4,15 +4,19 @@ package com.egar.auction.model;
  * Created by Эльдар on 15.10.2016.
  */
 public class Bid {
-
+    private Good good;
     private double minPrice;
     private double maxPrice;
-    private Good good;
+    private double currentPrice;
+    private AuthorizedUser currentBuyer;
+
 
     public Bid(double minPrice, double maxPrice, Good good) {
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
         this.good = good;
+        this.currentPrice = 0;
+        currentBuyer =null;
     }
 
     public double getMinPrice() {
@@ -29,6 +33,22 @@ public class Bid {
 
     public void setMaxPrice(double maxPrice) {
         this.maxPrice = maxPrice;
+    }
+
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    public AuthorizedUser getCurrentBuyer() {
+        return currentBuyer;
+    }
+
+    public void setCurrentBuyer(AuthorizedUser currentBuyer) {
+        this.currentBuyer = currentBuyer;
     }
 
     public Good getGood() {

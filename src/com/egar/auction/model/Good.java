@@ -11,7 +11,6 @@ public class Good {
 
     public Good(Category category, String name) {
         this.category = category;
-
         this.name = name;
     }
 
