@@ -1,5 +1,6 @@
 package com.egar.auction.controller;
 
+import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.Admin;
 import com.egar.auction.model.AuctionDatabase;
@@ -17,8 +18,23 @@ public class ControlAdmin implements Controller {
         this.database = database;
     }
 
+    public void connectToAdmin(String name, String password) throws UserNotFoundException, UserException {
+        if(database.getAdmins().size()==0)
+            throw new UserException("Администраторов не существует");
+        for (Admin a : database.getAdmins()) {
+            if (name.equals(a.getName()) && password.equals(a.getPassword()))
+                admin = a;
+            else
+                throw new UserNotFoundException();
+        }
+    }
+
     public void setAdmin(Admin admin) {
         this.admin = admin;
+    }
+
+    public Admin getAdmin() {
+        return admin;
     }
 
     public void changeAdminData(String name, String password) {

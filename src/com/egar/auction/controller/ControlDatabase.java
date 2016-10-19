@@ -1,5 +1,6 @@
 package com.egar.auction.controller;
 
+import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.Admin;
 import com.egar.auction.model.AuctionDatabase;
 import com.egar.auction.model.AuthorizedUser;
@@ -14,12 +15,20 @@ public class ControlDatabase implements Controller{
         this.database = database;
     }
 
-    public void createAuthorizedUser(String name,String password){
-        database.getAuthorizedUsers().add(new AuthorizedUser(name,password));
+    public void createAuthorizedUser(String name,String password) throws UserException {
+        for(AuthorizedUser user : database.getAuthorizedUsers()){
+            if(name.equals(user.getName()))
+                throw new UserException("Такой пользователь уже существует! Введите другое имя!");
+        }
+        database.addAuthorizedUser(new AuthorizedUser(name,password));
     }
 
-    public void createAdmin(String name, String password){
-        database.getAdmins().add(new Admin(name,password));
+    public void createAdmin(String name, String password) throws UserException {
+        for(Admin admin : database.getAdmins()){
+            if(name.equals(admin.getName()))
+                throw new UserException("Такой пользователь уже существует! Введите другое имя!");
+        }
+        database.addAdmin(new Admin(name,password));
     }
 
     public void deleteAdmin(String name,String password){

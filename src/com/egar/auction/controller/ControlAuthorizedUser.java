@@ -1,5 +1,7 @@
 package com.egar.auction.controller;
 
+import com.egar.auction.exceptions.UserException;
+import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.*;
 
 import java.util.ArrayList;
@@ -12,6 +14,17 @@ public class ControlAuthorizedUser implements Controller {
 
     public ControlAuthorizedUser(AuctionDatabase database) {
         this.database = database;
+    }
+
+    public void connectToUser(String name, String password) throws UserNotFoundException, UserException {
+        if(database.getAuthorizedUsers().size()==0)
+            throw new UserException("Пользователей не существует!");
+        for (AuthorizedUser a : database.getAuthorizedUsers()) {
+            if (name.equals(a.getName()) && password.equals(a.getPassword()))
+                user = a;
+            else
+                throw new UserNotFoundException();
+        }
     }
 
     public AuthorizedUser getUser() {
@@ -28,11 +41,16 @@ public class ControlAuthorizedUser implements Controller {
 
     public void putBid(Bid bid) {
         user.getMyBids().add(bid);
+        database.addBid(bid);
     }
 
-    public void makeBet(double price, Bid bid) {
-        bid.setCurrentPrice(price);
-        bid.setCurrentBuyer(user);
+    public boolean makeBet(double price, Bid bid) {
+        if(bid.getCurrentPrice()<price) {
+            bid.setCurrentPrice(price);
+            bid.setCurrentBuyer(user);
+            return true;
+        }
+        return false;
     }
 
     public void changeUserData(String name, String password) {
