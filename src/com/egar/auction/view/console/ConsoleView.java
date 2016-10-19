@@ -282,7 +282,7 @@ public class ConsoleView {
     }
 
     private void createAdmin(String name, String password) {
-        database.addAdmin(new Admin(name, password, database));
+        database.addAdmin(new Admin(name, password));
     }
 
 

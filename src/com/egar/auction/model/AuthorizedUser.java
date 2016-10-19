@@ -60,8 +60,4 @@ public class AuthorizedUser implements User {
         }
     }
 
-    @Override
-    public List viewAllBids() {
-        return null;
-    }
 }

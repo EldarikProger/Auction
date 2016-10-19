@@ -19,9 +19,4 @@ public class Guest implements User {
         this.name = name;
     }
 
-
-    @Override
-    public List viewAllBids() {
-        return null;
-    }
 }

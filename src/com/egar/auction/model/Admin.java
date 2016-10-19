@@ -7,13 +7,11 @@ public class Admin implements User {
 
     private String name;
     private String password;
-    private AuctionDatabase database;
 
 
-    public Admin(String name, String password, AuctionDatabase database) {
+    public Admin(String name, String password) {
         this.name = name;
         this.password = password;
-        this.database = database;
     }
 
     public String getName() {
@@ -32,8 +30,4 @@ public class Admin implements User {
         this.password = password;
     }
 
-    @Override
-    public List viewAllBids() {
-        return null;
-    }
 }
