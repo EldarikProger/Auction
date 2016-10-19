@@ -56,4 +56,45 @@ public class Bid {
     public void setGood(Good good) {
         this.good = good;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bid bid = (Bid) o;
+
+        if (Double.compare(bid.minPrice, minPrice) != 0) return false;
+        if (Double.compare(bid.maxPrice, maxPrice) != 0) return false;
+        if (Double.compare(bid.currentPrice, currentPrice) != 0) return false;
+        if (good != null ? !good.equals(bid.good) : bid.good != null) return false;
+        return currentBuyer != null ? currentBuyer.equals(bid.currentBuyer) : bid.currentBuyer == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = good != null ? good.hashCode() : 0;
+        temp = Double.doubleToLongBits(minPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(maxPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(currentPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (currentBuyer != null ? currentBuyer.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Bid{" +
+                "good=" + good.toString() +
+                ", minPrice=" + minPrice +
+                ", maxPrice=" + maxPrice +
+                ", currentPrice=" + currentPrice +
+                ", currentBuyer=" + currentBuyer +
+                '}';
+    }
 }

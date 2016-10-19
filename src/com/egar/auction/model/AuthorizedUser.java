@@ -38,26 +38,34 @@ public class AuthorizedUser implements User {
         return myGoods;
     }
 
-    public void addGood(Good myGoods) {
-        this.myGoods.add(myGoods);
-    }
-
     public List<Bid> getMyBids() {
         return myBids;
     }
 
-    public void makeBid(double minPrice, double maxPrice, Good good){
-        myBids.add(new Bid(minPrice,maxPrice,good));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AuthorizedUser user = (AuthorizedUser) o;
+
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        return password != null ? password.equals(user.password) : user.password == null;
+
     }
 
-    public void makeBet(double price,Bid bid){
-        if(price>bid.getCurrentPrice()){
-            bid.setCurrentPrice(price);
-            bid.setCurrentBuyer(this);
-        }
-        if (price>=bid.getMaxPrice()){
-
-        }
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
     }
 
+    @Override
+    public String toString() {
+        return "AuthorizedUser{" +
+                "password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

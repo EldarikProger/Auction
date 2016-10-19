@@ -1,14 +1,12 @@
 package com.egar.auction.controller;
 
-import com.egar.auction.model.AuctionDatabase;
-import com.egar.auction.model.AuthorizedUser;
-import com.egar.auction.model.Category;
-import com.egar.auction.model.Good;
+import com.egar.auction.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class ControlAuthorizedUser implements Controller{
+public class ControlAuthorizedUser implements Controller {
     private AuthorizedUser user;
     private AuctionDatabase database;
 
@@ -24,36 +22,43 @@ public class ControlAuthorizedUser implements Controller{
         this.user = user;
     }
 
-    public void addGood(Good good){
-
+    public void addGood(Good good) {
+        user.getMyGoods().add(good);
     }
 
-    public void putBid(){
-
+    public void putBid(Bid bid) {
+        user.getMyBids().add(bid);
     }
 
-    public  void makeBet(int price){
-
+    public void makeBet(double price, Bid bid) {
+        bid.setCurrentPrice(price);
+        bid.setCurrentBuyer(user);
     }
 
-    public void changeUserData(String name,String password){
-
+    public void changeUserData(String name, String password) {
+        user.setName(name);
+        user.setPassword(password);
     }
 
-    public List viewUserGoods(){
-        return null;
+    public List<Good> viewUserGoods() {
+        return user.getMyGoods();
     }
 
-    public List viewUserGoodsByCategory(Category category){
-        return null;
+    public List<Good> viewUserGoodsByCategory(Category category) {
+        List<Good> list = new ArrayList<>();
+        for (Good good : user.getMyGoods()) {
+            if (good.getCategory() == category)
+                list.add(good);
+        }
+        return list;
     }
 
-    public List viewUserBids(){
-        return  null;
+    public List<Bid> viewUserBids() {
+        return user.getMyBids();
     }
 
-    public List viewAllBids(){
-        return null;
+    public List<Bid> viewAllBids() {
+        return database.getAllBids();
     }
 
 }
