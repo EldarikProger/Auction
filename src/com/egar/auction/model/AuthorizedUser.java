@@ -42,6 +42,14 @@ public class AuthorizedUser implements User {
         return myBids;
     }
 
+    public void addGood(Good good){
+        myGoods.add(good);
+    }
+
+    public void addBid(Bid bid){
+        myBids.add(bid);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,8 +72,7 @@ public class AuthorizedUser implements User {
     @Override
     public String toString() {
         return "AuthorizedUser{" +
-                "password='" + password + '\'' +
-                ", name='" + name + '\'' +
+                ", name = " + name +
                 '}';
     }
 }

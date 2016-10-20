@@ -42,7 +42,7 @@ public class ConsoleView {
                     try {
                         controlDatabase.createAuthorizedUser(name, password);
                     } catch (UserException e) {
-                        e.printStackTrace();
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case 2:
@@ -54,7 +54,7 @@ public class ConsoleView {
                     try {
                         controlDatabase.createAdmin(name, password);
                     } catch (UserException e) {
-                        e.printStackTrace();
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case 3:
@@ -131,7 +131,7 @@ public class ConsoleView {
                         name = scanner.next();
                         try {
                             printList(controlAdmin.viewListUserGoods(name));
-                        }catch (UserNotFoundException e){
+                        } catch (UserNotFoundException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -141,14 +141,22 @@ public class ConsoleView {
                         name = scanner.next();
                         try {
                             printList(controlAdmin.viewListUserBids(name));
-                        }catch (UserNotFoundException e){
+                        } catch (UserNotFoundException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
                     case 5:
-                        printList(controlAdmin.viewAllBids());
+                        printList(controlAdmin.viewAllGoodsByCategory(selectCategory()));
                         break;
                     case 6:
+                        List<Good> list = controlAdmin.viewAllGoodsByCategory(selectCategory());
+                        try {
+                            printList(controlAdmin.viewAllBidsByGood(selectGood(list)));
+                        } catch (UserException e) {
+                            System.out.println(e.getMessage());
+                        }
+                        break;
+                    case 7:
                         System.out.println();
                         System.out.println("Введите имя:");
                         name = scanner.next();
@@ -156,7 +164,8 @@ public class ConsoleView {
                         password = scanner.next();
                         controlAdmin.changeAdminData(name, password);
                         break;
-                    case 7:
+                    case 8:
+                        controlAdmin.setAdmin(null);
                         nextRun = false;
                         break;
                     default:
@@ -174,10 +183,11 @@ public class ConsoleView {
         System.out.println("1) Посмотреть список пользователей");
         System.out.println("2) Посмотреть список всех администраторов");
         System.out.println("3) Посмотреть список товаров пользователя");
-        System.out.println("4) Посмотреть список заявок пользователя");
-        System.out.println("5) Посмотреть список всех ставок");
-        System.out.println("6) Изменить свои данные");
-        System.out.println("7) Выход");
+        System.out.println("4) Посмотреть список ставок пользователя");
+        System.out.println("5) Посмотреть список товаров по категории");
+        System.out.println("6) Посмотреть список всех ставок по товару");
+        System.out.println("7) Изменить свои данные");
+        System.out.println("8) Выход");
         return scanner.nextInt();
     }
 
@@ -190,15 +200,25 @@ public class ConsoleView {
         System.out.println("Гость " + guest.getName());
         boolean flag = true;
         while (flag) {
+            System.out.println();
             System.out.println("Выберите одно из действий");
-            System.out.println("1) Посмотреть список ставок");
-            System.out.println("2) Выход");
+            System.out.println("1) Посмотреть список товаров по категории");
+            System.out.println("2) Посмотреть список всех ставок по товару");
+            System.out.println("3) Выход");
             int a = scanner.nextInt();
             switch (a) {
                 case 1:
-                    controlGuest.viewAllBids();
+                    printList(controlGuest.viewAllGoodsByCategory(selectCategory()));
                     break;
                 case 2:
+                    List<Good> list = controlGuest.viewAllGoodsByCategory(selectCategory());
+                    try {
+                        printList(controlGuest.viewAllBidsByGood(selectGood(list)));
+                    } catch (UserException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 3:
                     flag = false;
                     break;
                 default:
@@ -224,13 +244,18 @@ public class ConsoleView {
                         printList(controlAuthorizedUser.viewUserGoods());
                         break;
                     case 2:
-                        printList(controlAuthorizedUser.viewUserGoodsByCategory(selectCategory()));
-                        break;
-                    case 3:
                         printList(controlAuthorizedUser.viewUserBids());
                         break;
+                    case 3:
+                        printList(controlAuthorizedUser.viewAllGoodsByCategory(selectCategory()));
+                        break;
                     case 4:
-                        printList(controlAuthorizedUser.viewAllBids());
+                        List<Good> list = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
+                        try {
+                            printList(controlAuthorizedUser.viewAllBidsByGood(selectGood(list)));
+                        } catch (UserException e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 5:
                         System.out.println();
@@ -238,37 +263,26 @@ public class ConsoleView {
                         String nameGood = scanner.next();
                         System.out.println("Введите описание товара: ");
                         String description = scanner.next();
+                        System.out.println("Введите min цену: ");
+                        double minPrice = scanner.nextDouble();
+                        System.out.println("Введите max цену: ");
+                        double maxPrice = scanner.nextDouble();
                         Category category = selectCategory();
-                        controlAuthorizedUser.addGood(new Good(category, nameGood, description));
+                        controlAuthorizedUser.addGood(category, nameGood, description, minPrice, maxPrice);
                         break;
                     case 6:
+                        List<Good> goodList = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
                         try {
-                            Good good = selectGood(controlAuthorizedUser.viewUserGoods());
+                            Good good = selectGood(goodList);
                             System.out.println();
-                            System.out.println("Введите min цену: ");
-                            double min = scanner.nextDouble();
-                            System.out.println("Введите max цену: ");
-                            double max = scanner.nextDouble();
-                            controlAuthorizedUser.putBid(new Bid(min, max, good));
-                        }catch (UserException e){
+                            System.out.println("Введите цену(ставку): ");
+                            double price = scanner.nextDouble();
+                            controlAuthorizedUser.makeBet(price, good);
+                        } catch (UserException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
                     case 7:
-                        try {
-                            Bid bid = selectBid(controlAuthorizedUser.viewAllBids());
-                            System.out.println("Введите min цену: ");
-                            double price = scanner.nextDouble();
-                            if (controlAuthorizedUser.makeBet(price, bid)) {
-                                System.out.println("Ставка сделана!");
-                            } else {
-                                System.out.println("Ставка не сделана! Поднимите цену ставки!");
-                            }
-                        }catch (UserException  e){
-                            System.out.println(e.getMessage());
-                        }
-                        break;
-                    case 8:
                         System.out.println();
                         System.out.println("Введите имя:");
                         name = scanner.next();
@@ -276,15 +290,14 @@ public class ConsoleView {
                         password = scanner.next();
                         controlAuthorizedUser.changeUserData(name, password);
                         break;
-                    case 9:
+                    case 8:
+                        controlAuthorizedUser.setUser(null);
                         nextRun = false;
                         break;
                     default:
                         System.out.println("Вы выбрали несуществующий вариант!");
                 }
             }
-
-
         } catch (UserNotFoundException | UserException e) {
             System.out.println(e.getMessage());
         }
@@ -294,14 +307,13 @@ public class ConsoleView {
         System.out.println();
         System.out.println("Выберите одно из действий");
         System.out.println("1) Посмотреть список моих товаров");
-        System.out.println("2) Посмотреть список моих товаров по категории");
-        System.out.println("3) Посмотреть список моих заявок");
-        System.out.println("4) Посмотреть список всех ставок");
+        System.out.println("2) Посмотреть список моих ставок");
+        System.out.println("3) Посмотреть список всех товаров по категории");
+        System.out.println("4) Посмотреть список всех ставок по товару");
         System.out.println("5) Добавить товар");
-        System.out.println("6) Выложить заявку");
-        System.out.println("7) Сделать ставку");
-        System.out.println("8) Изменить свои данные");
-        System.out.println("9) Выход");
+        System.out.println("6) Сделать ставку");
+        System.out.println("7) Изменить свои данные");
+        System.out.println("8) Выход");
         return scanner.nextInt();
     }
 
@@ -318,7 +330,7 @@ public class ConsoleView {
 
     private Good selectGood(List<Good> list) throws UserException {
         System.out.println();
-        if(list.size()!=0) {
+        if (list.size() != 0) {
             System.out.println("Выберите товар:");
             int i = 1;
             for (Good c : list) {
@@ -326,28 +338,14 @@ public class ConsoleView {
             }
             int j = scanner.nextInt();
             return list.get(j - 1);
-        }
-        else
+        } else
             throw new UserException("Список товаров пуст!");
-    }
-
-    private Bid selectBid(List<Bid> list) throws UserException {
-        System.out.println();
-        if(list.size()!=0) {
-            System.out.println("Выберите заявку на которую нужно сделать ставку:");
-            int i = 1;
-            for (Bid c : list) {
-                System.out.println((i++) + ") " + c.toString());
-            }
-            int j = scanner.nextInt();
-            return list.get(j - 1);
-        }
-        else
-            throw new UserException("Список заявок пуст!");
     }
 
     private void printList(List list) {
         System.out.println();
+        if (list.size() == 0)
+            System.out.println("Список пуст!");
         for (Object obj : list) {
             System.out.println(obj.toString());
         }

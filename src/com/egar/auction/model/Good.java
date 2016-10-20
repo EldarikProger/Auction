@@ -1,16 +1,53 @@
 package com.egar.auction.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Good {
 
     private Category category;
     private String name;
     private String description;
+    private double minPrice;
+    private double maxPrice;
+    private List<Bid> bidList;
 
-    public Good(Category category, String name, String description) {
+    public Good(Category category, String name, String description, double minPrice, double maxPrice) {
         this.category = category;
         this.name = name;
         this.description = description;
+        this.minPrice = minPrice;
+        this.maxPrice = maxPrice;
+        bidList = new ArrayList<>();
+    }
+
+    public void addBid(Bid bid){
+        bidList.add(bid);
+    }
+
+    public List<Bid> getBidList() {
+        return bidList;
+    }
+
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
+    }
+
+    public double getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(double maxPrice) {
+        this.maxPrice = maxPrice;
+    }
+
+    public void setBidList(List<Bid> bidList) {
+        this.bidList = bidList;
     }
 
     public Category getCategory() {
@@ -44,6 +81,8 @@ public class Good {
 
         Good good = (Good) o;
 
+        if (Double.compare(good.minPrice, minPrice) != 0) return false;
+        if (Double.compare(good.maxPrice, maxPrice) != 0) return false;
         if (category != good.category) return false;
         if (name != null ? !name.equals(good.name) : good.name != null) return false;
         return description != null ? description.equals(good.description) : good.description == null;
@@ -52,18 +91,26 @@ public class Good {
 
     @Override
     public int hashCode() {
-        int result = category != null ? category.hashCode() : 0;
+        int result;
+        long temp;
+        result = category != null ? category.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        temp = Double.doubleToLongBits(minPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(maxPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
     @Override
     public String toString() {
         return "Good{" +
-                "category: " + category +
-                "; name: " + name +
-                "; description: " + description +
+                "maxPrice=" + maxPrice +
+                ", minPrice=" + minPrice +
+                ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
+                ", category=" + category +
                 '}';
     }
 }

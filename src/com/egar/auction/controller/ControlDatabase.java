@@ -20,7 +20,7 @@ public class ControlDatabase implements Controller{
             if(name.equals(user.getName()))
                 throw new UserException("Такой пользователь уже существует! Введите другое имя!");
         }
-        database.addAuthorizedUser(new AuthorizedUser(name,password));
+        database.addAuthorizedUser(name,password);
     }
 
     public void createAdmin(String name, String password) throws UserException {
@@ -28,7 +28,7 @@ public class ControlDatabase implements Controller{
             if(name.equals(admin.getName()))
                 throw new UserException("Такой пользователь уже существует! Введите другое имя!");
         }
-        database.addAdmin(new Admin(name,password));
+        database.addAdmin(name,password);
     }
 
     public void deleteAdmin(String name,String password){

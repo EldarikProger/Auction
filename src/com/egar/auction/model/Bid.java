@@ -3,50 +3,30 @@ package com.egar.auction.model;
 
 public class Bid {
     private Good good;
-    private double minPrice;
-    private double maxPrice;
-    private double currentPrice;
-    private AuthorizedUser currentBuyer;
+    private double price;
+    private AuthorizedUser buyer;
 
 
-    public Bid(double minPrice, double maxPrice, Good good) {
-        this.minPrice = minPrice;
-        this.maxPrice = maxPrice;
+    public Bid(Good good, double price, AuthorizedUser buyer) {
         this.good = good;
-        this.currentPrice = 0;
-        currentBuyer =null;
+        this.price = price;
+        this.buyer = buyer;
     }
 
-    public double getMinPrice() {
-        return minPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setMinPrice(double minPrice) {
-        this.minPrice = minPrice;
+    public void setPrice(double currentPrice) {
+        this.price = currentPrice;
     }
 
-    public double getMaxPrice() {
-        return maxPrice;
+    public AuthorizedUser getBuyer() {
+        return buyer;
     }
 
-    public void setMaxPrice(double maxPrice) {
-        this.maxPrice = maxPrice;
-    }
-
-    public double getCurrentPrice() {
-        return currentPrice;
-    }
-
-    public void setCurrentPrice(double currentPrice) {
-        this.currentPrice = currentPrice;
-    }
-
-    public AuthorizedUser getCurrentBuyer() {
-        return currentBuyer;
-    }
-
-    public void setCurrentBuyer(AuthorizedUser currentBuyer) {
-        this.currentBuyer = currentBuyer;
+    public void setBuyer(AuthorizedUser currentBuyer) {
+        this.buyer = currentBuyer;
     }
 
     public Good getGood() {
@@ -64,11 +44,9 @@ public class Bid {
 
         Bid bid = (Bid) o;
 
-        if (Double.compare(bid.minPrice, minPrice) != 0) return false;
-        if (Double.compare(bid.maxPrice, maxPrice) != 0) return false;
-        if (Double.compare(bid.currentPrice, currentPrice) != 0) return false;
+        if (Double.compare(bid.price, price) != 0) return false;
         if (good != null ? !good.equals(bid.good) : bid.good != null) return false;
-        return currentBuyer != null ? currentBuyer.equals(bid.currentBuyer) : bid.currentBuyer == null;
+        return buyer != null ? buyer.equals(bid.buyer) : bid.buyer == null;
 
     }
 
@@ -77,24 +55,18 @@ public class Bid {
         int result;
         long temp;
         result = good != null ? good.hashCode() : 0;
-        temp = Double.doubleToLongBits(minPrice);
+        temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(maxPrice);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(currentPrice);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (currentBuyer != null ? currentBuyer.hashCode() : 0);
+        result = 31 * result + (buyer != null ? buyer.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "Bid{" +
-                "good=" + good.toString() +
-                ", minPrice=" + minPrice +
-                ", maxPrice=" + maxPrice +
-                ", currentPrice=" + currentPrice +
-                ", currentBuyer=" + currentBuyer +
+                "good=" + good +
+                ", price=" + price +
+                ", buyer=" + buyer +
                 '}';
     }
 }

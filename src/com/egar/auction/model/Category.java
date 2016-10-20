@@ -13,5 +13,6 @@ public enum Category {
     SPORTS_WEAR,
     BUILDING_TOOLS,
     FURNITURE,
+    FOOD,
     MUSICAL_INSTRUMENTS;
 }
