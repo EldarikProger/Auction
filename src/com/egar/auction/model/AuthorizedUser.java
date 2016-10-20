@@ -72,7 +72,7 @@ public class AuthorizedUser implements User {
     @Override
     public String toString() {
         return "AuthorizedUser{" +
-                ", name = " + name +
+                "name = " + name +
                 '}';
     }
 }

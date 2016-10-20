@@ -146,11 +146,16 @@ public class ConsoleView {
                         }
                         break;
                     case 5:
-                        printList(controlAdmin.viewAllGoodsByCategory(selectCategory()));
+                        try {
+                            printList(controlAdmin.viewAllGoodsByCategory(selectCategory()));
+
+                        }catch (UserException e){
+                            e.getMessage();
+                        }
                         break;
                     case 6:
-                        List<Good> list = controlAdmin.viewAllGoodsByCategory(selectCategory());
                         try {
+                            List<Good> list = controlAdmin.viewAllGoodsByCategory(selectCategory());
                             printList(controlAdmin.viewAllBidsByGood(selectGood(list)));
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
@@ -208,10 +213,19 @@ public class ConsoleView {
             int a = scanner.nextInt();
             switch (a) {
                 case 1:
-                    printList(controlGuest.viewAllGoodsByCategory(selectCategory()));
+                    try {
+                        printList(controlGuest.viewAllGoodsByCategory(selectCategory()));
+                    } catch (UserException e) {
+                        e.getMessage();
+                    }
                     break;
                 case 2:
-                    List<Good> list = controlGuest.viewAllGoodsByCategory(selectCategory());
+                    List<Good> list = null;
+                    try {
+                        list = controlGuest.viewAllGoodsByCategory(selectCategory());
+                    } catch (UserException e) {
+                        e.getMessage();
+                    }
                     try {
                         printList(controlGuest.viewAllBidsByGood(selectGood(list)));
                     } catch (UserException e) {
@@ -247,11 +261,15 @@ public class ConsoleView {
                         printList(controlAuthorizedUser.viewUserBids());
                         break;
                     case 3:
-                        printList(controlAuthorizedUser.viewAllGoodsByCategory(selectCategory()));
+                        try {
+                            printList(controlAuthorizedUser.viewAllGoodsByCategory(selectCategory()));
+                        }catch (UserException e){
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 4:
-                        List<Good> list = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
                         try {
+                            List<Good> list = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
                             printList(controlAuthorizedUser.viewAllBidsByGood(selectGood(list)));
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
@@ -267,12 +285,16 @@ public class ConsoleView {
                         double minPrice = scanner.nextDouble();
                         System.out.println("Введите max цену: ");
                         double maxPrice = scanner.nextDouble();
-                        Category category = selectCategory();
-                        controlAuthorizedUser.addGood(category, nameGood, description, minPrice, maxPrice);
+                        try {
+                            Category category = selectCategory();
+                            controlAuthorizedUser.addGood(category, nameGood, description, minPrice, maxPrice);
+                        } catch (UserException e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     case 6:
-                        List<Good> goodList = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
                         try {
+                            List<Good> goodList = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
                             Good good = selectGood(goodList);
                             System.out.println();
                             System.out.println("Введите цену(ставку): ");
@@ -317,7 +339,7 @@ public class ConsoleView {
         return scanner.nextInt();
     }
 
-    private Category selectCategory() {
+    private Category selectCategory() throws UserException {
         System.out.println();
         System.out.println("Выберите категорию:");
         int i = 1;
@@ -325,6 +347,8 @@ public class ConsoleView {
             System.out.println((i++) + ") " + c);
         }
         int j = scanner.nextInt();
+        if (j <= 0 || j > 13)
+            throw new UserException("Вы выбрали не существующую категорию!");
         return Category.values()[j - 1];
     }
 
