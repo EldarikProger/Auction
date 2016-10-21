@@ -1,10 +1,10 @@
-package com.egar.auction.modul;
+package com.egar.auction.view;
 
 import com.egar.auction.controller.ControlAdmin;
 import com.egar.auction.controller.ControlAuthorizedUser;
 import com.egar.auction.controller.ControlDatabase;
 import com.egar.auction.controller.ControlGuest;
-import com.egar.auction.model.AuctionDatabase;
+import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.ConsoleView;
 
 

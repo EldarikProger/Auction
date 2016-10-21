@@ -2,7 +2,7 @@ package com.egar.auction.controller;
 
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.Admin;
-import com.egar.auction.model.AuctionDatabase;
+import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.model.AuthorizedUser;
 
 import java.util.List;

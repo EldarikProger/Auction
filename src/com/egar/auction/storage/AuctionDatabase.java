@@ -1,4 +1,9 @@
-package com.egar.auction.model;
+package com.egar.auction.storage;
+
+import com.egar.auction.model.Admin;
+import com.egar.auction.model.AuthorizedUser;
+import com.egar.auction.model.Bid;
+import com.egar.auction.model.Good;
 
 import java.util.ArrayList;
 import java.util.List;

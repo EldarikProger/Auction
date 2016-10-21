@@ -12,14 +12,24 @@ public class Good {
     private double minPrice;
     private double maxPrice;
     private List<Bid> bidList;
+    private AuthorizedUser owner;
 
-    public Good(Category category, String name, String description, double minPrice, double maxPrice) {
+    public Good(Category category, String name, String description, double minPrice, double maxPrice, AuthorizedUser owner) {
         this.category = category;
         this.name = name;
         this.description = description;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
+        this.owner = owner;
         bidList = new ArrayList<>();
+    }
+
+    public AuthorizedUser getOwner() {
+        return owner;
+    }
+
+    public void setOwner(AuthorizedUser owner) {
+        this.owner = owner;
     }
 
     public void addBid(Bid bid){

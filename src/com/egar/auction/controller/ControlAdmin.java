@@ -3,6 +3,7 @@ package com.egar.auction.controller;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.*;
+import com.egar.auction.storage.AuctionDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,18 +49,30 @@ public class ControlAdmin implements UsersController {
         return database.getAdmins();
     }
 
-    public List viewListUserGoods(String userName) throws UserNotFoundException {
-        for (AuthorizedUser a : database.getAuthorizedUsers()) {
-            if (userName.equals(a.getName()))
-                return a.getMyGoods();
+    public List<Good> viewListUserGoods(String userName) throws UserNotFoundException {
+        for (AuthorizedUser user : database.getAuthorizedUsers()) {
+            if (userName.equals(user.getName())){
+                List<Good> list = new ArrayList<>();
+                for (Good good: database.getAllGoods()) {
+                    if(user.equals(good.getOwner()))
+                        list.add(good);
+                }
+                return list;
+            }
         }
         throw new UserNotFoundException();
     }
 
-    public List viewListUserBids(String userName) throws UserNotFoundException {
-        for (AuthorizedUser a : database.getAuthorizedUsers()) {
-            if (userName.equals(a.getName()))
-                return a.getMyBids();
+    public List<Bid> viewListUserBids(String userName) throws UserNotFoundException {
+        for (AuthorizedUser user : database.getAuthorizedUsers()) {
+            if (userName.equals(user.getName())){
+                List<Bid> list = new ArrayList<>();
+                for (Bid bid: database.getAllBids()) {
+                    if(user.equals(bid.getBuyer()))
+                        list.add(bid);
+                }
+                return list;
+            }
         }
         throw new UserNotFoundException();
     }

@@ -8,14 +8,14 @@ public class AuthorizedUser implements User {
 
     private String name;
     private String password;
-    private List<Good> myGoods;
-    private List<Bid> myBids;
+//    private List<Good> myGoods;
+//    private List<Bid> myBids;
 
     public AuthorizedUser(String name, String password) {
         this.name = name;
         this.password = password;
-        myGoods = new ArrayList<>();
-        myBids = new ArrayList<>();
+//        myGoods = new ArrayList<>();
+//        myBids = new ArrayList<>();
     }
 
     public String getPassword() {
@@ -34,21 +34,21 @@ public class AuthorizedUser implements User {
         this.name = name;
     }
 
-    public List<Good> getMyGoods() {
-        return myGoods;
-    }
-
-    public List<Bid> getMyBids() {
-        return myBids;
-    }
-
-    public void addGood(Good good){
-        myGoods.add(good);
-    }
-
-    public void addBid(Bid bid){
-        myBids.add(bid);
-    }
+//    public List<Good> getMyGoods() {
+//        return myGoods;
+//    }
+//
+//    public List<Bid> getMyBids() {
+//        return myBids;
+//    }
+//
+//    public void addGood(Good good){
+//        myGoods.add(good);
+//    }
+//
+//    public void addBid(Bid bid){
+//        myBids.add(bid);
+//    }
 
     @Override
     public boolean equals(Object o) {

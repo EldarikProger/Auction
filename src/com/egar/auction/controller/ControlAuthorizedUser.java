@@ -3,6 +3,7 @@ package com.egar.auction.controller;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.*;
+import com.egar.auction.storage.AuctionDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +37,7 @@ public class ControlAuthorizedUser implements UsersController {
     }
 
     public void addGood(Category category, String name, String description, double minPrice, double maxPrice) {
-        Good good = new Good(category, name, description, minPrice, maxPrice);
-        user.addGood(good);
+        Good good = new Good(category, name, description, minPrice, maxPrice,user);
         database.addGood(good);
     }
 
@@ -45,7 +45,6 @@ public class ControlAuthorizedUser implements UsersController {
     public void makeBet(double price, Good good) {
         Bid bid = new Bid(good, price, user);
         good.addBid(bid);
-        user.addBid(bid);
         database.addBid(bid);
     }
 
@@ -55,7 +54,12 @@ public class ControlAuthorizedUser implements UsersController {
     }
 
     public List<Good> viewUserGoods() {
-        return user.getMyGoods();
+        List<Good> list = new ArrayList<>();
+        for (Good good: database.getAllGoods()) {
+            if(user.equals(good.getOwner()))
+                list.add(good);
+        }
+        return list;
     }
 
     @Override
@@ -69,12 +73,22 @@ public class ControlAuthorizedUser implements UsersController {
     }
 
     public List<Bid> viewUserBids() {
-        return user.getMyBids();
+        List<Bid> list = new ArrayList<>();
+        for (Bid bid: database.getAllBids()) {
+            if(user.equals(bid.getBuyer()))
+                list.add(bid);
+        }
+        return list;
     }
 
     @Override
     public List<Bid> viewAllBidsByGood(Good good) {
-        return good.getBidList();
+        List<Bid> list = new ArrayList<>();
+        for (Bid bid: database.getAllBids()) {
+            if(bid.getGood().equals(good))
+                list.add(bid);
+        }
+        return list;
     }
 
 }

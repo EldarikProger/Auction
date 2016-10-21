@@ -1,6 +1,6 @@
 package com.egar.auction.controller;
 
-import com.egar.auction.model.AuctionDatabase;
+import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.model.Bid;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;
