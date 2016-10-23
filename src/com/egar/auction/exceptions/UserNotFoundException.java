@@ -1,7 +1,7 @@
 package com.egar.auction.exceptions;
 
 /**
- * Created by Эльдар on 19.10.2016.
+ * Exception where user is not found
  */
 public class UserNotFoundException extends Exception{
     public UserNotFoundException() {

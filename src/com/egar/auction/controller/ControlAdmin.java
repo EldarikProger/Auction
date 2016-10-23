@@ -8,15 +8,30 @@ import com.egar.auction.storage.AuctionDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class describe management admin
+ */
 public class ControlAdmin implements UsersController {
     private AuctionDatabase database;
     private Admin admin;
 
+    /**
+     * Create admin controller
+     *
+     * @param database
+     */
     public ControlAdmin(AuctionDatabase database) {
         this.database = database;
     }
 
+    /**
+     * Method sets the admin to controller. ControlAdmin will manage the admin.
+     *
+     * @param name
+     * @param password
+     * @throws UserNotFoundException
+     * @throws UserException
+     */
     public void connectToAdmin(String name, String password) throws UserNotFoundException, UserException {
         if (database.getAdmins().size() == 0)
             throw new UserException("Администраторов не существует");
@@ -28,55 +43,59 @@ public class ControlAdmin implements UsersController {
             throw new UserNotFoundException();
     }
 
+    /**
+     * Returns the reference ControlAdmin to the admin
+     *
+     * @param admin
+     */
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
 
+    /**
+     * Establishes to the reference admin a new object Admin
+     *
+     * @return
+     */
     public Admin getAdmin() {
         return admin;
     }
 
+    /**
+     * Method change admin name and password
+     *
+     * @param name
+     * @param password
+     */
     public void changeAdminData(String name, String password) {
         admin.setName(name);
         admin.setPassword(password);
     }
 
+    /**
+     * Method return list all AuthorizedUsers
+     *
+     * @return list users
+     */
     public List viewListUsers() {
         return database.getAuthorizedUsers();
     }
 
+    /**
+     * Method return list all Admins
+     *
+     * @return list admins
+     */
     public List viewListAdmins() {
         return database.getAdmins();
     }
 
-    public List<Good> viewListUserGoods(String userName) throws UserNotFoundException {
-        for (AuthorizedUser user : database.getAuthorizedUsers()) {
-            if (userName.equals(user.getName())){
-                List<Good> list = new ArrayList<>();
-                for (Good good: database.getAllGoods()) {
-                    if(user.equals(good.getOwner()))
-                        list.add(good);
-                }
-                return list;
-            }
-        }
-        throw new UserNotFoundException();
-    }
-
-    public List<Bid> viewListUserBids(String userName) throws UserNotFoundException {
-        for (AuthorizedUser user : database.getAuthorizedUsers()) {
-            if (userName.equals(user.getName())){
-                List<Bid> list = new ArrayList<>();
-                for (Bid bid: database.getAllBids()) {
-                    if(user.equals(bid.getBuyer()))
-                        list.add(bid);
-                }
-                return list;
-            }
-        }
-        throw new UserNotFoundException();
-    }
-
+    /**
+     * Return list all goods by category
+     *
+     * @param category
+     * @return list goods
+     */
     @Override
     public List<Good> viewAllGoodsByCategory(Category category) {
         List<Good> list = new ArrayList<>();
@@ -87,8 +106,46 @@ public class ControlAdmin implements UsersController {
         return list;
     }
 
+    /**
+     * Method return list all bets by good
+     *
+     * @param good
+     * @return list bids
+     */
     @Override
     public List<Bid> viewAllBidsByGood(Good good) {
-        return good.getBidList();
+        List<Bid> list = new ArrayList<>();
+        for (Bid bid : database.getAllBids()) {
+            if (bid.getGood().equals(good))
+                list.add(bid);
+        }
+        return list;
     }
+
+    /**
+     * Method return number user goods and bid (all statistics bu user)
+     *
+     * @return
+     */
+    public List<AuthorizedUserStatistics> getUserStatistics() {
+        int k = 0, l = 0;
+        List<AuthorizedUserStatistics> list = new ArrayList<>();
+        for (AuthorizedUser user : database.getAuthorizedUsers()) {
+            for (Good good : database.getAllGoods()) {
+                if (user.equals(good.getOwner())) {
+                    k++;
+                }
+            }
+            for (Bid bid : database.getAllBids()) {
+                if (user.equals(bid.getBuyer())) {
+                    l++;
+                }
+            }
+            list.add(new AuthorizedUserStatistics(user, k, l));
+            k=0;
+            l=0;
+        }
+        return list;
+    }
+
 }

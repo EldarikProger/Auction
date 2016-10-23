@@ -1,7 +1,8 @@
 package com.egar.auction.model;
 
-import java.util.List;
 
-
+/**
+ * Interface gives a description of all users
+ */
 public interface User {
 }

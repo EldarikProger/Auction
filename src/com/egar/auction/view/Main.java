@@ -7,9 +7,17 @@ import com.egar.auction.controller.ControlGuest;
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.ConsoleView;
 
-
+/**
+ * Class Main create database and all controllers.
+ * Main crate and show view. Main is the entry point of the program.
+ */
 public class Main {
 
+    /**
+     * This is the entry point of the program.
+     *
+     * @param arg
+     */
     public static void main(String[] arg) {
         System.out.println("Это программа Аукцион!");
         AuctionDatabase database = new AuctionDatabase();

@@ -8,15 +8,32 @@ import com.egar.auction.storage.AuctionDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class describe management user
+ */
 public class ControlAuthorizedUser implements UsersController {
     private AuthorizedUser user;
     private AuctionDatabase database;
+    private static long idGood = 0;
+    private static long idBid = 0;
 
+    /**
+     * Create user controller
+     *
+     * @param database
+     */
     public ControlAuthorizedUser(AuctionDatabase database) {
         this.database = database;
     }
 
+    /**
+     * Method sets the user to controller. ControlAuthorizedUser will manage the user.
+     *
+     * @param name
+     * @param password
+     * @throws UserNotFoundException
+     * @throws UserException
+     */
     public void connectToUser(String name, String password) throws UserNotFoundException, UserException {
         if (database.getAuthorizedUsers().size() == 0)
             throw new UserException("Пользователей не существует!");
@@ -28,40 +45,80 @@ public class ControlAuthorizedUser implements UsersController {
             throw new UserNotFoundException();
     }
 
+    /**
+     * Returns the reference ControlAuthorizedUser to the user
+     *
+     * @return user
+     */
     public AuthorizedUser getUser() {
         return user;
     }
 
+    /**
+     * Establishes to the reference user a new object AuthorizedUser
+     *
+     * @param user
+     */
     public void setUser(AuthorizedUser user) {
         this.user = user;
     }
 
+    /**
+     * Addition to the user a thing
+     *
+     * @param category
+     * @param name
+     * @param description
+     * @param minPrice
+     * @param maxPrice
+     */
     public void addGood(Category category, String name, String description, double minPrice, double maxPrice) {
-        Good good = new Good(category, name, description, minPrice, maxPrice,user);
+        Good good = new Good(category, name, description, minPrice, maxPrice, user, ++idGood);
         database.addGood(good);
     }
 
-
+    /**
+     * To bid by the user for the goods
+     *
+     * @param price
+     * @param good
+     */
     public void makeBet(double price, Good good) {
-        Bid bid = new Bid(good, price, user);
-        good.addBid(bid);
+        Bid bid = new Bid(good, price, user, ++idBid);
         database.addBid(bid);
     }
 
+    /**
+     * Change user name and password
+     *
+     * @param name
+     * @param password
+     */
     public void changeUserData(String name, String password) {
         user.setName(name);
         user.setPassword(password);
     }
 
+    /**
+     * Return list user goods
+     *
+     * @return list goods
+     */
     public List<Good> viewUserGoods() {
         List<Good> list = new ArrayList<>();
-        for (Good good: database.getAllGoods()) {
-            if(user.equals(good.getOwner()))
+        for (Good good : database.getAllGoods()) {
+            if (user.equals(good.getOwner()))
                 list.add(good);
         }
         return list;
     }
 
+    /**
+     * Return list all goods by category
+     *
+     * @param category
+     * @return list goods
+     */
     @Override
     public List<Good> viewAllGoodsByCategory(Category category) {
         List<Good> list = new ArrayList<>();
@@ -72,20 +129,31 @@ public class ControlAuthorizedUser implements UsersController {
         return list;
     }
 
+    /**
+     * Method return list user bets
+     *
+     * @return list bids
+     */
     public List<Bid> viewUserBids() {
         List<Bid> list = new ArrayList<>();
-        for (Bid bid: database.getAllBids()) {
-            if(user.equals(bid.getBuyer()))
+        for (Bid bid : database.getAllBids()) {
+            if (user.equals(bid.getBuyer()))
                 list.add(bid);
         }
         return list;
     }
 
+    /**
+     * Method return list all bets by good
+     *
+     * @param good
+     * @return list bids
+     */
     @Override
     public List<Bid> viewAllBidsByGood(Good good) {
         List<Bid> list = new ArrayList<>();
-        for (Bid bid: database.getAllBids()) {
-            if(bid.getGood().equals(good))
+        for (Bid bid : database.getAllBids()) {
+            if (bid.getGood().equals(good))
                 list.add(bid);
         }
         return list;

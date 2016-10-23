@@ -1,6 +1,8 @@
 package com.egar.auction.model;
 
-
+/**
+ * Enum all category goods
+ */
 public enum Category {
     CLOTHING,
     SHOES,

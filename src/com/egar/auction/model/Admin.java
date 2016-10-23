@@ -1,31 +1,78 @@
 package com.egar.auction.model;
 
+/**
+ * Admin is the user. Class Admin have admin data
+ */
 public class Admin implements User {
 
     private String name;
     private String password;
+    private long id;
 
-    public Admin(String name, String password) {
+    /**
+     * Create Admin
+     *
+     * @param name
+     * @param password
+     * @param id
+     */
+    public Admin(String name, String password, long id) {
         this.name = name;
         this.password = password;
+        this.id = id;
     }
 
+    /**
+     * Return name user
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set name to user
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Return password admin
+     *
+     * @return password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Set password to user
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Get id admin
+     *
+     * @return
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Return true if all admin fields coincide with Object fields
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,22 +80,36 @@ public class Admin implements User {
 
         Admin admin = (Admin) o;
 
+        if (id != admin.id) return false;
         if (name != null ? !name.equals(admin.name) : admin.name != null) return false;
         return password != null ? password.equals(admin.password) : admin.password == null;
 
     }
 
+    /**
+     * Return hash admin
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (int) (id ^ (id >>> 32));
         return result;
     }
 
+    /**
+     * Represent Admin in string form
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Admin{" +
-                "name = " + name +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", id=" + id +
                 '}';
     }
 }

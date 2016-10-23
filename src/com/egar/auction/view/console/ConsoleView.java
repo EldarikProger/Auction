@@ -1,6 +1,5 @@
 package com.egar.auction.view.console;
 
-
 import com.egar.auction.controller.*;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
@@ -9,6 +8,9 @@ import com.egar.auction.model.*;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Class is the user presentation
+ */
 public class ConsoleView {
     private Scanner scanner;
     private ControlAdmin controlAdmin;
@@ -16,6 +18,14 @@ public class ConsoleView {
     private ControlDatabase controlDatabase;
     private ControlGuest controlGuest;
 
+    /**
+     * Create and show ConsoleView
+     *
+     * @param controlAdmin
+     * @param controlAuthorizedUser
+     * @param controlDatabase
+     * @param controlGuest
+     */
     public ConsoleView(ControlAdmin controlAdmin, ControlAuthorizedUser controlAuthorizedUser, ControlDatabase controlDatabase, ControlGuest controlGuest) {
         this.controlAdmin = controlAdmin;
         this.controlAuthorizedUser = controlAuthorizedUser;
@@ -24,7 +34,6 @@ public class ConsoleView {
         scanner = new Scanner(System.in);
         start();
     }
-
 
     private void start() {
         boolean runFlag = true;
@@ -39,11 +48,8 @@ public class ConsoleView {
                     name = scanner.next();
                     System.out.println("Введите пароль:");
                     password = scanner.next();
-                    try {
-                        controlDatabase.createAuthorizedUser(name, password);
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
+                    controlDatabase.createAuthorizedUser(name, password);
+                    System.out.println("Пользователь создан!");
                     break;
                 case 2:
                     System.out.println();
@@ -51,11 +57,8 @@ public class ConsoleView {
                     name = scanner.next();
                     System.out.println("Введите пароль:");
                     password = scanner.next();
-                    try {
-                        controlDatabase.createAdmin(name, password);
-                    } catch (UserException e) {
-                        System.out.println(e.getMessage());
-                    }
+                    controlDatabase.createAdmin(name, password);
+                    System.out.println("Администратор создан!");
                     break;
                 case 3:
                     workingUser();
@@ -126,34 +129,17 @@ public class ConsoleView {
                         printList(controlAdmin.viewListAdmins());
                         break;
                     case 3:
-                        System.out.println();
-                        System.out.println("Введите имя пользоватля:");
-                        name = scanner.next();
-                        try {
-                            printList(controlAdmin.viewListUserGoods(name));
-                        } catch (UserNotFoundException e) {
-                            System.out.println(e.getMessage());
-                        }
+                        printList(controlAdmin.getUserStatistics());
                         break;
                     case 4:
-                        System.out.println();
-                        System.out.println("Введите имя пользоватля:");
-                        name = scanner.next();
-                        try {
-                            printList(controlAdmin.viewListUserBids(name));
-                        } catch (UserNotFoundException e) {
-                            System.out.println(e.getMessage());
-                        }
-                        break;
-                    case 5:
                         try {
                             printList(controlAdmin.viewAllGoodsByCategory(selectCategory()));
 
-                        }catch (UserException e){
+                        } catch (UserException e) {
                             e.getMessage();
                         }
                         break;
-                    case 6:
+                    case 5:
                         try {
                             List<Good> list = controlAdmin.viewAllGoodsByCategory(selectCategory());
                             printList(controlAdmin.viewAllBidsByGood(selectGood(list)));
@@ -161,7 +147,7 @@ public class ConsoleView {
                             System.out.println(e.getMessage());
                         }
                         break;
-                    case 7:
+                    case 6:
                         System.out.println();
                         System.out.println("Введите имя:");
                         name = scanner.next();
@@ -169,7 +155,7 @@ public class ConsoleView {
                         password = scanner.next();
                         controlAdmin.changeAdminData(name, password);
                         break;
-                    case 8:
+                    case 7:
                         controlAdmin.setAdmin(null);
                         nextRun = false;
                         break;
@@ -187,12 +173,11 @@ public class ConsoleView {
         System.out.println("Выберите одно из действий");
         System.out.println("1) Посмотреть список пользователей");
         System.out.println("2) Посмотреть список всех администраторов");
-        System.out.println("3) Посмотреть список товаров пользователя");
-        System.out.println("4) Посмотреть список ставок пользователя");
-        System.out.println("5) Посмотреть список товаров по категории");
-        System.out.println("6) Посмотреть список всех ставок по товару");
-        System.out.println("7) Изменить свои данные");
-        System.out.println("8) Выход");
+        System.out.println("3) Посмотреть статистику по пользователям");
+        System.out.println("4) Посмотреть список товаров по категории");
+        System.out.println("5) Посмотреть список всех ставок по товару");
+        System.out.println("6) Изменить свои данные");
+        System.out.println("7) Выход");
         return scanner.nextInt();
     }
 
@@ -263,7 +248,7 @@ public class ConsoleView {
                     case 3:
                         try {
                             printList(controlAuthorizedUser.viewAllGoodsByCategory(selectCategory()));
-                        }catch (UserException e){
+                        } catch (UserException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
@@ -288,6 +273,7 @@ public class ConsoleView {
                         try {
                             Category category = selectCategory();
                             controlAuthorizedUser.addGood(category, nameGood, description, minPrice, maxPrice);
+                            System.out.println("Товар добавлен!");
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
                         }
@@ -300,6 +286,7 @@ public class ConsoleView {
                             System.out.println("Введите цену(ставку): ");
                             double price = scanner.nextDouble();
                             controlAuthorizedUser.makeBet(price, good);
+                            System.out.println("Ставка сделана!");
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
                         }
@@ -361,6 +348,8 @@ public class ConsoleView {
                 System.out.println((i++) + ") " + c.toString());
             }
             int j = scanner.nextInt();
+            if (j <= 0 || j > list.size())
+                throw new UserException("Вы выбрали не существующую товар!");
             return list.get(j - 1);
         } else
             throw new UserException("Список товаров пуст!");
@@ -370,8 +359,9 @@ public class ConsoleView {
         System.out.println();
         if (list.size() == 0)
             System.out.println("Список пуст!");
+        int i = 1;
         for (Object obj : list) {
-            System.out.println(obj.toString());
+            System.out.println((i++) + ") " + obj.toString());
         }
     }
 

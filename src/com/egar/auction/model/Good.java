@@ -1,89 +1,154 @@
 package com.egar.auction.model;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Class describe good and it data
+ */
 public class Good {
-
+    private long id;
     private Category category;
     private String name;
     private String description;
     private double minPrice;
     private double maxPrice;
-    private List<Bid> bidList;
     private AuthorizedUser owner;
 
-    public Good(Category category, String name, String description, double minPrice, double maxPrice, AuthorizedUser owner) {
+    /**
+     * Create new object good
+     *
+     * @param category
+     * @param name
+     * @param description
+     * @param minPrice
+     * @param maxPrice
+     * @param owner
+     * @param id
+     */
+    public Good(Category category, String name, String description, double minPrice, double maxPrice, AuthorizedUser owner, long id) {
         this.category = category;
         this.name = name;
         this.description = description;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
         this.owner = owner;
-        bidList = new ArrayList<>();
+        this.id = id;
     }
 
+    /**
+     * Get good owner
+     *
+     * @return
+     */
     public AuthorizedUser getOwner() {
         return owner;
     }
 
+
+    /**
+     * Put AuthorizedUser - owner to good
+     *
+     * @param owner
+     */
     public void setOwner(AuthorizedUser owner) {
         this.owner = owner;
     }
 
-    public void addBid(Bid bid){
-        bidList.add(bid);
-    }
-
-    public List<Bid> getBidList() {
-        return bidList;
-    }
-
+    /**
+     * Get good min price
+     *
+     * @return
+     */
     public double getMinPrice() {
         return minPrice;
     }
 
+    /**
+     * Put to good min price
+     *
+     * @param minPrice
+     */
     public void setMinPrice(double minPrice) {
         this.minPrice = minPrice;
     }
 
+    /**
+     * Get good max price
+     *
+     * @return
+     */
     public double getMaxPrice() {
         return maxPrice;
     }
 
+    /**
+     * Put to good max price
+     *
+     * @param maxPrice
+     */
     public void setMaxPrice(double maxPrice) {
         this.maxPrice = maxPrice;
     }
 
-    public void setBidList(List<Bid> bidList) {
-        this.bidList = bidList;
-    }
-
+    /**
+     * Get good category
+     *
+     * @return
+     */
     public Category getCategory() {
         return category;
     }
 
+    /**
+     * Put category
+     *
+     * @param category
+     */
     public void setCategory(Category category) {
         this.category = category;
     }
 
+    /**
+     * Get good name
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set name to good
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Get good description
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Set description to the good
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Return true if all good fields coincide with Object fields
+     * else return false
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,35 +156,51 @@ public class Good {
 
         Good good = (Good) o;
 
+        if (id != good.id) return false;
         if (Double.compare(good.minPrice, minPrice) != 0) return false;
         if (Double.compare(good.maxPrice, maxPrice) != 0) return false;
         if (category != good.category) return false;
         if (name != null ? !name.equals(good.name) : good.name != null) return false;
-        return description != null ? description.equals(good.description) : good.description == null;
+        if (description != null ? !description.equals(good.description) : good.description != null) return false;
+        return owner != null ? owner.equals(good.owner) : good.owner == null;
 
     }
 
+    /**
+     * Return hash good
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int result;
         long temp;
-        result = category != null ? category.hashCode() : 0;
+        result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (category != null ? category.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         temp = Double.doubleToLongBits(minPrice);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(maxPrice);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (owner != null ? owner.hashCode() : 0);
         return result;
     }
 
+    /**
+     * Represent Good in string form
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Good{" +
-                "maxPrice=" + maxPrice +
+                "owner=" + owner +
+                ", maxPrice=" + maxPrice +
                 ", minPrice=" + minPrice +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
+                ", id=" + id +
                 ", category=" + category +
                 '}';
     }

@@ -6,7 +6,9 @@ import com.egar.auction.model.Good;
 
 import java.util.List;
 
-
+/**
+ * Describes of all user controllers
+ */
 public interface UsersController extends Controller {
 
     List<Good> viewAllGoodsByCategory(Category category);
