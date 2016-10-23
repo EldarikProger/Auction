@@ -176,7 +176,7 @@ public class ConsoleView {
         System.out.println("3) Посмотреть статистику по пользователям");
         System.out.println("4) Посмотреть список товаров по категории");
         System.out.println("5) Посмотреть список всех ставок по товару");
-        System.out.println("6) Изменить свои данные");
+        System.out.println("6) Ввести свои новые данные");
         System.out.println("7) Выход");
         return scanner.nextInt();
     }
@@ -321,7 +321,7 @@ public class ConsoleView {
         System.out.println("4) Посмотреть список всех ставок по товару");
         System.out.println("5) Добавить товар");
         System.out.println("6) Сделать ставку");
-        System.out.println("7) Изменить свои данные");
+        System.out.println("7) Ввести свои новые данные");
         System.out.println("8) Выход");
         return scanner.nextInt();
     }
