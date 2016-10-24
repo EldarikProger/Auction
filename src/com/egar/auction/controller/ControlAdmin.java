@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * Class describe management admin
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class ControlAdmin implements UsersController {
     private AuctionDatabase database;
@@ -18,7 +21,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Create admin controller
      *
-     * @param database
+     * @param database storage
      */
     public ControlAdmin(AuctionDatabase database) {
         this.database = database;
@@ -27,10 +30,10 @@ public class ControlAdmin implements UsersController {
     /**
      * Method sets the admin to controller. ControlAdmin will manage the admin.
      *
-     * @param name
-     * @param password
-     * @throws UserNotFoundException
-     * @throws UserException
+     * @param name user name
+     * @param password user password
+     * @throws UserNotFoundException exception if user not found
+     * @throws UserException exception if admins are not
      */
     public void connectToAdmin(String name, String password) throws UserNotFoundException, UserException {
         if (database.getAdmins().size() == 0)
@@ -46,7 +49,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Returns the reference ControlAdmin to the admin
      *
-     * @param admin
+     * @param admin user which manage controller
      */
     public void setAdmin(Admin admin) {
         this.admin = admin;
@@ -55,7 +58,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Establishes to the reference admin a new object Admin
      *
-     * @return
+     * @return user which manage controller
      */
     public Admin getAdmin() {
         return admin;
@@ -64,8 +67,8 @@ public class ControlAdmin implements UsersController {
     /**
      * Method change admin name and password
      *
-     * @param name
-     * @param password
+     * @param name user name
+     * @param password user password
      */
     public void changeAdminData(String name, String password) {
         admin.setName(name);
@@ -93,7 +96,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Return list all goods by category
      *
-     * @param category
+     * @param category category good at which selecting
      * @return list goods
      */
     @Override
@@ -109,7 +112,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Method return list all bets by good
      *
-     * @param good
+     * @param good good at which selecting
      * @return list bids
      */
     @Override
@@ -125,7 +128,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Method return number user goods and bid (all statistics bu user)
      *
-     * @return
+     * @return list user statistics
      */
     public List<AuthorizedUserStatistics> getUserStatistics() {
         int k = 0, l = 0;
@@ -142,8 +145,8 @@ public class ControlAdmin implements UsersController {
                 }
             }
             list.add(new AuthorizedUserStatistics(user, k, l));
-            k=0;
-            l=0;
+            k = 0;
+            l = 0;
         }
         return list;
     }

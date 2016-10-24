@@ -10,13 +10,16 @@ import com.egar.auction.view.console.ConsoleView;
 /**
  * Class Main create database and all controllers.
  * Main crate and show view. Main is the entry point of the program.
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class Main {
 
     /**
      * This is the entry point of the program.
      *
-     * @param arg
+     * @param arg arguments with which program started
      */
     public static void main(String[] arg) {
         System.out.println("Это программа Аукцион!");

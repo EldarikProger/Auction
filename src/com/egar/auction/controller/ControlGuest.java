@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * Class describe management guest
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class ControlGuest implements UsersController {
     private AuctionDatabase database;
@@ -26,7 +29,7 @@ public class ControlGuest implements UsersController {
     /**
      * Return list all goods by category
      *
-     * @param category
+     * @param category category good at which selecting
      * @return list goods
      */
     @Override
@@ -42,7 +45,7 @@ public class ControlGuest implements UsersController {
     /**
      * Method return list all bets by good
      *
-     * @param good
+     * @param good good at which selecting
      * @return list bids
      */
     @Override

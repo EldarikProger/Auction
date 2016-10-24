@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 /**
  * Class is the user presentation
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class ConsoleView {
     private Scanner scanner;
@@ -21,10 +24,10 @@ public class ConsoleView {
     /**
      * Create and show ConsoleView
      *
-     * @param controlAdmin
-     * @param controlAuthorizedUser
-     * @param controlDatabase
-     * @param controlGuest
+     * @param controlAdmin UserController
+     * @param controlAuthorizedUser UserController
+     * @param controlDatabase Controller
+     * @param controlGuest UserController
      */
     public ConsoleView(ControlAdmin controlAdmin, ControlAuthorizedUser controlAuthorizedUser, ControlDatabase controlDatabase, ControlGuest controlGuest) {
         this.controlAdmin = controlAdmin;

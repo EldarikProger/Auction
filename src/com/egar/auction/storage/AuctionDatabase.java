@@ -11,6 +11,9 @@ import java.util.List;
 /**
  * Class is the storage.
  * AuctionDatabase save references on the all objects
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class AuctionDatabase {
     private List<AuthorizedUser> authorizedUsers;
@@ -31,7 +34,7 @@ public class AuctionDatabase {
     /**
      * Add user
      *
-     * @param user
+     * @param user AuthorizedUser which addition in the storage
      */
     public void addAuthorizedUser(AuthorizedUser user) {
         authorizedUsers.add(user);
@@ -40,7 +43,7 @@ public class AuctionDatabase {
     /**
      * Add admin
      *
-     * @param admin
+     * @param admin Admin which addition in the storage
      */
     public void addAdmin(Admin admin) {
         admins.add(admin);
@@ -49,7 +52,7 @@ public class AuctionDatabase {
     /**
      * Add bid
      *
-     * @param bid
+     * @param bid Bid which addition in the storage
      */
     public void addBid(Bid bid) {
         allBids.add(bid);
@@ -58,7 +61,7 @@ public class AuctionDatabase {
     /**
      * Add good
      *
-     * @param good
+     * @param good Good which addition in the storage
      */
     public void addGood(Good good) {
         allGoods.add(good);
@@ -67,7 +70,7 @@ public class AuctionDatabase {
     /**
      * Return list all users
      *
-     * @return
+     * @return list all AuthorizedUsers
      */
     public List<AuthorizedUser> getAuthorizedUsers() {
         return authorizedUsers;
@@ -76,7 +79,7 @@ public class AuctionDatabase {
     /**
      * Return list all admins
      *
-     * @return
+     * @return list all Admins
      */
     public List<Admin> getAdmins() {
         return admins;
@@ -85,7 +88,7 @@ public class AuctionDatabase {
     /**
      * Return list all bids
      *
-     * @return
+     * @return list all Bids
      */
     public List<Bid> getAllBids() {
         return allBids;
@@ -94,7 +97,7 @@ public class AuctionDatabase {
     /**
      * Return list all goods
      *
-     * @return
+     * @return list all Goods
      */
     public List<Good> getAllGoods() {
         return allGoods;

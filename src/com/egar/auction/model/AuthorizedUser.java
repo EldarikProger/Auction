@@ -2,6 +2,9 @@ package com.egar.auction.model;
 
 /**
  * AuthorizedUser is the user. Class AuthorizedUser have user data
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class AuthorizedUser implements User {
 
@@ -12,9 +15,9 @@ public class AuthorizedUser implements User {
     /**
      * Create user
      *
-     * @param name
-     * @param password
-     * @param id
+     * @param name string with user name
+     * @param password string with user password
+     * @param id long id user
      */
     public AuthorizedUser(String name, String password, long id) {
         this.name = name;
@@ -34,7 +37,7 @@ public class AuthorizedUser implements User {
     /**
      * Return password user
      *
-     * @return password
+     * @return password string with user password
      */
     public String getPassword() {
         return password;
@@ -43,7 +46,7 @@ public class AuthorizedUser implements User {
     /**
      * Set password to user
      *
-     * @param password
+     * @param password string with user password
      */
     public void setPassword(String password) {
         this.password = password;
@@ -52,7 +55,7 @@ public class AuthorizedUser implements User {
     /**
      * Return name user
      *
-     * @return name
+     * @return name string with user name
      */
     public String getName() {
         return name;
@@ -61,7 +64,7 @@ public class AuthorizedUser implements User {
     /**
      * Set name to user
      *
-     * @param name
+     * @param name string with user name
      */
     public void setName(String name) {
         this.name = name;
@@ -70,8 +73,8 @@ public class AuthorizedUser implements User {
     /**
      * Return true if all user fields coincide with Object fields
      *
-     * @param o
-     * @return
+     * @param o object with which compare
+     * @return boolean value: true if object and user equally
      */
     @Override
     public boolean equals(Object o) {
@@ -89,7 +92,7 @@ public class AuthorizedUser implements User {
     /**
      * Return hash user
      *
-     * @return
+     * @return hash user
      */
     @Override
     public int hashCode() {
@@ -102,7 +105,7 @@ public class AuthorizedUser implements User {
     /**
      * Represent AuthorizedUser in string form
      *
-     * @return
+     * @return string data of user
      */
     @Override
     public String toString() {

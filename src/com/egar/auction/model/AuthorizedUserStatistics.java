@@ -3,6 +3,9 @@ package com.egar.auction.model;
 
 /**
  * Describe user statistics
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class AuthorizedUserStatistics {
     private AuthorizedUser user;
@@ -12,8 +15,9 @@ public class AuthorizedUserStatistics {
     /**
      * Create user statistics
      *
-     * @param numberGoods
-     * @param numberBids
+     * @param user user at which conduct statistics
+     * @param numberGoods user number goods
+     * @param numberBids user number bids
      */
     public AuthorizedUserStatistics(AuthorizedUser user, int numberGoods, int numberBids) {
         this.numberGoods = numberGoods;
@@ -24,7 +28,7 @@ public class AuthorizedUserStatistics {
     /**
      * Method return number goods
      *
-     * @return
+     * @return user number goods
      */
     public int getNumberGoods() {
         return numberGoods;
@@ -33,7 +37,7 @@ public class AuthorizedUserStatistics {
     /**
      * Return user
      *
-     * @return
+     * @return user at which conduct statistics
      */
     public AuthorizedUser getUser() {
         return user;
@@ -42,7 +46,7 @@ public class AuthorizedUserStatistics {
     /**
      * Method return number bids
      *
-     * @return
+     * @return user number bids
      */
 
     public int getNumberBids() {
@@ -52,7 +56,7 @@ public class AuthorizedUserStatistics {
     /**
      * Represent statistics in the string form
      *
-     * @return
+     * @return statistics to string
      */
     @Override
     public String toString() {

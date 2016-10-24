@@ -2,6 +2,9 @@ package com.egar.auction.model;
 
 /**
  * Enum all category goods
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public enum Category {
     CLOTHING,

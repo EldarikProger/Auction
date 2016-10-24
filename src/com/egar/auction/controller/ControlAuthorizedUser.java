@@ -10,6 +10,9 @@ import java.util.List;
 
 /**
  * Class describe management user
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class ControlAuthorizedUser implements UsersController {
     private AuthorizedUser user;
@@ -20,7 +23,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Create user controller
      *
-     * @param database
+     * @param database storage
      */
     public ControlAuthorizedUser(AuctionDatabase database) {
         this.database = database;
@@ -29,10 +32,10 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Method sets the user to controller. ControlAuthorizedUser will manage the user.
      *
-     * @param name
-     * @param password
-     * @throws UserNotFoundException
-     * @throws UserException
+     * @param name user name
+     * @param password user password
+     * @throws UserNotFoundException exception if user not found
+     * @throws UserException exception if admins are not
      */
     public void connectToUser(String name, String password) throws UserNotFoundException, UserException {
         if (database.getAuthorizedUsers().size() == 0)
@@ -48,7 +51,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Returns the reference ControlAuthorizedUser to the user
      *
-     * @return user
+     * @return user which manage controller
      */
     public AuthorizedUser getUser() {
         return user;
@@ -57,7 +60,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Establishes to the reference user a new object AuthorizedUser
      *
-     * @param user
+     * @param user user which manage controller
      */
     public void setUser(AuthorizedUser user) {
         this.user = user;
@@ -66,11 +69,11 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Addition to the user a thing
      *
-     * @param category
-     * @param name
-     * @param description
-     * @param minPrice
-     * @param maxPrice
+     * @param category category addition good
+     * @param name name addition good
+     * @param description description addition good
+     * @param minPrice min price addition good
+     * @param maxPrice max price addition good
      */
     public void addGood(Category category, String name, String description, double minPrice, double maxPrice) {
         Good good = new Good(category, name, description, minPrice, maxPrice, user, ++idGood);
@@ -80,8 +83,8 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * To bid by the user for the goods
      *
-     * @param price
-     * @param good
+     * @param price price which put to user bid
+     * @param good good which put to user bid
      */
     public void makeBet(double price, Good good) {
         Bid bid = new Bid(good, price, user, ++idBid);
@@ -91,8 +94,8 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Change user name and password
      *
-     * @param name
-     * @param password
+     * @param name user name
+     * @param password user password
      */
     public void changeUserData(String name, String password) {
         user.setName(name);
@@ -116,7 +119,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Return list all goods by category
      *
-     * @param category
+     * @param category category good at which selecting
      * @return list goods
      */
     @Override
@@ -146,7 +149,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Method return list all bets by good
      *
-     * @param good
+     * @param good good at which selecting
      * @return list bids
      */
     @Override

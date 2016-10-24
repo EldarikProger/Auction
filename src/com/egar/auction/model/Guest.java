@@ -3,6 +3,9 @@ package com.egar.auction.model;
 
 /**
  * Guest is the user. Class Guest have user data
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class Guest implements User {
 
@@ -11,7 +14,7 @@ public class Guest implements User {
     /**
      * Create guest
      *
-     * @param name
+     * @param name user name
      */
     public Guest(String name) {
         this.name = name;
@@ -20,7 +23,7 @@ public class Guest implements User {
     /**
      * Return guest name
      *
-     * @return name
+     * @return guest name
      */
     public String getName() {
         return name;

@@ -2,6 +2,9 @@ package com.egar.auction.model;
 
 /**
  * Class describe good and it data
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class Good {
     private long id;
@@ -15,13 +18,13 @@ public class Good {
     /**
      * Create new object good
      *
-     * @param category
-     * @param name
-     * @param description
-     * @param minPrice
-     * @param maxPrice
-     * @param owner
-     * @param id
+     * @param category category which belong good
+     * @param name name good
+     * @param description description good
+     * @param minPrice min price good
+     * @param maxPrice max price good
+     * @param owner user which belong good
+     * @param id id good
      */
     public Good(Category category, String name, String description, double minPrice, double maxPrice, AuthorizedUser owner, long id) {
         this.category = category;
@@ -36,7 +39,7 @@ public class Good {
     /**
      * Get good owner
      *
-     * @return
+     * @return user-owner good
      */
     public AuthorizedUser getOwner() {
         return owner;
@@ -46,7 +49,7 @@ public class Good {
     /**
      * Put AuthorizedUser - owner to good
      *
-     * @param owner
+     * @param owner user-owner good
      */
     public void setOwner(AuthorizedUser owner) {
         this.owner = owner;
@@ -55,7 +58,7 @@ public class Good {
     /**
      * Get good min price
      *
-     * @return
+     * @return min price
      */
     public double getMinPrice() {
         return minPrice;
@@ -64,7 +67,7 @@ public class Good {
     /**
      * Put to good min price
      *
-     * @param minPrice
+     * @param minPrice min price good
      */
     public void setMinPrice(double minPrice) {
         this.minPrice = minPrice;
@@ -73,7 +76,7 @@ public class Good {
     /**
      * Get good max price
      *
-     * @return
+     * @return max price
      */
     public double getMaxPrice() {
         return maxPrice;
@@ -82,7 +85,7 @@ public class Good {
     /**
      * Put to good max price
      *
-     * @param maxPrice
+     * @param maxPrice max price good
      */
     public void setMaxPrice(double maxPrice) {
         this.maxPrice = maxPrice;
@@ -91,7 +94,7 @@ public class Good {
     /**
      * Get good category
      *
-     * @return
+     * @return category good
      */
     public Category getCategory() {
         return category;
@@ -100,7 +103,7 @@ public class Good {
     /**
      * Put category
      *
-     * @param category
+     * @param category category which belong good
      */
     public void setCategory(Category category) {
         this.category = category;
@@ -109,7 +112,7 @@ public class Good {
     /**
      * Get good name
      *
-     * @return
+     * @return name good
      */
     public String getName() {
         return name;
@@ -118,7 +121,7 @@ public class Good {
     /**
      * Set name to good
      *
-     * @param name
+     * @param name name good
      */
     public void setName(String name) {
         this.name = name;
@@ -127,7 +130,7 @@ public class Good {
     /**
      * Get good description
      *
-     * @return
+     * @return description good
      */
     public String getDescription() {
         return description;
@@ -136,7 +139,7 @@ public class Good {
     /**
      * Set description to the good
      *
-     * @param description
+     * @param description description good
      */
     public void setDescription(String description) {
         this.description = description;
@@ -146,8 +149,8 @@ public class Good {
      * Return true if all good fields coincide with Object fields
      * else return false
      *
-     * @param o
-     * @return
+     * @param o object with which compare
+     * @return boolean value: true if object and good equally
      */
     @Override
     public boolean equals(Object o) {
@@ -169,7 +172,7 @@ public class Good {
     /**
      * Return hash good
      *
-     * @return
+     * @return hash good
      */
     @Override
     public int hashCode() {
@@ -190,7 +193,7 @@ public class Good {
     /**
      * Represent Good in string form
      *
-     * @return
+     * @return good to string format
      */
     @Override
     public String toString() {

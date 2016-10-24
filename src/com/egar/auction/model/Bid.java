@@ -2,6 +2,9 @@ package com.egar.auction.model;
 
 /**
  * Class describe bid (user bet) and it data
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class Bid {
     private long id;
@@ -12,10 +15,10 @@ public class Bid {
     /**
      * Create bid
      *
-     * @param good
-     * @param price
-     * @param buyer
-     * @param id
+     * @param good good on which make bet
+     * @param price price bet
+     * @param buyer user which make bet
+     * @param id id bid
      */
     public Bid(Good good, double price, AuthorizedUser buyer, long id) {
         this.good = good;
@@ -27,7 +30,7 @@ public class Bid {
     /**
      * Return id
      *
-     * @return
+     * @return id bid
      */
     public long getId() {
         return id;
@@ -36,7 +39,7 @@ public class Bid {
     /**
      * Return price
      *
-     * @return
+     * @return price bet
      */
     public double getPrice() {
         return price;
@@ -45,7 +48,7 @@ public class Bid {
     /**
      * Put price to bid
      *
-     * @param currentPrice
+     * @param currentPrice set new price bet
      */
     public void setPrice(double currentPrice) {
         this.price = currentPrice;
@@ -54,7 +57,7 @@ public class Bid {
     /**
      * Return AuthorizedUser - buyer
      *
-     * @return
+     * @return user which mke bet
      */
     public AuthorizedUser getBuyer() {
         return buyer;
@@ -63,7 +66,7 @@ public class Bid {
     /**
      * Return good
      *
-     * @return
+     * @return good bid
      */
     public Good getGood() {
         return good;
@@ -73,8 +76,8 @@ public class Bid {
      * Return true if all bid fields coincide with Object fields
      * else return false
      *
-     * @param o
-     * @return
+     * @param o object with which compare
+     * @return boolean value: true if object and bid equally
      */
     @Override
     public boolean equals(Object o) {
@@ -93,7 +96,7 @@ public class Bid {
     /**
      * Return hash bid
      *
-     * @return
+     * @return hash bid
      */
     @Override
     public int hashCode() {
@@ -110,7 +113,7 @@ public class Bid {
     /**
      * Represent Bid in string form
      *
-     * @return
+     * @return to string bid
      */
     @Override
     public String toString() {

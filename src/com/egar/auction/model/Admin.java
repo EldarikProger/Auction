@@ -2,6 +2,9 @@ package com.egar.auction.model;
 
 /**
  * Admin is the user. Class Admin have admin data
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class Admin implements User {
 
@@ -12,9 +15,9 @@ public class Admin implements User {
     /**
      * Create Admin
      *
-     * @param name
-     * @param password
-     * @param id
+     * @param name string with admin name
+     * @param password string with admin password
+     * @param id admin id
      */
     public Admin(String name, String password, long id) {
         this.name = name;
@@ -25,7 +28,7 @@ public class Admin implements User {
     /**
      * Return name user
      *
-     * @return name
+     * @return string name admin
      */
     public String getName() {
         return name;
@@ -34,7 +37,7 @@ public class Admin implements User {
     /**
      * Set name to user
      *
-     * @param name
+     * @param name string with admin name
      */
     public void setName(String name) {
         this.name = name;
@@ -43,7 +46,7 @@ public class Admin implements User {
     /**
      * Return password admin
      *
-     * @return password
+     * @return string admin password
      */
     public String getPassword() {
         return password;
@@ -52,7 +55,7 @@ public class Admin implements User {
     /**
      * Set password to user
      *
-     * @param password
+     * @param password string with admin password
      */
     public void setPassword(String password) {
         this.password = password;
@@ -61,7 +64,7 @@ public class Admin implements User {
     /**
      * Get id admin
      *
-     * @return
+     * @return id admin
      */
     public long getId() {
         return id;
@@ -70,8 +73,8 @@ public class Admin implements User {
     /**
      * Return true if all admin fields coincide with Object fields
      *
-     * @param o
-     * @return
+     * @param o object with which compare
+     * @return boolean value: true if object and admin equally
      */
     @Override
     public boolean equals(Object o) {
@@ -89,7 +92,7 @@ public class Admin implements User {
     /**
      * Return hash admin
      *
-     * @return
+     * @return hash admin
      */
     @Override
     public int hashCode() {
@@ -102,7 +105,7 @@ public class Admin implements User {
     /**
      * Represent Admin in string form
      *
-     * @return
+     * @return string data of admin
      */
     @Override
     public String toString() {

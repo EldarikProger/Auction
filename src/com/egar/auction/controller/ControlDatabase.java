@@ -9,6 +9,9 @@ import java.util.List;
 /**
  * ControlDatabase manage storage.
  * ControlDatabase create and delete users.
+ *
+ * @author Eldar Ziatdinov
+ * @version 1.0
  */
 public class ControlDatabase implements Controller {
     private AuctionDatabase database;
@@ -17,7 +20,7 @@ public class ControlDatabase implements Controller {
     /**
      * Create ControlDatabase
      *
-     * @param database
+     * @param database storage
      */
     public ControlDatabase(AuctionDatabase database) {
         this.database = database;
@@ -26,8 +29,8 @@ public class ControlDatabase implements Controller {
     /**
      * Create new AuthorizedUser
      *
-     * @param name
-     * @param password
+     * @param name user name for create
+     * @param password user password for create
      */
     public void createAuthorizedUser(String name, String password) {
         database.addAuthorizedUser(new AuthorizedUser(name, password, ++userId));
@@ -36,8 +39,8 @@ public class ControlDatabase implements Controller {
     /**
      * Create new Admin
      *
-     * @param name
-     * @param password
+     * @param name user name for create
+     * @param password user password for create
      */
     public void createAdmin(String name, String password) {
         database.addAdmin(new Admin(name, password, ++userId));
@@ -46,8 +49,8 @@ public class ControlDatabase implements Controller {
     /**
      * Method delete admin from storage
      *
-     * @param name
-     * @param password
+     * @param name user name for delete
+     * @param password user password for delete
      */
     public void deleteAdmin(String name, String password) {
         List<Admin> list = database.getAdmins();
@@ -60,8 +63,8 @@ public class ControlDatabase implements Controller {
     /**
      * Method delete user from storage
      *
-     * @param name
-     * @param password
+     * @param name user name for delete
+     * @param password user password for delete
      */
     public void deleteAuthorizedUser(String name, String password) {
         List<AuthorizedUser> list = database.getAuthorizedUsers();
