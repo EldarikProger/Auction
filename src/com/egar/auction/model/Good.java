@@ -15,6 +15,9 @@ public class Good {
     private double maxPrice;
     private AuthorizedUser owner;
 
+    private double weight;
+    private double length, width, height;
+
     /**
      * Create new object good
      *
