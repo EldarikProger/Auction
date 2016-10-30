@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.user_controllers;
 
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
@@ -21,7 +21,7 @@ public class ControlAuthorizedUser implements UsersController {
     private static long idBid = 0;
 
     /**
-     * Create user controller
+     * Create user controllers
      *
      * @param database storage
      */
@@ -30,12 +30,12 @@ public class ControlAuthorizedUser implements UsersController {
     }
 
     /**
-     * Method sets the user to controller. ControlAuthorizedUser will manage the user.
+     * Method sets the user to controllers. ControlAuthorizedUser will manage the user.
      *
-     * @param name user name
+     * @param name     user name
      * @param password user password
      * @throws UserNotFoundException exception if user not found
-     * @throws UserException exception if admins are not
+     * @throws UserException         exception if admins are not
      */
     public void connectToUser(String name, String password) throws UserNotFoundException, UserException {
         if (database.getAuthorizedUsers().size() == 0)
@@ -51,7 +51,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Returns the reference ControlAuthorizedUser to the user
      *
-     * @return user which manage controller
+     * @return user which manage controllers
      */
     public AuthorizedUser getUser() {
         return user;
@@ -60,7 +60,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Establishes to the reference user a new object AuthorizedUser
      *
-     * @param user user which manage controller
+     * @param user user which manage controllers
      */
     public void setUser(AuthorizedUser user) {
         this.user = user;
@@ -69,14 +69,15 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Addition to the user a thing
      *
-     * @param category category addition good
-     * @param name name addition good
+     * @param category    category addition good
+     * @param name        name addition good
      * @param description description addition good
-     * @param minPrice min price addition good
-     * @param maxPrice max price addition good
+     * @param minPrice    min price addition good
+     * @param maxPrice    max price addition good
      */
-    public void addGood(Category category, String name, String description, double minPrice, double maxPrice) {
-        Good good = new Good(category, name, description, minPrice, maxPrice, user, ++idGood);
+    public void addGood(Category category, String name, String description, double minPrice, double maxPrice,
+                        double weight, double length, double width, double height) {
+        Good good = new Good(++idGood,category, name, description, minPrice, maxPrice, user, weight, length, width, height);
         database.addGood(good);
     }
 
@@ -84,7 +85,7 @@ public class ControlAuthorizedUser implements UsersController {
      * To bid by the user for the goods
      *
      * @param price price which put to user bid
-     * @param good good which put to user bid
+     * @param good  good which put to user bid
      */
     public void makeBet(double price, Good good) {
         Bid bid = new Bid(good, price, user, ++idBid);
@@ -94,7 +95,7 @@ public class ControlAuthorizedUser implements UsersController {
     /**
      * Change user name and password
      *
-     * @param name user name
+     * @param name     user name
      * @param password user password
      */
     public void changeUserData(String name, String password) {

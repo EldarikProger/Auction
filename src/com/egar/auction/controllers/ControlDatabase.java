@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers;
 
 import com.egar.auction.model.Admin;
 import com.egar.auction.storage.AuctionDatabase;

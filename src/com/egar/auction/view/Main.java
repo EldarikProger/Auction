@@ -1,9 +1,9 @@
 package com.egar.auction.view;
 
-import com.egar.auction.controller.ControlAdmin;
-import com.egar.auction.controller.ControlAuthorizedUser;
-import com.egar.auction.controller.ControlDatabase;
-import com.egar.auction.controller.ControlGuest;
+import com.egar.auction.controllers.user_controllers.ControlAdmin;
+import com.egar.auction.controllers.user_controllers.ControlAuthorizedUser;
+import com.egar.auction.controllers.ControlDatabase;
+import com.egar.auction.controllers.user_controllers.ControlGuest;
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.ConsoleView;
 

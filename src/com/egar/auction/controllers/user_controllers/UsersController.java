@@ -1,5 +1,6 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.user_controllers;
 
+import com.egar.auction.controllers.Controller;
 import com.egar.auction.model.Bid;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;

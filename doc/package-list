@@ -1,4 +1,4 @@
-com.egar.auction.controller
+com.egar.auction.controllers
 com.egar.auction.exceptions
 com.egar.auction.model
 com.egar.auction.storage

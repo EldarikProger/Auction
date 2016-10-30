@@ -1,6 +1,9 @@
 package com.egar.auction.view.console;
 
-import com.egar.auction.controller.*;
+import com.egar.auction.controllers.*;
+import com.egar.auction.controllers.user_controllers.ControlAdmin;
+import com.egar.auction.controllers.user_controllers.ControlAuthorizedUser;
+import com.egar.auction.controllers.user_controllers.ControlGuest;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.*;
@@ -24,10 +27,10 @@ public class ConsoleView {
     /**
      * Create and show ConsoleView
      *
-     * @param controlAdmin UserController
+     * @param controlAdmin          UserController
      * @param controlAuthorizedUser UserController
-     * @param controlDatabase Controller
-     * @param controlGuest UserController
+     * @param controlDatabase       Controller
+     * @param controlGuest          UserController
      */
     public ConsoleView(ControlAdmin controlAdmin, ControlAuthorizedUser controlAuthorizedUser, ControlDatabase controlDatabase, ControlGuest controlGuest) {
         this.controlAdmin = controlAdmin;
@@ -273,9 +276,15 @@ public class ConsoleView {
                         double minPrice = scanner.nextDouble();
                         System.out.println("Введите max цену: ");
                         double maxPrice = scanner.nextDouble();
+                        System.out.println("Введите массу, длину, ширину и высоту: ");
+                        double weight = scanner.nextDouble();
+                        double length = scanner.nextDouble();
+                        double width = scanner.nextDouble();
+                        double height = scanner.nextDouble();
                         try {
                             Category category = selectCategory();
-                            controlAuthorizedUser.addGood(category, nameGood, description, minPrice, maxPrice);
+                            controlAuthorizedUser.addGood(category, nameGood, description,
+                                    minPrice, maxPrice, weight, length, width, height);
                             System.out.println("Товар добавлен!");
                         } catch (UserException e) {
                             System.out.println(e.getMessage());

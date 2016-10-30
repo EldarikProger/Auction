@@ -18,25 +18,136 @@ public class Good {
     private double weight;
     private double length, width, height;
 
+    private boolean goodSold;
+
     /**
-     * Create new object good
+     * Create lot
      *
-     * @param category category which belong good
-     * @param name name good
-     * @param description description good
-     * @param minPrice min price good
-     * @param maxPrice max price good
-     * @param owner user which belong good
-     * @param id id good
+     * @param id          id good
+     * @param category    category good
+     * @param name        string name good
+     * @param description string description good
+     * @param minPrice    double min price good
+     * @param maxPrice    double max price good
+     * @param owner       user-owner good
+     * @param weight      double weight good
+     * @param length      double length good
+     * @param width       double width good
+     * @param height      double height good
      */
-    public Good(Category category, String name, String description, double minPrice, double maxPrice, AuthorizedUser owner, long id) {
+    public Good(long id, Category category, String name, String description, double minPrice,
+                double maxPrice, AuthorizedUser owner, double weight, double length, double width, double height) {
+        this.id = id;
         this.category = category;
         this.name = name;
         this.description = description;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
         this.owner = owner;
-        this.id = id;
+        this.weight = weight;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.goodSold = false;
+    }
+
+    /**
+     * Set boolean flag which show that good sold
+     *
+     * @param goodSold boolean flag which show that good sold
+     */
+    public void setGoodSold(boolean goodSold) {
+        this.goodSold = goodSold;
+    }
+
+    /**
+     * Get id
+     *
+     * @return id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Get flag which show that good sold
+     *
+     * @return boolean flag which show that good sold
+     */
+    public boolean isGoodSold() {
+        return goodSold;
+    }
+
+    /**
+     * Get good weight
+     *
+     * @return weight
+     */
+    public double getWeight() {
+        return weight;
+    }
+
+    /**
+     * Set weight to good
+     *
+     * @param weight weight good
+     */
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    /**
+     * Get good length
+     *
+     * @return length
+     */
+    public double getLength() {
+        return length;
+    }
+
+    /**
+     * Set length to good
+     *
+     * @param length length good
+     */
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    /**
+     * Get good width
+     *
+     * @return width
+     */
+    public double getWidth() {
+        return width;
+    }
+
+    /**
+     * Set width to good
+     *
+     * @param width width good
+     */
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    /**
+     * Get good height
+     *
+     * @return height
+     */
+    public double getHeight() {
+        return height;
+    }
+
+    /**
+     * Set height to good
+     *
+     * @param height height good
+     */
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     /**
@@ -165,6 +276,10 @@ public class Good {
         if (id != good.id) return false;
         if (Double.compare(good.minPrice, minPrice) != 0) return false;
         if (Double.compare(good.maxPrice, maxPrice) != 0) return false;
+        if (Double.compare(good.weight, weight) != 0) return false;
+        if (Double.compare(good.length, length) != 0) return false;
+        if (Double.compare(good.width, width) != 0) return false;
+        if (Double.compare(good.height, height) != 0) return false;
         if (category != good.category) return false;
         if (name != null ? !name.equals(good.name) : good.name != null) return false;
         if (description != null ? !description.equals(good.description) : good.description != null) return false;
@@ -190,6 +305,14 @@ public class Good {
         temp = Double.doubleToLongBits(maxPrice);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (owner != null ? owner.hashCode() : 0);
+        temp = Double.doubleToLongBits(weight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(length);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(width);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(height);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
@@ -201,13 +324,17 @@ public class Good {
     @Override
     public String toString() {
         return "Good{" +
-                "owner=" + owner +
-                ", maxPrice=" + maxPrice +
-                ", minPrice=" + minPrice +
-                ", description='" + description + '\'' +
-                ", name='" + name + '\'' +
-                ", id=" + id +
+                "id=" + id +
                 ", category=" + category +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", minPrice=" + minPrice +
+                ", maxPrice=" + maxPrice +
+                ", owner=" + owner +
+                ", weight=" + weight +
+                ", length=" + length +
+                ", width=" + width +
+                ", height=" + height +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.user_controllers;
 
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.model.Bid;
@@ -18,7 +18,7 @@ public class ControlGuest implements UsersController {
     private AuctionDatabase database;
 
     /**
-     * Create guest controller
+     * Create guest controllers
      *
      * @param database
      */

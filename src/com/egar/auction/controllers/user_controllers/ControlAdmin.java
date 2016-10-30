@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.user_controllers;
 
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
@@ -19,7 +19,7 @@ public class ControlAdmin implements UsersController {
     private Admin admin;
 
     /**
-     * Create admin controller
+     * Create admin controllers
      *
      * @param database storage
      */
@@ -28,7 +28,7 @@ public class ControlAdmin implements UsersController {
     }
 
     /**
-     * Method sets the admin to controller. ControlAdmin will manage the admin.
+     * Method sets the admin to controllers. ControlAdmin will manage the admin.
      *
      * @param name user name
      * @param password user password
@@ -49,7 +49,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Returns the reference ControlAdmin to the admin
      *
-     * @param admin user which manage controller
+     * @param admin user which manage controllers
      */
     public void setAdmin(Admin admin) {
         this.admin = admin;
@@ -58,7 +58,7 @@ public class ControlAdmin implements UsersController {
     /**
      * Establishes to the reference admin a new object Admin
      *
-     * @return user which manage controller
+     * @return user which manage controllers
      */
     public Admin getAdmin() {
         return admin;
