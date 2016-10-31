@@ -11,6 +11,7 @@ public class AuthorizedUser implements User {
     private String name;
     private String password;
     private long id;
+    private GeographicCoordinates coordinates;
 
     /**
      * Create user
@@ -23,6 +24,14 @@ public class AuthorizedUser implements User {
         this.name = name;
         this.password = password;
         this.id = id;
+    }
+
+    /**
+     * Put user coordinates
+     * @param coordinates degrees minutes seconds
+     */
+    public void setCoordinates(GeographicCoordinates coordinates) {
+        this.coordinates = coordinates;
     }
 
     /**
