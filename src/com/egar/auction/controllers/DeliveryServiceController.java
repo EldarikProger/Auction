@@ -14,12 +14,18 @@ import java.util.List;
 public class DeliveryServiceController implements Controller {
     private DeliveryService service;
 
+    /**
+     *Method return price delivery
+     *
+     * @param good Good which need delivery
+     * @return price delivery good
+     */
     private double getPriceForDelivery(Good good){
         return 0;
     }
 
-    public double getCommonPrice(List<Good> list){
+    /*public double getCommonPrice(List<Good> list){
         return 0;
-    }
+    }*/
 
 }

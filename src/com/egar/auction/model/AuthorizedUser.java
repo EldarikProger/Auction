@@ -27,6 +27,15 @@ public class AuthorizedUser implements User {
     }
 
     /**
+     * Return GeographicCoordinates user
+     *
+     * @return GeographicCoordinates
+     */
+    public GeographicCoordinates getCoordinates() {
+        return coordinates;
+    }
+
+    /**
      * Put user coordinates
      * @param coordinates degrees minutes seconds
      */
