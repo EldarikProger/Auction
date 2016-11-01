@@ -163,4 +163,11 @@ public class ControlAuthorizedUser implements UsersController {
         return list;
     }
 
+    public List<Good> getMyWWinGood(){
+        return null;
+    }
+
+    public double getCommonPriceByMyWinLots(){
+        return 0;
+    }
 }
