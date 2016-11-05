@@ -7,6 +7,7 @@ package com.egar.auction.model;
  * @version 1.0
  */
 public class Bid {
+
     private long id;
     private Good good;
     private double price;

@@ -1,6 +1,9 @@
-package com.egar.auction.view.console;
+package com.egar.auction.view.first_console;
 
-import com.egar.auction.controller.*;
+import com.egar.auction.controllers.*;
+import com.egar.auction.controllers.user_controllers.AdminController;
+import com.egar.auction.controllers.user_controllers.AuthorizedUserController;
+import com.egar.auction.controllers.user_controllers.GuestController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.*;
@@ -15,25 +18,26 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class ConsoleView {
+
     private Scanner scanner;
-    private ControlAdmin controlAdmin;
-    private ControlAuthorizedUser controlAuthorizedUser;
-    private ControlDatabase controlDatabase;
-    private ControlGuest controlGuest;
+    private AdminController adminController;
+    private AuthorizedUserController authorizedUserController;
+    private DatabaseController databaseController;
+    private GuestController guestController;
 
     /**
      * Create and show ConsoleView
      *
-     * @param controlAdmin UserController
-     * @param controlAuthorizedUser UserController
-     * @param controlDatabase Controller
-     * @param controlGuest UserController
+     * @param adminController UserController
+     * @param authorizedUserController UserController
+     * @param databaseController Controller
+     * @param guestController UserController
      */
-    public ConsoleView(ControlAdmin controlAdmin, ControlAuthorizedUser controlAuthorizedUser, ControlDatabase controlDatabase, ControlGuest controlGuest) {
-        this.controlAdmin = controlAdmin;
-        this.controlAuthorizedUser = controlAuthorizedUser;
-        this.controlDatabase = controlDatabase;
-        this.controlGuest = controlGuest;
+    public ConsoleView(AdminController adminController, AuthorizedUserController authorizedUserController, DatabaseController databaseController, GuestController guestController) {
+        this.adminController = adminController;
+        this.authorizedUserController = authorizedUserController;
+        this.databaseController = databaseController;
+        this.guestController = guestController;
         scanner = new Scanner(System.in);
         start();
     }
@@ -51,7 +55,7 @@ public class ConsoleView {
                     name = scanner.next();
                     System.out.println("Введите пароль:");
                     password = scanner.next();
-                    controlDatabase.createAuthorizedUser(name, password);
+                    databaseController.createAuthorizedUser(name, password);
                     System.out.println("Пользователь создан!");
                     break;
                 case 2:
@@ -60,7 +64,7 @@ public class ConsoleView {
                     name = scanner.next();
                     System.out.println("Введите пароль:");
                     password = scanner.next();
-                    controlDatabase.createAdmin(name, password);
+                    databaseController.createAdmin(name, password);
                     System.out.println("Администратор создан!");
                     break;
                 case 3:
@@ -78,7 +82,7 @@ public class ConsoleView {
                     name = scanner.next();
                     System.out.println("Введите пароль:");
                     password = scanner.next();
-                    controlDatabase.deleteAuthorizedUser(name, password);
+                    databaseController.deleteAuthorizedUser(name, password);
                     break;
                 case 7:
                     System.out.println();
@@ -86,7 +90,7 @@ public class ConsoleView {
                     name = scanner.next();
                     System.out.println("Введите пароль:");
                     password = scanner.next();
-                    controlDatabase.deleteAdmin(name, password);
+                    databaseController.deleteAdmin(name, password);
                     break;
                 case 8:
                     runFlag = false;
@@ -119,24 +123,24 @@ public class ConsoleView {
         System.out.println("Введите пароль:");
         String password = scanner.next();
         try {
-            controlAdmin.connectToAdmin(name, password);
+            adminController.connectToAdmin(name, password);
             System.out.println();
-            System.out.println("Администратор " + controlAdmin.getAdmin().getName());
+            System.out.println("Администратор " + adminController.getAdmin().getName());
             boolean nextRun = true;
             while (nextRun) {
                 switch (menuAdmin()) {
                     case 1:
-                        printList(controlAdmin.viewListUsers());
+                        printList(adminController.listAllUsers());
                         break;
                     case 2:
-                        printList(controlAdmin.viewListAdmins());
+                        printList(adminController.listAllAdmins());
                         break;
                     case 3:
-                        printList(controlAdmin.getUserStatistics());
+                        printList(adminController.getUserStatistics());
                         break;
                     case 4:
                         try {
-                            printList(controlAdmin.viewAllGoodsByCategory(selectCategory()));
+                            printList(adminController.listAllGoodsByCategory(selectCategory()));
 
                         } catch (UserException e) {
                             e.getMessage();
@@ -144,8 +148,8 @@ public class ConsoleView {
                         break;
                     case 5:
                         try {
-                            List<Good> list = controlAdmin.viewAllGoodsByCategory(selectCategory());
-                            printList(controlAdmin.viewAllBidsByGood(selectGood(list)));
+                            List<Good> list = adminController.listAllGoodsByCategory(selectCategory());
+                            printList(adminController.listAllBidsByGood(selectGood(list)));
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
                         }
@@ -156,10 +160,10 @@ public class ConsoleView {
                         name = scanner.next();
                         System.out.println("Введите пароль:");
                         password = scanner.next();
-                        controlAdmin.changeAdminData(name, password);
+                        adminController.changeAdminData(name, password);
                         break;
                     case 7:
-                        controlAdmin.setAdmin(null);
+                        adminController.setAdmin(null);
                         nextRun = false;
                         break;
                     default:
@@ -202,7 +206,7 @@ public class ConsoleView {
             switch (a) {
                 case 1:
                     try {
-                        printList(controlGuest.viewAllGoodsByCategory(selectCategory()));
+                        printList(guestController.listAllGoodsByCategory(selectCategory()));
                     } catch (UserException e) {
                         e.getMessage();
                     }
@@ -210,12 +214,12 @@ public class ConsoleView {
                 case 2:
                     List<Good> list = null;
                     try {
-                        list = controlGuest.viewAllGoodsByCategory(selectCategory());
+                        list = guestController.listAllGoodsByCategory(selectCategory());
                     } catch (UserException e) {
                         e.getMessage();
                     }
                     try {
-                        printList(controlGuest.viewAllBidsByGood(selectGood(list)));
+                        printList(guestController.listAllBidsByGood(selectGood(list)));
                     } catch (UserException e) {
                         System.out.println(e.getMessage());
                     }
@@ -236,29 +240,29 @@ public class ConsoleView {
         System.out.println("Введите пароль:");
         String password = scanner.next();
         try {
-            controlAuthorizedUser.connectToUser(name, password);
+            authorizedUserController.connectToUser(name, password);
             System.out.println();
-            System.out.println("Пользователь " + controlAuthorizedUser.getUser().getName());
+            System.out.println("Пользователь " + authorizedUserController.getUser().getName());
             boolean nextRun = true;
             while (nextRun) {
                 switch (menuUser()) {
                     case 1:
-                        printList(controlAuthorizedUser.viewUserGoods());
+                        printList(authorizedUserController.listUserGoods());
                         break;
                     case 2:
-                        printList(controlAuthorizedUser.viewUserBids());
+                        printList(authorizedUserController.listUserBids());
                         break;
                     case 3:
                         try {
-                            printList(controlAuthorizedUser.viewAllGoodsByCategory(selectCategory()));
+                            printList(authorizedUserController.listAllGoodsByCategory(selectCategory()));
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
                     case 4:
                         try {
-                            List<Good> list = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
-                            printList(controlAuthorizedUser.viewAllBidsByGood(selectGood(list)));
+                            List<Good> list = authorizedUserController.listAllGoodsByCategory(selectCategory());
+                            printList(authorizedUserController.listAllBidsByGood(selectGood(list)));
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
                         }
@@ -275,7 +279,7 @@ public class ConsoleView {
                         double maxPrice = scanner.nextDouble();
                         try {
                             Category category = selectCategory();
-                            controlAuthorizedUser.addGood(category, nameGood, description, minPrice, maxPrice);
+                            authorizedUserController.addGood(category, nameGood, description, minPrice, maxPrice);
                             System.out.println("Товар добавлен!");
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
@@ -283,12 +287,12 @@ public class ConsoleView {
                         break;
                     case 6:
                         try {
-                            List<Good> goodList = controlAuthorizedUser.viewAllGoodsByCategory(selectCategory());
+                            List<Good> goodList = authorizedUserController.listAllGoodsByCategory(selectCategory());
                             Good good = selectGood(goodList);
                             System.out.println();
                             System.out.println("Введите цену(ставку): ");
                             double price = scanner.nextDouble();
-                            controlAuthorizedUser.makeBet(price, good);
+                            authorizedUserController.makeBet(price, good);
                             System.out.println("Ставка сделана!");
                         } catch (UserException e) {
                             System.out.println(e.getMessage());
@@ -300,10 +304,10 @@ public class ConsoleView {
                         name = scanner.next();
                         System.out.println("Введите пароль:");
                         password = scanner.next();
-                        controlAuthorizedUser.changeUserData(name, password);
+                        authorizedUserController.changeUserData(name, password);
                         break;
                     case 8:
-                        controlAuthorizedUser.setUser(null);
+                        authorizedUserController.setUser(null);
                         nextRun = false;
                         break;
                     default:
@@ -332,14 +336,15 @@ public class ConsoleView {
     private Category selectCategory() throws UserException {
         System.out.println();
         System.out.println("Выберите категорию:");
+        List<Category> list = authorizedUserController.getListCategory();
         int i = 1;
-        for (Category c : Category.values()) {
-            System.out.println((i++) + ") " + c);
+        for (Category c : list) {
+            System.out.println((i++) + ") " + c.getName());
         }
         int j = scanner.nextInt();
-        if (j <= 0 || j > 13)
+        if (j <= 0 || j > list.size())
             throw new UserException("Вы выбрали не существующую категорию!");
-        return Category.values()[j - 1];
+        return list.get(j-1);
     }
 
     private Good selectGood(List<Good> list) throws UserException {

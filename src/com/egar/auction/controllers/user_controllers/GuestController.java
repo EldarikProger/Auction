@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.user_controllers;
 
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.model.Bid;
@@ -14,15 +14,16 @@ import java.util.List;
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class ControlGuest implements UsersController {
+public class GuestController implements UsersController {
+
     private AuctionDatabase database;
 
     /**
-     * Create guest controller
+     * Create guest controllers
      *
      * @param database
      */
-    public ControlGuest(AuctionDatabase database) {
+    public GuestController(AuctionDatabase database) {
         this.database = database;
     }
 
@@ -33,7 +34,7 @@ public class ControlGuest implements UsersController {
      * @return list goods
      */
     @Override
-    public List<Good> viewAllGoodsByCategory(Category category) {
+    public List<Good> listAllGoodsByCategory(Category category) {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
             if (good.getCategory() == category)
@@ -49,13 +50,22 @@ public class ControlGuest implements UsersController {
      * @return list bids
      */
     @Override
-    public List<Bid> viewAllBidsByGood(Good good) {
+    public List<Bid> listAllBidsByGood(Good good) {
         List<Bid> list = new ArrayList<>();
         for (Bid bid : database.getAllBids()) {
             if (bid.getGood().equals(good))
                 list.add(bid);
         }
         return list;
+    }
+
+    /**
+     * Method return list Category
+     *
+     * @return list Category
+     */
+    public List<Category> getListCategory(){
+        return database.getCategories();
     }
 
 }

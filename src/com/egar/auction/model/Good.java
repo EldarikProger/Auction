@@ -7,6 +7,7 @@ package com.egar.auction.model;
  * @version 1.0
  */
 public class Good {
+
     private long id;
     private Category category;
     private String name;
