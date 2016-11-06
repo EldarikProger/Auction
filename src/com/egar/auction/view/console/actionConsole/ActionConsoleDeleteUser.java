@@ -1,4 +1,4 @@
-package com.egar.auction.view.console.action_console;
+package com.egar.auction.view.console.actionConsole;
 
 import com.egar.auction.controllers.DatabaseController;
 

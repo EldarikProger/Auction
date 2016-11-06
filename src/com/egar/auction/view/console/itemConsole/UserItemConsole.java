@@ -1,9 +1,9 @@
-package com.egar.auction.view.console.item_console;
+package com.egar.auction.view.console.itemConsole;
 
-import com.egar.auction.controllers.user_controllers.AuthorizedUserController;
+import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
-import com.egar.auction.view.console.action_console.UserActionConsole;
+import com.egar.auction.view.console.actionConsole.UserActionConsole;
 
 import java.util.Scanner;
 

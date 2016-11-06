@@ -1,14 +1,14 @@
 package com.egar.auction.view.console;
 
 import com.egar.auction.controllers.DatabaseController;
-import com.egar.auction.controllers.user_controllers.AdminController;
-import com.egar.auction.controllers.user_controllers.AuthorizedUserController;
-import com.egar.auction.controllers.user_controllers.GuestController;
-import com.egar.auction.view.console.action_console.ActionConsoleCreateUser;
-import com.egar.auction.view.console.action_console.ActionConsoleDeleteUser;
-import com.egar.auction.view.console.item_console.AdminItemConsole;
-import com.egar.auction.view.console.item_console.GuestItemConsole;
-import com.egar.auction.view.console.item_console.UserItemConsole;
+import com.egar.auction.controllers.userControllers.AdminController;
+import com.egar.auction.controllers.userControllers.AuthorizedUserController;
+import com.egar.auction.controllers.userControllers.GuestController;
+import com.egar.auction.view.console.actionConsole.ActionConsoleCreateUser;
+import com.egar.auction.view.console.actionConsole.ActionConsoleDeleteUser;
+import com.egar.auction.view.console.itemConsole.AdminItemConsole;
+import com.egar.auction.view.console.itemConsole.GuestItemConsole;
+import com.egar.auction.view.console.itemConsole.UserItemConsole;
 
 import java.util.Scanner;
 

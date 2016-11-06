@@ -1,9 +1,9 @@
-package com.egar.auction.view.console.item_console;
+package com.egar.auction.view.console.itemConsole;
 
 
-import com.egar.auction.controllers.user_controllers.GuestController;
+import com.egar.auction.controllers.userControllers.GuestController;
 import com.egar.auction.model.Guest;
-import com.egar.auction.view.console.action_console.GuestActionConsole;
+import com.egar.auction.view.console.actionConsole.GuestActionConsole;
 
 import java.util.Scanner;
 

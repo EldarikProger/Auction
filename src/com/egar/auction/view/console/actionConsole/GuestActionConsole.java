@@ -1,6 +1,6 @@
-package com.egar.auction.view.console.action_console;
+package com.egar.auction.view.console.actionConsole;
 
-import com.egar.auction.controllers.user_controllers.GuestController;
+import com.egar.auction.controllers.userControllers.GuestController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;

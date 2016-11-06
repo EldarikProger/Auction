@@ -1,4 +1,4 @@
-package com.egar.auction.controllers.user_controllers;
+package com.egar.auction.controllers.userControllers;
 
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
