@@ -10,11 +10,14 @@ import com.egar.auction.view.console.item_console.AdminItemConsole;
 import com.egar.auction.view.console.item_console.GuestItemConsole;
 import com.egar.auction.view.console.item_console.UserItemConsole;
 
-import java.io.Console;
-import java.io.IOException;
 import java.util.Scanner;
 
-
+/**
+ * MainConsole is the common user presentation
+ *
+ * @version 1.1
+ * @author Eldar Ziatdinov
+ */
 public class MainConsole {
 
     private Scanner scanner;
@@ -41,6 +44,9 @@ public class MainConsole {
         guestItemConsole = new GuestItemConsole(guestController, scanner);
     }
 
+    /**
+     * Method show view common item console
+     */
     public void show() {
         boolean runFlag = true;
         while (runFlag) {

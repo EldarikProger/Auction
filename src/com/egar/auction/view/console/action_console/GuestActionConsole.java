@@ -8,16 +8,30 @@ import com.egar.auction.model.Good;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * GuestActionConsole is the action guest
+ *
+ * @version 1.1
+ * @author Eldar Ziatdinov
+ */
 public class GuestActionConsole {
 
     private GuestController guestController;
     private Scanner scanner;
 
+    /**
+     * Create GuestActionConsole for presentation it actions
+     * @param guestController controller for manage
+     * @param scanner to input data
+     */
     public GuestActionConsole(GuestController guestController, Scanner scanner) {
         this.scanner = scanner;
         this.guestController = guestController;
     }
 
+    /**
+     * Method print list goods
+     */
     public void viewAllGoodsByCategory(){
         try {
             printList(guestController.listAllGoodsByCategory(selectCategory()));
@@ -26,6 +40,9 @@ public class GuestActionConsole {
         }
     }
 
+    /**
+     * Method print list bids
+     */
     public void viewAllBidsByGood() {
         try {
             List<Good> list = guestController.listAllGoodsByCategory(selectCategory());

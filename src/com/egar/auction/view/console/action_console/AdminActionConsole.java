@@ -1,6 +1,5 @@
 package com.egar.auction.view.console.action_console;
 
-
 import com.egar.auction.controllers.user_controllers.AdminController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.Category;
@@ -9,28 +8,51 @@ import com.egar.auction.model.Good;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * AdminActionConsole is the action admin
+ *
+ * @version 1.1
+ * @author Eldar Ziatdinov
+ */
 public class AdminActionConsole {
 
     private Scanner scanner;
     private AdminController adminController;
 
+    /**
+     * Create AdminActionConsole for presentation it actions
+     * @param adminController controller for manage
+     * @param scanner to input data
+     */
     public AdminActionConsole(AdminController adminController, Scanner scanner) {
         this.adminController = adminController;
         this.scanner = scanner;
     }
 
+    /**
+     * Method print list users
+     */
     public void viewListUsers(){
         printList(adminController.listAllUsers());
     }
 
+    /**
+     * Method print list admins
+     */
     public void viewListAdmin(){
         printList(adminController.listAllAdmins());
     }
 
+    /**
+     * Method print users statistics
+     */
     public void viewStatisticByUsers(){
         printList(adminController.getUserStatistics());
     }
 
+    /**
+     * Method print list goods
+     */
     public void viewAllGoodsByCategory(){
         try {
             printList(adminController.listAllGoodsByCategory(selectCategory()));
@@ -40,6 +62,9 @@ public class AdminActionConsole {
         }
     }
 
+    /**
+     * Method print list bids
+     */
     public void viewAllBidsByGood(){
         try {
             List<Good> list = adminController.listAllGoodsByCategory(selectCategory());
@@ -49,6 +74,9 @@ public class AdminActionConsole {
         }
     }
 
+    /**
+     * Method change data users
+     */
     public void changeAdminData(){
         System.out.println();
         System.out.println("Введите имя:");

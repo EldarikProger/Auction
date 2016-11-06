@@ -9,24 +9,44 @@ import com.egar.auction.model.Good;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * UserActionConsole is the action user
+ *
+ * @version 1.1
+ * @author Eldar Ziatdinov
+ */
 public class UserActionConsole {
 
     private AuthorizedUserController authorizedUserController;
     private Scanner scanner;
 
+    /**
+     * Create UserActionConsole for presentation it actions
+     * @param authorizedUserController controller for manage
+     * @param scanner to input data
+     */
     public UserActionConsole(AuthorizedUserController authorizedUserController, Scanner scanner) {
         this.scanner = scanner;
         this.authorizedUserController = authorizedUserController;
     }
 
+    /**
+     * Method print list their goods
+     */
     public void viewListUserGoods() {
         printList(authorizedUserController.listUserGoods());
     }
 
+    /**
+     * Method print list their bids
+     */
     public void viewListUserBids() {
         printList(authorizedUserController.listUserBids());
     }
 
+    /**
+     * Method print list all goods
+     */
     public void viewAllGoodsByCategory() {
         try {
             printList(authorizedUserController.listAllGoodsByCategory(selectCategory()));
@@ -35,6 +55,9 @@ public class UserActionConsole {
         }
     }
 
+    /**
+     * Method print list all bids
+     */
     public void viewAllBidsByGood() {
         try {
             List<Good> list = authorizedUserController.listAllGoodsByCategory(selectCategory());
@@ -44,6 +67,9 @@ public class UserActionConsole {
         }
     }
 
+    /**
+     * Method add good to user
+     */
     public void addGood() {
         System.out.println();
         System.out.println("Введите название товара: ");
@@ -63,6 +89,9 @@ public class UserActionConsole {
         }
     }
 
+    /**
+     * Method make bet (add bid to user)
+     */
     public void makeBet() {
         try {
             List<Good> goodList = authorizedUserController.listAllGoodsByCategory(selectCategory());
@@ -77,6 +106,9 @@ public class UserActionConsole {
         }
     }
 
+    /**
+     * Method change user data
+     */
     public void changeUserData() {
         System.out.println();
         System.out.println("Введите имя:");

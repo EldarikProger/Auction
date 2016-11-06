@@ -7,18 +7,32 @@ import com.egar.auction.view.console.action_console.GuestActionConsole;
 
 import java.util.Scanner;
 
+/**
+ * GuestItemConsole is the guest presentation
+ *
+ * @version 1.1
+ * @author Eldar Ziatdinov
+ */
 public class GuestItemConsole {
 
     private Scanner scanner;
     private GuestActionConsole actionConsole;
     private Guest guest;
 
-
+    /**
+     * Create item and action console for guest
+     *
+     * @param guestController manage controller for guest
+     * @param scanner to input data
+     */
     public GuestItemConsole(GuestController guestController, Scanner scanner) {
         this.scanner = scanner;
         actionConsole = new GuestActionConsole(guestController, scanner);
     }
 
+    /**
+     * Method show view guest item console
+     */
     public void show() {
         connect();
         System.out.println();

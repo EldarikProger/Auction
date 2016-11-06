@@ -5,21 +5,35 @@ import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.view.console.action_console.AdminActionConsole;
 
-
 import java.util.Scanner;
 
+/**
+ * AdminItemConsole is the admin presentation
+ *
+ * @version 1.1
+ * @author Eldar Ziatdinov
+ */
 public class AdminItemConsole {
 
     private Scanner scanner;
     private AdminController adminController;
     private AdminActionConsole actionConsole;
 
+    /**
+     * Create item and action console for admin
+     *
+     * @param adminController manage controller for admin
+     * @param scanner to input data
+     */
     public AdminItemConsole(AdminController adminController, Scanner scanner) {
         this.scanner = scanner;
         this.adminController = adminController;
         actionConsole = new AdminActionConsole(adminController, scanner);
     }
 
+    /**
+     * Method show view admin item console
+     */
     public void show(){
         try {
             connect();

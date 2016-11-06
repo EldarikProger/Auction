@@ -7,20 +7,33 @@ import com.egar.auction.view.console.action_console.UserActionConsole;
 
 import java.util.Scanner;
 
+/**
+ * UserItemConsole is the user presentation
+ *
+ * @version 1.1
+ * @author Eldar Ziatdinov
+ */
 public class UserItemConsole {
 
     private Scanner scanner;
     private AuthorizedUserController authorizedUserController;
     private UserActionConsole actionConsole;
 
-
+    /**
+     * Create item and action console for user
+     *
+     * @param authorizedUserController manage controller for user
+     * @param scanner to input data
+     */
     public UserItemConsole(AuthorizedUserController authorizedUserController, Scanner scanner) {
         this.authorizedUserController = authorizedUserController;
         this.scanner = scanner;
         actionConsole = new UserActionConsole(authorizedUserController, scanner);
     }
 
-
+    /**
+     * Method show view user item console
+     */
     public void show() {
         try {
             connect();
