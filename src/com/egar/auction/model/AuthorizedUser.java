@@ -129,7 +129,6 @@ public class AuthorizedUser implements User {
     public String toString() {
         return "AuthorizedUser{" +
                 "name='" + name + '\'' +
-                ", password='" + password + '\'' +
                 ", id=" + id +
                 '}';
     }

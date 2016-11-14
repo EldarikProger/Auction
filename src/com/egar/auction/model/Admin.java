@@ -111,7 +111,6 @@ public class Admin implements User {
     public String toString() {
         return "Admin{" +
                 "name='" + name + '\'' +
-                ", password='" + password + '\'' +
                 ", id=" + id +
                 '}';
     }

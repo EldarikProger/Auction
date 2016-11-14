@@ -1,4 +1,4 @@
-package com.egar.auction.controllers.user_controllers;
+package com.egar.auction.controllers.userControllers;
 
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
@@ -14,23 +14,24 @@ import java.util.List;
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class ControlAuthorizedUser implements UsersController {
+public class AuthorizedUserController implements UsersController {
+
     private AuthorizedUser user;
     private AuctionDatabase database;
-    private static long idGood = 0;
-    private static long idBid = 0;
+    private long idGood = 0;
+    private long idBid = 0;
 
     /**
      * Create user controllers
      *
      * @param database storage
      */
-    public ControlAuthorizedUser(AuctionDatabase database) {
+    public AuthorizedUserController(AuctionDatabase database) {
         this.database = database;
     }
 
     /**
-     * Method sets the user to controllers. ControlAuthorizedUser will manage the user.
+     * Method sets the user to controllers. AuthorizedUserController will manage the user.
      *
      * @param name     user name
      * @param password user password
@@ -49,7 +50,7 @@ public class ControlAuthorizedUser implements UsersController {
     }
 
     /**
-     * Returns the reference ControlAuthorizedUser to the user
+     * Returns the reference AuthorizedUserController to the user
      *
      * @return user which manage controllers
      */
@@ -75,9 +76,9 @@ public class ControlAuthorizedUser implements UsersController {
      * @param minPrice    min price addition good
      * @param maxPrice    max price addition good
      */
-    public void addGood(Category category, String name, String description, double minPrice, double maxPrice,
-                        double weight, double length, double width, double height) {
-        Good good = new Good(++idGood,category, name, description, minPrice, maxPrice, user, weight, length, width, height);
+    public void addGood(Category category, String name, String description, double minPrice, int count,
+                        double maxPrice, AuthorizedUser owner, double weight, double length, double width, double height) {
+        Good good = new Good(idGood++, category, name, description, minPrice, count, maxPrice, owner, weight, length, width, height);
         database.addGood(good);
     }
 
@@ -108,7 +109,7 @@ public class ControlAuthorizedUser implements UsersController {
      *
      * @return list goods
      */
-    public List<Good> viewUserGoods() {
+    public List<Good> listUserGoods() {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
             if (user.equals(good.getOwner()))
@@ -124,7 +125,7 @@ public class ControlAuthorizedUser implements UsersController {
      * @return list goods
      */
     @Override
-    public List<Good> viewAllGoodsByCategory(Category category) {
+    public List<Good> listAllGoodsByCategory(Category category) {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
             if (good.getCategory() == category)
@@ -138,7 +139,7 @@ public class ControlAuthorizedUser implements UsersController {
      *
      * @return list bids
      */
-    public List<Bid> viewUserBids() {
+    public List<Bid> listUserBids() {
         List<Bid> list = new ArrayList<>();
         for (Bid bid : database.getAllBids()) {
             if (user.equals(bid.getBuyer()))
@@ -154,7 +155,7 @@ public class ControlAuthorizedUser implements UsersController {
      * @return list bids
      */
     @Override
-    public List<Bid> viewAllBidsByGood(Good good) {
+    public List<Bid> listAllBidsByGood(Good good) {
         List<Bid> list = new ArrayList<>();
         for (Bid bid : database.getAllBids()) {
             if (bid.getGood().equals(good))
@@ -163,11 +164,13 @@ public class ControlAuthorizedUser implements UsersController {
         return list;
     }
 
-    public List<Good> getMyWWinGood(){
-        return null;
+    /**
+     * Method return list Category
+     *
+     * @return list Category
+     */
+    public List<Category> getListCategory() {
+        return database.getCategories();
     }
 
-    public double getCommonPriceByMyWinLots(){
-        return 0;
-    }
 }

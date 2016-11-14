@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.egar.auction.controllers.user_controllers.ControlAdmin</li>
+<li>com.egar.auction.controllers.user_controllers.AdminController</li>
 </ul>
 </li>
 </ul>
@@ -182,7 +182,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/egar/auction/model/AuthorizedUserStatistics.html" title="class in com.egar.auction.model">AuthorizedUserStatistics</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#getUserStatistics--">getUserStatistics</a></span>()</code>
-<div class="block">Method return number user goods and bid (all statistics bu user)</div>
+<div class="block">Method return number buyer goods and bid (all statistics bu buyer)</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -272,10 +272,10 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Method sets the admin to controller. ControlAdmin will manage the admin.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - user name</dd>
-<dd><code>password</code> - user password</dd>
+<dd><code>name</code> - buyer name</dd>
+<dd><code>password</code> - buyer password</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../com/egar/auction/exceptions/UserNotFoundException.html" title="class in com.egar.auction.exceptions">UserNotFoundException</a></code> - exception if user not found</dd>
+<dd><code><a href="../../../../com/egar/auction/exceptions/UserNotFoundException.html" title="class in com.egar.auction.exceptions">UserNotFoundException</a></code> - exception if buyer not found</dd>
 <dd><code><a href="../../../../com/egar/auction/exceptions/UserException.html" title="class in com.egar.auction.exceptions">UserException</a></code> - exception if admins are not</dd>
 </dl>
 </li>
@@ -290,7 +290,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Returns the reference ControlAdmin to the admin</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>admin</code> - user which manage controller</dd>
+<dd><code>admin</code> - buyer which manage controller</dd>
 </dl>
 </li>
 </ul>
@@ -304,7 +304,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Establishes to the reference admin a new object Admin</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>user which manage controller</dd>
+<dd>buyer which manage controller</dd>
 </dl>
 </li>
 </ul>
@@ -319,8 +319,8 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Method change admin name and password</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - user name</dd>
-<dd><code>password</code> - user password</dd>
+<dd><code>name</code> - buyer name</dd>
+<dd><code>password</code> - buyer password</dd>
 </dl>
 </li>
 </ul>
@@ -395,10 +395,10 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <li class="blockList">
 <h4>getUserStatistics</h4>
 <pre>public&nbsp;java.util.List&lt;<a href="../../../../com/egar/auction/model/AuthorizedUserStatistics.html" title="class in com.egar.auction.model">AuthorizedUserStatistics</a>&gt;&nbsp;getUserStatistics()</pre>
-<div class="block">Method return number user goods and bid (all statistics bu user)</div>
+<div class="block">Method return number buyer goods and bid (all statistics bu buyer)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>list user statistics</dd>
+<dd>list buyer statistics</dd>
 </dl>
 </li>
 </ul>

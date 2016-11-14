@@ -9,6 +9,7 @@ package com.egar.auction.model;
 public class DeliveryService {
     private double weightPrice;
     private double volumePrice;
+    private double distancePrice;
     private double maxWeight;
     private double maxVolume;
     private double minDistance;
@@ -22,12 +23,31 @@ public class DeliveryService {
      * @param minDistance
      * @param maxVolume
      */
-    public DeliveryService(double volumePrice, double weightPrice, double maxWeight, double minDistance, double maxVolume) {
+    public DeliveryService(double volumePrice, double weightPrice, double maxWeight, double minDistance, double maxVolume, double distancePrice) {
         this.volumePrice = volumePrice;
         this.weightPrice = weightPrice;
         this.maxWeight = maxWeight;
         this.minDistance = minDistance;
         this.maxVolume = maxVolume;
+        this.distancePrice = distancePrice;
+    }
+
+    /**
+     * Method return distancePrice value
+     *
+     * @return double coefficient distancePrice
+     */
+    public double getDistancePrice() {
+        return distancePrice;
+    }
+
+    /**
+     * Put distancePrice
+     *
+     * @param distancePrice coefficient distance
+     */
+    public void setDistancePrice(double distancePrice) {
+        this.distancePrice = distancePrice;
     }
 
     /**
@@ -118,5 +138,21 @@ public class DeliveryService {
      */
     public void setMinDistance(double minDistance) {
         this.minDistance = minDistance;
+    }
+
+    /**
+     * Method return string presentation by service
+     * @return string information from service
+     */
+    @Override
+    public String toString() {
+        return "DeliveryService{" +
+                "weightPrice=" + weightPrice +
+                ", volumePrice=" + volumePrice +
+                ", distancePrice=" + distancePrice +
+                ", maxWeight=" + maxWeight +
+                ", maxVolume=" + maxVolume +
+                ", minDistance=" + minDistance +
+                '}';
     }
 }

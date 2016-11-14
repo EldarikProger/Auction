@@ -7,6 +7,7 @@ package com.egar.auction.model;
  * @version 1.0
  */
 public class Good {
+
     private long id;
     private Category category;
     private String name;
@@ -17,6 +18,7 @@ public class Good {
 
     private double weight;
     private double length, width, height;
+    private int count;
 
     private boolean goodSold;
 
@@ -29,13 +31,14 @@ public class Good {
      * @param description string description good
      * @param minPrice    double min price good
      * @param maxPrice    double max price good
+     * @param count       int count goods
      * @param owner       user-owner good
      * @param weight      double weight good
      * @param length      double length good
      * @param width       double width good
      * @param height      double height good
      */
-    public Good(long id, Category category, String name, String description, double minPrice,
+    public Good(long id, Category category, String name, String description, double minPrice, int count,
                 double maxPrice, AuthorizedUser owner, double weight, double length, double width, double height) {
         this.id = id;
         this.category = category;
@@ -49,6 +52,34 @@ public class Good {
         this.width = width;
         this.height = height;
         this.goodSold = false;
+        this.count = count;
+    }
+
+    /**
+     * Return count good
+     *
+     * @return int count goods
+     */
+    public int getCount() {
+        return count;
+    }
+
+    /**
+     * Put count goods
+     *
+     * @param count count goods of lot
+     */
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    /**
+     * Get dimensions good
+     *
+     * @return volume good
+     */
+    public double getVolume() {
+        return length * width * height;
     }
 
     /**

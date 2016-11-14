@@ -8,6 +8,7 @@ package com.egar.auction.model;
  * @version 1.0
  */
 public class AuthorizedUserStatistics {
+
     private AuthorizedUser user;
     private int numberGoods;
     private int numberBids;

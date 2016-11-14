@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.egar.auction.controllers.user_controllers.ControlAuthorizedUser</li>
+<li>com.egar.auction.controllers.user_controllers.AuthorizedUserController</li>
 </ul>
 </li>
 </ul>
@@ -115,7 +115,7 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">ControlAuthorizedUser</span>
 extends java.lang.Object
 implements <a href="../../../../com/egar/auction/controller/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></pre>
-<div class="block">Class describe management user</div>
+<div class="block">Class describe management buyer</div>
 <dl>
 <dt><span class="simpleTagLabel">Version:</span></dt>
 <dd>1.0</dd>
@@ -141,7 +141,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 </tr>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#ControlAuthorizedUser-com.egar.auction.storage.AuctionDatabase-">ControlAuthorizedUser</a></span>(<a href="../../../../com/egar/auction/storage/AuctionDatabase.html" title="class in com.egar.auction.storage">AuctionDatabase</a>&nbsp;database)</code>
-<div class="block">Create user controller</div>
+<div class="block">Create buyer controller</div>
 </td>
 </tr>
 </table>
@@ -166,40 +166,40 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
        java.lang.String&nbsp;description,
        double&nbsp;minPrice,
        double&nbsp;maxPrice)</code>
-<div class="block">Addition to the user a thing</div>
+<div class="block">Addition to the buyer a thing</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#changeUserData-java.lang.String-java.lang.String-">changeUserData</a></span>(java.lang.String&nbsp;name,
               java.lang.String&nbsp;password)</code>
-<div class="block">Change user name and password</div>
+<div class="block">Change buyer name and password</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#connectToUser-java.lang.String-java.lang.String-">connectToUser</a></span>(java.lang.String&nbsp;name,
              java.lang.String&nbsp;password)</code>
-<div class="block">Method sets the user to controller.</div>
+<div class="block">Method sets the buyer to controller.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/egar/auction/model/AuthorizedUser.html" title="class in com.egar.auction.model">AuthorizedUser</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#getUser--">getUser</a></span>()</code>
-<div class="block">Returns the reference ControlAuthorizedUser to the user</div>
+<div class="block">Returns the reference ControlAuthorizedUser to the buyer</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#makeBet-double-com.egar.auction.model.Good-">makeBet</a></span>(double&nbsp;price,
        <a href="../../../../com/egar/auction/model/Good.html" title="class in com.egar.auction.model">Good</a>&nbsp;good)</code>
-<div class="block">To bid by the user for the goods</div>
+<div class="block">To bid by the buyer for the goods</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#setUser-com.egar.auction.model.AuthorizedUser-">setUser</a></span>(<a href="../../../../com/egar/auction/model/AuthorizedUser.html" title="class in com.egar.auction.model">AuthorizedUser</a>&nbsp;user)</code>
-<div class="block">Establishes to the reference user a new object AuthorizedUser</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#setUser-com.egar.auction.model.AuthorizedUser-">setUser</a></span>(<a href="../../../../com/egar/auction/model/AuthorizedUser.html" title="class in com.egar.auction.model">AuthorizedUser</a>&nbsp;buyer)</code>
+<div class="block">Establishes to the reference buyer a new object AuthorizedUser</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -217,13 +217,13 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/egar/auction/model/Bid.html" title="class in com.egar.auction.model">Bid</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#viewUserBids--">viewUserBids</a></span>()</code>
-<div class="block">Method return list user bets</div>
+<div class="block">Method return list buyer bets</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/egar/auction/model/Good.html" title="class in com.egar.auction.model">Good</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html#viewUserGoods--">viewUserGoods</a></span>()</code>
-<div class="block">Return list user goods</div>
+<div class="block">Return list buyer goods</div>
 </td>
 </tr>
 </table>
@@ -255,7 +255,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <li class="blockList">
 <h4>ControlAuthorizedUser</h4>
 <pre>public&nbsp;ControlAuthorizedUser(<a href="../../../../com/egar/auction/storage/AuctionDatabase.html" title="class in com.egar.auction.storage">AuctionDatabase</a>&nbsp;database)</pre>
-<div class="block">Create user controller</div>
+<div class="block">Create buyer controller</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>database</code> - storage</dd>
@@ -280,13 +280,13 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
                           java.lang.String&nbsp;password)
                    throws <a href="../../../../com/egar/auction/exceptions/UserNotFoundException.html" title="class in com.egar.auction.exceptions">UserNotFoundException</a>,
                           <a href="../../../../com/egar/auction/exceptions/UserException.html" title="class in com.egar.auction.exceptions">UserException</a></pre>
-<div class="block">Method sets the user to controller. ControlAuthorizedUser will manage the user.</div>
+<div class="block">Method sets the buyer to controller. ControlAuthorizedUser will manage the buyer.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - user name</dd>
-<dd><code>password</code> - user password</dd>
+<dd><code>name</code> - buyer name</dd>
+<dd><code>password</code> - buyer password</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../com/egar/auction/exceptions/UserNotFoundException.html" title="class in com.egar.auction.exceptions">UserNotFoundException</a></code> - exception if user not found</dd>
+<dd><code><a href="../../../../com/egar/auction/exceptions/UserNotFoundException.html" title="class in com.egar.auction.exceptions">UserNotFoundException</a></code> - exception if buyer not found</dd>
 <dd><code><a href="../../../../com/egar/auction/exceptions/UserException.html" title="class in com.egar.auction.exceptions">UserException</a></code> - exception if admins are not</dd>
 </dl>
 </li>
@@ -298,10 +298,10 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <li class="blockList">
 <h4>getUser</h4>
 <pre>public&nbsp;<a href="../../../../com/egar/auction/model/AuthorizedUser.html" title="class in com.egar.auction.model">AuthorizedUser</a>&nbsp;getUser()</pre>
-<div class="block">Returns the reference ControlAuthorizedUser to the user</div>
+<div class="block">Returns the reference ControlAuthorizedUser to the buyer</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>user which manage controller</dd>
+<dd>buyer which manage controller</dd>
 </dl>
 </li>
 </ul>
@@ -311,11 +311,11 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <ul class="blockList">
 <li class="blockList">
 <h4>setUser</h4>
-<pre>public&nbsp;void&nbsp;setUser(<a href="../../../../com/egar/auction/model/AuthorizedUser.html" title="class in com.egar.auction.model">AuthorizedUser</a>&nbsp;user)</pre>
-<div class="block">Establishes to the reference user a new object AuthorizedUser</div>
+<pre>public&nbsp;void&nbsp;setUser(<a href="../../../../com/egar/auction/model/AuthorizedUser.html" title="class in com.egar.auction.model">AuthorizedUser</a>&nbsp;buyer)</pre>
+<div class="block">Establishes to the reference buyer a new object AuthorizedUser</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>user</code> - user which manage controller</dd>
+<dd><code>buyer</code> - buyer which manage controller</dd>
 </dl>
 </li>
 </ul>
@@ -330,7 +330,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
                     java.lang.String&nbsp;description,
                     double&nbsp;minPrice,
                     double&nbsp;maxPrice)</pre>
-<div class="block">Addition to the user a thing</div>
+<div class="block">Addition to the buyer a thing</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>category</code> - category addition good</dd>
@@ -349,11 +349,11 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <h4>makeBet</h4>
 <pre>public&nbsp;void&nbsp;makeBet(double&nbsp;price,
                     <a href="../../../../com/egar/auction/model/Good.html" title="class in com.egar.auction.model">Good</a>&nbsp;good)</pre>
-<div class="block">To bid by the user for the goods</div>
+<div class="block">To bid by the buyer for the goods</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>price</code> - price which put to user bid</dd>
-<dd><code>good</code> - good which put to user bid</dd>
+<dd><code>price</code> - price which put to buyer bid</dd>
+<dd><code>good</code> - good which put to buyer bid</dd>
 </dl>
 </li>
 </ul>
@@ -365,11 +365,11 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <h4>changeUserData</h4>
 <pre>public&nbsp;void&nbsp;changeUserData(java.lang.String&nbsp;name,
                            java.lang.String&nbsp;password)</pre>
-<div class="block">Change user name and password</div>
+<div class="block">Change buyer name and password</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - user name</dd>
-<dd><code>password</code> - user password</dd>
+<dd><code>name</code> - buyer name</dd>
+<dd><code>password</code> - buyer password</dd>
 </dl>
 </li>
 </ul>
@@ -380,7 +380,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <li class="blockList">
 <h4>viewUserGoods</h4>
 <pre>public&nbsp;java.util.List&lt;<a href="../../../../com/egar/auction/model/Good.html" title="class in com.egar.auction.model">Good</a>&gt;&nbsp;viewUserGoods()</pre>
-<div class="block">Return list user goods</div>
+<div class="block">Return list buyer goods</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>list goods</dd>
@@ -412,7 +412,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <li class="blockList">
 <h4>viewUserBids</h4>
 <pre>public&nbsp;java.util.List&lt;<a href="../../../../com/egar/auction/model/Bid.html" title="class in com.egar.auction.model">Bid</a>&gt;&nbsp;viewUserBids()</pre>
-<div class="block">Method return list user bets</div>
+<div class="block">Method return list buyer bets</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>list bids</dd>

@@ -1,9 +1,6 @@
 package com.egar.auction.storage;
 
-import com.egar.auction.model.Admin;
-import com.egar.auction.model.AuthorizedUser;
-import com.egar.auction.model.Bid;
-import com.egar.auction.model.Good;
+import com.egar.auction.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +13,14 @@ import java.util.List;
  * @version 1.0
  */
 public class AuctionDatabase {
+
     private List<AuthorizedUser> authorizedUsers;
     private List<Admin> admins;
     private List<Bid> allBids;
     private List<Good> allGoods;
+    private List<Category> categories;
+    private List<Purchase> purchases;
+    private List<DeliveryService> services;
 
     /**
      * Create database
@@ -29,6 +30,45 @@ public class AuctionDatabase {
         admins = new ArrayList<>();
         authorizedUsers = new ArrayList<>();
         allGoods = new ArrayList<>();
+        categories = new ArrayList<>();
+        purchases = new ArrayList<>();
+        services = new ArrayList<>();
+    }
+
+    /**
+     * Add DeliveryService
+     *
+     * @param service DeliveryService
+     */
+    public void addDeliveryService(DeliveryService service) {
+        this.services.add(service);
+    }
+
+    /**
+     * Return list of DeliveryService
+     *
+     * @return list of DeliveryService
+     */
+    public List<DeliveryService> getServices() {
+        return services;
+    }
+
+    /**
+     * Add purchase
+     *
+     * @param purchase Purchase which associate good and service
+     */
+    public void addPurchase(Purchase purchase) {
+        this.purchases.add(purchase);
+    }
+
+    /**
+     * Return list of Purchase
+     *
+     * @return list of Purchase
+     */
+    public List<Purchase> getPurchases() {
+        return purchases;
     }
 
     /**
@@ -68,6 +108,15 @@ public class AuctionDatabase {
     }
 
     /**
+     * Add category
+     *
+     * @param category Category which addition in the storage
+     */
+    public void addCategory(Category category) {
+        categories.add(category);
+    }
+
+    /**
      * Return list all users
      *
      * @return list all AuthorizedUsers
@@ -102,4 +151,15 @@ public class AuctionDatabase {
     public List<Good> getAllGoods() {
         return allGoods;
     }
+
+    /**
+     * Return list all category
+     *
+     * @return list all Category
+     */
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+
 }

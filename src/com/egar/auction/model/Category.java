@@ -1,23 +1,31 @@
 package com.egar.auction.model;
 
 /**
- * Enum all category goods
+ * Category describe category goods
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public enum Category {
-    CLOTHING,
-    SHOES,
-    TELEPHONE,
-    AUTO,
-    JEWELRY,
-    WATCH,
-    ELECTRONICS,
-    COMPUTER_EQUIPMENT,
-    SPORTS_WEAR,
-    BUILDING_TOOLS,
-    FURNITURE,
-    FOOD,
-    MUSICAL_INSTRUMENTS;
+public class Category {
+
+    private String name;
+
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

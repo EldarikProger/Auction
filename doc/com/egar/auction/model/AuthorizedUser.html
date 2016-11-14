@@ -115,7 +115,7 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">AuthorizedUser</span>
 extends java.lang.Object
 implements <a href="../../../../com/egar/auction/model/User.html" title="interface in com.egar.auction.model">User</a></pre>
-<div class="block">AuthorizedUser is the user. Class AuthorizedUser have user data</div>
+<div class="block">AuthorizedUser is the buyer. Class AuthorizedUser have buyer data</div>
 <dl>
 <dt><span class="simpleTagLabel">Version:</span></dt>
 <dd>1.0</dd>
@@ -143,7 +143,7 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#AuthorizedUser-java.lang.String-java.lang.String-long-">AuthorizedUser</a></span>(java.lang.String&nbsp;name,
               java.lang.String&nbsp;password,
               long&nbsp;id)</code>
-<div class="block">Create user</div>
+<div class="block">Create buyer</div>
 </td>
 </tr>
 </table>
@@ -164,43 +164,43 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;o)</code>
-<div class="block">Return true if all user fields coincide with Object fields</div>
+<div class="block">Return true if all buyer fields coincide with Object fields</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#getId--">getId</a></span>()</code>
-<div class="block">Return id user</div>
+<div class="block">Return id buyer</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#getName--">getName</a></span>()</code>
-<div class="block">Return name user</div>
+<div class="block">Return name buyer</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#getPassword--">getPassword</a></span>()</code>
-<div class="block">Return password user</div>
+<div class="block">Return password buyer</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#hashCode--">hashCode</a></span>()</code>
-<div class="block">Return hash user</div>
+<div class="block">Return hash buyer</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#setName-java.lang.String-">setName</a></span>(java.lang.String&nbsp;name)</code>
-<div class="block">Set name to user</div>
+<div class="block">Set name to buyer</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/model/AuthorizedUser.html#setPassword-java.lang.String-">setPassword</a></span>(java.lang.String&nbsp;password)</code>
-<div class="block">Set password to user</div>
+<div class="block">Set password to buyer</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -240,12 +240,12 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <pre>public&nbsp;AuthorizedUser(java.lang.String&nbsp;name,
                       java.lang.String&nbsp;password,
                       long&nbsp;id)</pre>
-<div class="block">Create user</div>
+<div class="block">Create buyer</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - string with user name</dd>
-<dd><code>password</code> - string with user password</dd>
-<dd><code>id</code> - long id user</dd>
+<dd><code>name</code> - string with buyer name</dd>
+<dd><code>password</code> - string with buyer password</dd>
+<dd><code>id</code> - long id buyer</dd>
 </dl>
 </li>
 </ul>
@@ -264,7 +264,7 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <li class="blockList">
 <h4>getId</h4>
 <pre>public&nbsp;long&nbsp;getId()</pre>
-<div class="block">Return id user</div>
+<div class="block">Return id buyer</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>id</dd>
@@ -278,10 +278,10 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <li class="blockList">
 <h4>getPassword</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getPassword()</pre>
-<div class="block">Return password user</div>
+<div class="block">Return password buyer</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>password string with user password</dd>
+<dd>password string with buyer password</dd>
 </dl>
 </li>
 </ul>
@@ -292,10 +292,10 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <li class="blockList">
 <h4>setPassword</h4>
 <pre>public&nbsp;void&nbsp;setPassword(java.lang.String&nbsp;password)</pre>
-<div class="block">Set password to user</div>
+<div class="block">Set password to buyer</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>password</code> - string with user password</dd>
+<dd><code>password</code> - string with buyer password</dd>
 </dl>
 </li>
 </ul>
@@ -306,10 +306,10 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <li class="blockList">
 <h4>getName</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getName()</pre>
-<div class="block">Return name user</div>
+<div class="block">Return name buyer</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>name string with user name</dd>
+<dd>name string with buyer name</dd>
 </dl>
 </li>
 </ul>
@@ -320,10 +320,10 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <li class="blockList">
 <h4>setName</h4>
 <pre>public&nbsp;void&nbsp;setName(java.lang.String&nbsp;name)</pre>
-<div class="block">Set name to user</div>
+<div class="block">Set name to buyer</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - string with user name</dd>
+<dd><code>name</code> - string with buyer name</dd>
 </dl>
 </li>
 </ul>
@@ -334,14 +334,14 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <li class="blockList">
 <h4>equals</h4>
 <pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;o)</pre>
-<div class="block">Return true if all user fields coincide with Object fields</div>
+<div class="block">Return true if all buyer fields coincide with Object fields</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>o</code> - object with which compare</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>boolean value: true if object and user equally</dd>
+<dd>boolean value: true if object and buyer equally</dd>
 </dl>
 </li>
 </ul>
@@ -352,12 +352,12 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <li class="blockList">
 <h4>hashCode</h4>
 <pre>public&nbsp;int&nbsp;hashCode()</pre>
-<div class="block">Return hash user</div>
+<div class="block">Return hash buyer</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>hash user</dd>
+<dd>hash buyer</dd>
 </dl>
 </li>
 </ul>
@@ -373,7 +373,7 @@ implements <a href="../../../../com/egar/auction/model/User.html" title="interfa
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>string data of user</dd>
+<dd>string data of buyer</dd>
 </dl>
 </li>
 </ul>
