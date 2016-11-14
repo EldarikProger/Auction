@@ -9,18 +9,37 @@ package com.egar.auction.model;
 public class Purchase {
 
     private AuthorizedUser buyer;
+    private Bid bidByGood;
     private Good good;
     private DeliveryService service;
 
     /**
-     * @param user    buyer which belongs this object
-     * @param good
-     * @param service
+     * @param user buyer which belongs this object
+     * @param good good which user win
+     * @param service service by which delivery good
+     * @param bid bet by good
      */
-    public Purchase(AuthorizedUser user, Good good, DeliveryService service) {
+    public Purchase(AuthorizedUser user, Good good, DeliveryService service,Bid bid) {
         this.buyer = user;
         this.good = good;
         this.service = service;
+        this.bidByGood = bid;
+    }
+
+    /**
+     * Return bet which made by good
+     * @return bid
+     */
+    public Bid getBidByGood() {
+        return bidByGood;
+    }
+
+    /**
+     * Put bid by good
+     * @param bidByGood bet by good
+     */
+    public void setBidByGood(Bid bidByGood) {
+        this.bidByGood = bidByGood;
     }
 
     /**

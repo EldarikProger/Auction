@@ -2,88 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a395f6e-f9b1-4cc6-bb0c-ee12e2855cb8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/controllers/Controller.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/controllers/DistanceController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/controllers/userControllers/AdminController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/controllers/userControllers/AuthorizedUserController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/controllers/userControllers/GuestController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/controllers/userControllers/UsersController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/DeliveryService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/GeographicCoordinates.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Purchase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/view/console/actionConsole/GuestActionConsole.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/view/console/itemConsole/UserItemConsole.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Auction/test.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/PurchaseController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/Module.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/MainConsole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/ActionConsoleCreateUser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/ActionConsoleDeleteUser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/AdminActionConsole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/GuestActionConsole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/UserActionConsole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/itemConsole/AdminItemConsole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/itemConsole/GuestItemConsole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/egar/auction/view/console/itemConsole/UserItemConsole.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/egar/auction/view/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/egar/auction/view/console/ConsoleView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/egar/auction/view/console/MainConsoleItem.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/egar/auction/controllers/ControlDatabase.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/DatabaseController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/egar/auction/controllers/user_controllers/ControlAdmin.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/AdminController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/egar/auction/controllers/user_controllers/ControlAuthorizedUser.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/AuthorizedUserController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/egar/auction/controllers/user_controllers/ControlGuest.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/GuestController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/egar/auction/controllers/user_controllers/UsersController.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/UsersController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Admin.class" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Admin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/AuthorizedUser.class" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/AuthorizedUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/AuthorizedUserStatistics.class" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/AuthorizedUserStatistics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Bid.class" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Bid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Category.class" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Category.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Good.class" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/model/Good.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/storage/AuctionDatabase.class" afterPath="$PROJECT_DIR$/out/production/Auction/com/egar/auction/storage/AuctionDatabase.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlAdmin.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlAdmin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlAuthorizedUser.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlAuthorizedUser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlDatabase.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlDatabase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlGuest.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/controller/ControlGuest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/controller/UsersController.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/controller/UsersController.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/controller/package-summary.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/controller/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/exceptions/UserException.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/exceptions/UserException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/exceptions/UserNotFoundException.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/exceptions/UserNotFoundException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/exceptions/package-summary.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/exceptions/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/model/Admin.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/model/Admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/model/AuthorizedUser.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/model/AuthorizedUser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/model/AuthorizedUserStatistics.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/model/AuthorizedUserStatistics.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/model/Bid.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/model/Bid.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/model/Good.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/model/Good.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/model/Guest.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/model/Guest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/model/package-summary.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/model/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/storage/AuctionDatabase.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/storage/AuctionDatabase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/view/console/ConsoleView.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/view/console/ConsoleView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/com/egar/auction/view/console/package-summary.html" afterPath="$PROJECT_DIR$/doc/com/egar/auction/view/console/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" afterPath="$PROJECT_DIR$/doc/index-files/index-11.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" afterPath="$PROJECT_DIR$/doc/index-files/index-12.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" afterPath="$PROJECT_DIR$/doc/index-files/index-2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" afterPath="$PROJECT_DIR$/doc/index-files/index-3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" afterPath="$PROJECT_DIR$/doc/index-files/index-4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" afterPath="$PROJECT_DIR$/doc/index-files/index-5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" afterPath="$PROJECT_DIR$/doc/index-files/index-6.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" afterPath="$PROJECT_DIR$/doc/index-files/index-7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" afterPath="$PROJECT_DIR$/doc/index-files/index-8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" afterPath="$PROJECT_DIR$/doc/index-files/index-9.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/controllers/DeliveryServiceController.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/DeliveryServiceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/controllers/DistanceController.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/controllers/DistanceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/Admin.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/Admin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/AuthorizedUser.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/AuthorizedUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/AuthorizedUserStatistics.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/AuthorizedUserStatistics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/Bid.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/Bid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/Category.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/Category.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/DeliveryService.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/DeliveryService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/GeographicCoordinates.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/GeographicCoordinates.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/Good.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/Good.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/storage/AuctionDatabase.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/storage/AuctionDatabase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java" afterPath="$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java" />
     </list>
     <ignored path="Auction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,39 +26,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PurchaseController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/egar/auction/controllers/PurchaseController.java">
+      <file leaf-file-name="Purchase.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-442">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainConsole.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/console/MainConsole.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="663">
+              <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuestController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/GuestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#586#587#0" expanded="false" />
-                <element signature="e#626#627#0" expanded="false" />
-                <element signature="e#1604#1605#0" expanded="false" />
-                <element signature="e#1651#1652#0" expanded="false" />
+                <element signature="e#771#772#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#925#926#0" expanded="true" />
+                <element signature="e#967#968#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -188,12 +85,12 @@
         <option value="$PROJECT_DIR$/src/com/egar/auction/model/GeographicCoordinates.java" />
         <option value="$PROJECT_DIR$/src/com/egar/auction/controllers/DeliveryServiceController.java" />
         <option value="$PROJECT_DIR$/src/test.java" />
-        <option value="$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java" />
         <option value="$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/UserActionConsole.java" />
         <option value="$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/AuthorizedUserController.java" />
         <option value="$PROJECT_DIR$/src/com/egar/auction/model/Good.java" />
         <option value="$PROJECT_DIR$/src/com/egar/auction/storage/AuctionDatabase.java" />
         <option value="$PROJECT_DIR$/src/com/egar/auction/controllers/PurchaseController.java" />
+        <option value="$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java" />
       </list>
     </option>
   </component>
@@ -269,58 +166,6 @@
               <option name="myItemId" value="auction" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="console" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -341,50 +186,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exceptions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -855,13 +656,13 @@
       <workItem from="1478785744653" duration="46000" />
       <workItem from="1478931933813" duration="2086000" />
       <workItem from="1479056832454" duration="28000" />
-      <workItem from="1479118500261" duration="2079000" />
+      <workItem from="1479118500261" duration="3125000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27245000" />
+    <option name="totallyTimeSpent" value="28291000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -880,10 +681,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.49541986" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67266774" sideWeight="0.515885" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67266774" sideWeight="0.5219365" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80360067" sideWeight="0.48335856" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67266774" sideWeight="0.48411497" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9476268" sideWeight="0.47806355" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24659607" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
@@ -1089,13 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/ActionConsoleCreateUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/Module.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1154,14 +948,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/AuthorizedUserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
@@ -1219,35 +1005,48 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/console/MainConsoleItem.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/console/MainConsole.java">
+    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/console/actionConsole/ActionConsoleCreateUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/GuestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#586#587#0" expanded="false" />
-            <element signature="e#626#627#0" expanded="false" />
-            <element signature="e#1604#1605#0" expanded="false" />
-            <element signature="e#1651#1652#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="192">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/egar/auction/controllers/PurchaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
+        <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/view/console/MainConsole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-876">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/controllers/userControllers/GuestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-386">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/egar/auction/model/Purchase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+          <folding>
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#925#926#0" expanded="true" />
+            <element signature="e#967#968#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
