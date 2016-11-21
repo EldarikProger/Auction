@@ -2,6 +2,7 @@ package com.egar.auction.view.console.actionConsole;
 
 import com.egar.auction.controllers.userControllers.AdminController;
 import com.egar.auction.exceptions.UserException;
+import com.egar.auction.model.Admin;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;
 
@@ -18,15 +19,26 @@ public class AdminActionConsole {
 
     private Scanner scanner;
     private AdminController adminController;
+    private Admin myAdmin;
 
     /**
      * Create AdminActionConsole for presentation it actions
+     * @param admin user which sing in
      * @param adminController controller for manage
      * @param scanner to input data
      */
-    public AdminActionConsole(AdminController adminController, Scanner scanner) {
+    public AdminActionConsole(AdminController adminController, Scanner scanner, Admin admin) {
         this.adminController = adminController;
         this.scanner = scanner;
+        this.myAdmin = admin;
+    }
+
+    /**
+     * Put user for manage
+     * @param myAdmin
+     */
+    public void setMyAdmin(Admin myAdmin) {
+        this.myAdmin = myAdmin;
     }
 
     /**
@@ -83,7 +95,7 @@ public class AdminActionConsole {
         String name = scanner.next();
         System.out.println("Введите пароль:");
         String password = scanner.next();
-        adminController.changeAdminData(name, password);
+        adminController.changeAdminData(name, password, myAdmin);
     }
 
     private Category selectCategory() throws UserException {

@@ -22,7 +22,7 @@ public class Good {
     private double length, width, height;
     private int count;
 
-    private boolean goodSold;
+    private boolean goodSold = false;
 
     private Date endDateLot;
 
@@ -126,6 +126,8 @@ public class Good {
      * @return boolean flag which show that good sold
      */
     public boolean isGoodSold() {
+        if(endDateLot.before(new Date()))
+            goodSold = true;
         return goodSold;
     }
 

@@ -48,6 +48,7 @@ public class GuestItemConsole {
                     break;
                 case 3:
                     guest = null;
+                    actionConsole = null;
                     flag = false;
                     break;
                 default:

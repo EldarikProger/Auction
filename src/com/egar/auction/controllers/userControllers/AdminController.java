@@ -17,8 +17,6 @@ import java.util.List;
 public class AdminController implements UsersController {
 
     private AuctionDatabase database;
-    private Admin admin;
-
     /**
      * Create admin controllers
      *
@@ -36,7 +34,8 @@ public class AdminController implements UsersController {
      * @throws UserNotFoundException exception if user not found
      * @throws UserException exception if admins are not
      */
-    public void connectToAdmin(String name, String password) throws UserNotFoundException, UserException {
+    public Admin connectToAdmin(String name, String password) throws UserNotFoundException, UserException {
+        Admin admin = null;
         if (database.getAdmins().size() == 0)
             throw new UserException("Администраторов не существует");
         for (Admin a : database.getAdmins()) {
@@ -45,23 +44,6 @@ public class AdminController implements UsersController {
         }
         if (admin == null)
             throw new UserNotFoundException();
-    }
-
-    /**
-     * Returns the reference AdminController to the admin
-     *
-     * @param admin user which manage controllers
-     */
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
-
-    /**
-     * Establishes to the reference admin a new object Admin
-     *
-     * @return user which manage controllers
-     */
-    public Admin getAdmin() {
         return admin;
     }
 
@@ -71,7 +53,7 @@ public class AdminController implements UsersController {
      * @param name user name
      * @param password user password
      */
-    public void changeAdminData(String name, String password) {
+    public void changeAdminData(String name, String password, Admin admin) {
         admin.setName(name);
         admin.setPassword(password);
     }

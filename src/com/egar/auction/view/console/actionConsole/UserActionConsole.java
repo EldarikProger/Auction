@@ -3,6 +3,7 @@ package com.egar.auction.view.console.actionConsole;
 
 import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.exceptions.UserException;
+import com.egar.auction.model.AuthorizedUser;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;
 
@@ -19,6 +20,7 @@ public class UserActionConsole {
 
     private AuthorizedUserController authorizedUserController;
     private Scanner scanner;
+    private AuthorizedUser myUser;
 
     /**
      * Create UserActionConsole for presentation it actions
@@ -26,23 +28,32 @@ public class UserActionConsole {
      * @param authorizedUserController controller for manage
      * @param scanner                  to input data
      */
-    public UserActionConsole(AuthorizedUserController authorizedUserController, Scanner scanner) {
+    public UserActionConsole(AuthorizedUserController authorizedUserController, Scanner scanner, AuthorizedUser user) {
         this.scanner = scanner;
         this.authorizedUserController = authorizedUserController;
+        this.myUser = user;
+    }
+
+    /**
+     * Put user for manage
+     * @param myUser
+     */
+    public void setMyUser(AuthorizedUser myUser) {
+        this.myUser = myUser;
     }
 
     /**
      * Method print list their goods
      */
     public void viewListUserGoods() {
-        printList(authorizedUserController.listUserGoods());
+        printList(authorizedUserController.listUserGoods(myUser));
     }
 
     /**
      * Method print list their bids
      */
     public void viewListUserBids() {
-        printList(authorizedUserController.listUserBids());
+        printList(authorizedUserController.listUserBids(myUser));
     }
 
     /**
@@ -94,8 +105,8 @@ public class UserActionConsole {
         int count = scanner.nextInt();
         try {
             Category category = selectCategory();
-            authorizedUserController.addGood(category, nameGood, description, minPrice, count, day, hour, maxPrice
-                    , authorizedUserController.getUser(), weight, length, width, height);
+            authorizedUserController.addGood(category, nameGood, description, minPrice, count, day, hour, maxPrice,
+                     myUser, weight, length, width, height);
             System.out.println("Товар добавлен!");
         } catch (UserException e) {
             System.out.println(e.getMessage());
@@ -112,7 +123,7 @@ public class UserActionConsole {
             System.out.println();
             System.out.println("Введите цену(ставку): ");
             double price = scanner.nextDouble();
-            authorizedUserController.makeBet(price, good);
+            authorizedUserController.makeBet(price, good,myUser);
             System.out.println("Ставка сделана!");
         } catch (UserException e) {
             System.out.println(e.getMessage());
@@ -128,7 +139,7 @@ public class UserActionConsole {
         String name = scanner.next();
         System.out.println("Введите пароль:");
         String password = scanner.next();
-        authorizedUserController.changeUserData(name, password);
+        authorizedUserController.changeUserData(name, password,myUser);
     }
 
     private Good selectGood(List<Good> list) throws UserException {

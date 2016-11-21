@@ -1,9 +1,7 @@
 package com.egar.auction.controllers.userControllers;
 
 import com.egar.auction.controllers.Controller;
-import com.egar.auction.model.Bid;
-import com.egar.auction.model.Category;
-import com.egar.auction.model.Good;
+import com.egar.auction.model.*;
 
 import java.util.List;
 

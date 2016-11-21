@@ -10,6 +10,7 @@ public class DeliveryService {
     private double weightPrice;
     private double volumePrice;
     private double distancePrice;
+    private double countPrice;
     private double maxWeight;
     private double maxVolume;
     private double minDistance;
@@ -23,13 +24,33 @@ public class DeliveryService {
      * @param minDistance
      * @param maxVolume
      */
-    public DeliveryService(double volumePrice, double weightPrice, double maxWeight, double minDistance, double maxVolume, double distancePrice) {
+    public DeliveryService(double volumePrice, double weightPrice, double maxWeight,
+                           double minDistance, double maxVolume, double distancePrice, double countPrice) {
         this.volumePrice = volumePrice;
         this.weightPrice = weightPrice;
         this.maxWeight = maxWeight;
         this.minDistance = minDistance;
         this.maxVolume = maxVolume;
         this.distancePrice = distancePrice;
+        this.countPrice = countPrice;
+    }
+
+    /**
+     * Method return countPrice value
+     *
+     * @return double coefficient countPrice
+     */
+    public double getCountPrice() {
+        return countPrice;
+    }
+
+    /**
+     * Put countPrice
+     *
+     * @param countPrice coefficient countPrice
+     */
+    public void setCountPrice(double countPrice) {
+        this.countPrice = countPrice;
     }
 
     /**

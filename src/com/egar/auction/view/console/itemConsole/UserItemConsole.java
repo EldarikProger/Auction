@@ -1,8 +1,13 @@
 package com.egar.auction.view.console.itemConsole;
 
+import com.egar.auction.controllers.DeliveryServiceController;
+import com.egar.auction.controllers.PurchaseController;
 import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
+import com.egar.auction.model.AuthorizedUser;
+import com.egar.auction.model.Purchase;
+import com.egar.auction.model.User;
 import com.egar.auction.view.console.actionConsole.UserActionConsole;
 
 import java.util.Scanner;
@@ -10,25 +15,29 @@ import java.util.Scanner;
 /**
  * UserItemConsole is the user presentation
  *
- * @version 1.1
  * @author Eldar Ziatdinov
+ * @version 1.1
  */
 public class UserItemConsole {
 
     private Scanner scanner;
     private AuthorizedUserController authorizedUserController;
     private UserActionConsole actionConsole;
+    private AuthorizedUser myUser;
+    ItemConsoleUserPurchase userPurchase;
 
     /**
      * Create item and action console for user
      *
      * @param authorizedUserController manage controller for user
-     * @param scanner to input data
+     * @param scanner                  to input data
      */
-    public UserItemConsole(AuthorizedUserController authorizedUserController, Scanner scanner) {
+    public UserItemConsole(AuthorizedUserController authorizedUserController, Scanner scanner,
+                           PurchaseController purchaseController, DeliveryServiceController deliveryServiceController) {
         this.authorizedUserController = authorizedUserController;
         this.scanner = scanner;
-        actionConsole = new UserActionConsole(authorizedUserController, scanner);
+        actionConsole = new UserActionConsole(authorizedUserController, scanner, null);
+        userPurchase = new ItemConsoleUserPurchase(null, scanner, purchaseController, deliveryServiceController);
     }
 
     /**
@@ -37,8 +46,10 @@ public class UserItemConsole {
     public void show() {
         try {
             connect();
+            actionConsole.setMyUser(myUser);
+            userPurchase.setMyUser(myUser);
             System.out.println();
-            System.out.println("Пользователь " + authorizedUserController.getUser().getName() + ":");
+            System.out.println("Пользователь " + myUser.getName() + ":");
             boolean nextRun = true;
             while (nextRun) {
                 switch (menuUser()) {
@@ -61,10 +72,13 @@ public class UserItemConsole {
                         actionConsole.makeBet();
                         break;
                     case 7:
-                        actionConsole.changeUserData();
+                        userPurchase.show();
                         break;
                     case 8:
-                        authorizedUserController.setUser(null);
+                        actionConsole.changeUserData();
+                        break;
+                    case 9:
+                        myUser = null;
                         nextRun = false;
                         break;
                     default:
@@ -82,7 +96,7 @@ public class UserItemConsole {
         String name = scanner.next();
         System.out.println("Введите пароль:");
         String password = scanner.next();
-        authorizedUserController.connectToUser(name, password);
+        myUser = authorizedUserController.connectToUser(name, password);
     }
 
     private int menuUser() {
@@ -94,8 +108,9 @@ public class UserItemConsole {
         System.out.println("4) Посмотреть список всех ставок по товару");
         System.out.println("5) Добавить товар");
         System.out.println("6) Сделать ставку");
-        System.out.println("7) Ввести свои новые данные");
-        System.out.println("8) Выход");
+        System.out.println("7) Мои покупки");
+        System.out.println("8) Ввести свои новые данные");
+        System.out.println("9) Выход");
         return scanner.nextInt();
     }
 }

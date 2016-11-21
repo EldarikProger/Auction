@@ -3,6 +3,7 @@ package com.egar.auction.view.console.itemConsole;
 import com.egar.auction.controllers.userControllers.AdminController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
+import com.egar.auction.model.Admin;
 import com.egar.auction.view.console.actionConsole.AdminActionConsole;
 
 import java.util.Scanner;
@@ -10,35 +11,37 @@ import java.util.Scanner;
 /**
  * AdminItemConsole is the admin presentation
  *
- * @version 1.1
  * @author Eldar Ziatdinov
+ * @version 1.1
  */
 public class AdminItemConsole {
 
     private Scanner scanner;
     private AdminController adminController;
     private AdminActionConsole actionConsole;
+    private Admin myAdmin;
 
     /**
      * Create item and action console for admin
      *
      * @param adminController manage controller for admin
-     * @param scanner to input data
+     * @param scanner         to input data
      */
     public AdminItemConsole(AdminController adminController, Scanner scanner) {
         this.scanner = scanner;
         this.adminController = adminController;
-        actionConsole = new AdminActionConsole(adminController, scanner);
+        actionConsole = new AdminActionConsole(adminController, scanner, null);
     }
 
     /**
      * Method show view admin item console
      */
-    public void show(){
+    public void show() {
         try {
             connect();
+            actionConsole.setMyAdmin(myAdmin);
             System.out.println();
-            System.out.println("Администратор " + adminController.getAdmin().getName() + ":");
+            System.out.println("Администратор " + myAdmin.getName() + ":");
             boolean nextRun = true;
             while (nextRun) {
                 switch (menuAdmin()) {
@@ -61,7 +64,7 @@ public class AdminItemConsole {
                         actionConsole.changeAdminData();
                         break;
                     case 7:
-                        adminController.setAdmin(null);
+                        myAdmin = null;
                         nextRun = false;
                         break;
                     default:
@@ -79,7 +82,7 @@ public class AdminItemConsole {
         String name = scanner.next();
         System.out.println("Введите пароль:");
         String password = scanner.next();
-        adminController.connectToAdmin(name, password);
+        myAdmin = adminController.connectToAdmin(name, password);
     }
 
     private int menuAdmin() {

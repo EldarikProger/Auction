@@ -15,17 +15,31 @@ public class PurchaseController {
 
     private AuctionDatabase database;
 
+    public PurchaseController(AuctionDatabase database) {
+        this.database = database;
+    }
+
     public List<Purchase> getTheGoodsPurchased(AuthorizedUser user) {//check may be crate SaleController?
         List<Bid> list;
         for (Good good : database.getAllGoods()) {
-            list = winBidsByGood(good); //все выигрышные ставки по товару
-            for (Bid bid : list) {
-                if (bid.getBuyer().equals(user)) {
-                    database.getPurchases().add(new Purchase(user, good, null, bid));//check list goods
+            if(good.isGoodSold()) { //если овар продан
+                list = winBidsByGood(good); //все выигрышные ставки по товару
+                for (Bid bid : list) {
+                    if (bid.getBuyer().equals(user) && !betIsPurchases(bid)) {
+                        database.getPurchases().add(new Purchase(user, good, null, bid));//check list goods
+                    }
                 }
             }
         }
         return database.getPurchases();
+    }
+
+    private boolean betIsPurchases(Bid myBet) { //ставка отслеживается как покупка
+        for (Purchase purchase : database.getPurchases()) {
+            if (purchase.getBidByGood().equals(myBet))
+                return true;
+        }
+        return false;
     }
 
     private List<Bid> winBidsByGood(Good good) {
@@ -33,8 +47,8 @@ public class PurchaseController {
 
         for (Bid bid : database.getAllBids()) { //все ставки по данному товару
             if (bid.getGood().equals(good)) {
+                list.add(bid);
             }
-            list.add(bid);
         }
 
         Collections.sort(list, new Comparator<Bid>() { //сортировка листа
@@ -58,10 +72,10 @@ public class PurchaseController {
     }
 
     public String getCommonPriceByGood(AuthorizedUser user) {
-        StringBuffer price = new StringBuffer();
+        StringBuilder price = new StringBuilder();
         double sum = 0;
         for (Purchase purchase : database.getPurchases()) {
-            if (purchase.getBuyer().equals(user)) {
+            if (!purchase.isDelivered() && purchase.getBuyer().equals(user)) {
                 price.append("(");
                 price.append(purchase.getGood().getCount());
                 price.append("*");
@@ -72,10 +86,17 @@ public class PurchaseController {
                 sum += purchase.getGood().getCount() * purchase.getBidByGood().getPrice() + purchase.getPriceDelivery();
             }
         }
-        if(!price.toString().equals(""))
-            price.deleteCharAt(price.length()-1);
-        price.append("=");
-        price.append(sum);
-        return price.toString();
+        if (!price.toString().equals("")) {
+            price.deleteCharAt(price.length() - 1);
+            price.append("=");
+            price.append(sum);
+            return price.toString();
+        } else {
+            return "У вас нет покупок!";
+        }
+    }
+
+    public void setDeliveryServiceToPurchase(Purchase purchase, DeliveryService deliveryService){
+        purchase.setService(deliveryService);
     }
 }

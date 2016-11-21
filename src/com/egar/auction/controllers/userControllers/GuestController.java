@@ -1,5 +1,6 @@
 package com.egar.auction.controllers.userControllers;
 
+import com.egar.auction.model.User;
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.model.Bid;
 import com.egar.auction.model.Category;

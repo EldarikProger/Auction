@@ -49,10 +49,10 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html" title="class in com.egar.auction.controllers"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../com/egar/auction/purchaseController/ControlAuthorizedUser.html" title="class in com.egar.auction.controllers"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../index.html?com/egar/auction/controller/ControlAdmin.html" target="_top">Frames</a></li>
+<li><a href="../../../../index.html?com/egar/auction/purchaseController/ControlAdmin.html" target="_top">Frames</a></li>
 <li><a href="ControlAdmin.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_top">
@@ -108,13 +108,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../com/egar/auction/controller/Controller.html" title="interface in com.egar.auction.controllers">Controller</a>, <a href="../../../../com/egar/auction/controller/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></dd>
+<dd><a href="../../../../com/egar/auction/purchaseController/Controller.html" title="interface in com.egar.auction.controllers">Controller</a>, <a href="../../../../com/egar/auction/purchaseController/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">ControlAdmin</span>
 extends java.lang.Object
-implements <a href="../../../../com/egar/auction/controller/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></pre>
+implements <a href="../../../../com/egar/auction/purchaseController/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></pre>
 <div class="block">Class describe management admin</div>
 <dl>
 <dt><span class="simpleTagLabel">Version:</span></dt>
@@ -140,8 +140,8 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#ControlAdmin-com.egar.auction.storage.AuctionDatabase-">ControlAdmin</a></span>(<a href="../../../../com/egar/auction/storage/AuctionDatabase.html" title="class in com.egar.auction.storage">AuctionDatabase</a>&nbsp;database)</code>
-<div class="block">Create admin controller</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#ControlAdmin-com.egar.auction.storage.AuctionDatabase-">ControlAdmin</a></span>(<a href="../../../../com/egar/auction/storage/AuctionDatabase.html" title="class in com.egar.auction.storage">AuctionDatabase</a>&nbsp;database)</code>
+<div class="block">Create admin purchaseController</div>
 </td>
 </tr>
 </table>
@@ -161,57 +161,57 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#changeAdminData-java.lang.String-java.lang.String-">changeAdminData</a></span>(java.lang.String&nbsp;name,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#changeAdminData-java.lang.String-java.lang.String-">changeAdminData</a></span>(java.lang.String&nbsp;name,
                java.lang.String&nbsp;password)</code>
 <div class="block">Method change admin name and password</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#connectToAdmin-java.lang.String-java.lang.String-">connectToAdmin</a></span>(java.lang.String&nbsp;name,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#connectToAdmin-java.lang.String-java.lang.String-">connectToAdmin</a></span>(java.lang.String&nbsp;name,
               java.lang.String&nbsp;password)</code>
-<div class="block">Method sets the admin to controller.</div>
+<div class="block">Method sets the admin to purchaseController.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/egar/auction/model/Admin.html" title="class in com.egar.auction.model">Admin</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#getAdmin--">getAdmin</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#getAdmin--">getAdmin</a></span>()</code>
 <div class="block">Establishes to the reference admin a new object Admin</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/egar/auction/model/AuthorizedUserStatistics.html" title="class in com.egar.auction.model">AuthorizedUserStatistics</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#getUserStatistics--">getUserStatistics</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#getUserStatistics--">getUserStatistics</a></span>()</code>
 <div class="block">Method return number buyer goods and bid (all statistics bu buyer)</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#setAdmin-com.egar.auction.model.Admin-">setAdmin</a></span>(<a href="../../../../com/egar/auction/model/Admin.html" title="class in com.egar.auction.model">Admin</a>&nbsp;admin)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#setAdmin-com.egar.auction.model.Admin-">setAdmin</a></span>(<a href="../../../../com/egar/auction/model/Admin.html" title="class in com.egar.auction.model">Admin</a>&nbsp;admin)</code>
 <div class="block">Returns the reference ControlAdmin to the admin</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/egar/auction/model/Bid.html" title="class in com.egar.auction.model">Bid</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#viewAllBidsByGood-com.egar.auction.model.Good-">viewAllBidsByGood</a></span>(<a href="../../../../com/egar/auction/model/Good.html" title="class in com.egar.auction.model">Good</a>&nbsp;good)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#viewAllBidsByGood-com.egar.auction.model.Good-">viewAllBidsByGood</a></span>(<a href="../../../../com/egar/auction/model/Good.html" title="class in com.egar.auction.model">Good</a>&nbsp;good)</code>
 <div class="block">Method return list all bets by good</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../../com/egar/auction/model/Good.html" title="class in com.egar.auction.model">Good</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#viewAllGoodsByCategory-com.egar.auction.model.Category-">viewAllGoodsByCategory</a></span>(<a href="../../../../com/egar/auction/model/Category.html" title="enum in com.egar.auction.model">Category</a>&nbsp;category)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#viewAllGoodsByCategory-com.egar.auction.model.Category-">viewAllGoodsByCategory</a></span>(<a href="../../../../com/egar/auction/model/Category.html" title="enum in com.egar.auction.model">Category</a>&nbsp;category)</code>
 <div class="block">Return list all goods by category</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.List</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#viewListAdmins--">viewListAdmins</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#viewListAdmins--">viewListAdmins</a></span>()</code>
 <div class="block">Method return list all Admins</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.List</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/controller/ControlAdmin.html#viewListUsers--">viewListUsers</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/egar/auction/purchaseController/ControlAdmin.html#viewListUsers--">viewListUsers</a></span>()</code>
 <div class="block">Method return list all AuthorizedUsers</div>
 </td>
 </tr>
@@ -244,7 +244,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <li class="blockList">
 <h4>ControlAdmin</h4>
 <pre>public&nbsp;ControlAdmin(<a href="../../../../com/egar/auction/storage/AuctionDatabase.html" title="class in com.egar.auction.storage">AuctionDatabase</a>&nbsp;database)</pre>
-<div class="block">Create admin controller</div>
+<div class="block">Create admin purchaseController</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>database</code> - storage</dd>
@@ -269,7 +269,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
                            java.lang.String&nbsp;password)
                     throws <a href="../../../../com/egar/auction/exceptions/UserNotFoundException.html" title="class in com.egar.auction.exceptions">UserNotFoundException</a>,
                            <a href="../../../../com/egar/auction/exceptions/UserException.html" title="class in com.egar.auction.exceptions">UserException</a></pre>
-<div class="block">Method sets the admin to controller. ControlAdmin will manage the admin.</div>
+<div class="block">Method sets the admin to purchaseController. ControlAdmin will manage the admin.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>name</code> - buyer name</dd>
@@ -290,7 +290,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Returns the reference ControlAdmin to the admin</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>admin</code> - buyer which manage controller</dd>
+<dd><code>admin</code> - buyer which manage purchaseController</dd>
 </dl>
 </li>
 </ul>
@@ -304,7 +304,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Establishes to the reference admin a new object Admin</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>buyer which manage controller</dd>
+<dd>buyer which manage purchaseController</dd>
 </dl>
 </li>
 </ul>
@@ -362,7 +362,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Return list all goods by category</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../com/egar/auction/controller/UsersController.html#viewAllGoodsByCategory-com.egar.auction.model.Category-">viewAllGoodsByCategory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/egar/auction/controller/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></code></dd>
+<dd><code><a href="../../../../com/egar/auction/purchaseController/UsersController.html#viewAllGoodsByCategory-com.egar.auction.model.Category-">viewAllGoodsByCategory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/egar/auction/purchaseController/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>category</code> - category good at which selecting</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -380,7 +380,7 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="block">Method return list all bets by good</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../com/egar/auction/controller/UsersController.html#viewAllBidsByGood-com.egar.auction.model.Good-">viewAllBidsByGood</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/egar/auction/controller/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></code></dd>
+<dd><code><a href="../../../../com/egar/auction/purchaseController/UsersController.html#viewAllBidsByGood-com.egar.auction.model.Good-">viewAllBidsByGood</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/egar/auction/purchaseController/UsersController.html" title="interface in com.egar.auction.controllers">UsersController</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>good</code> - good at which selecting</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -430,10 +430,10 @@ implements <a href="../../../../com/egar/auction/controller/UsersController.html
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../com/egar/auction/controller/ControlAuthorizedUser.html" title="class in com.egar.auction.controllers"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../com/egar/auction/purchaseController/ControlAuthorizedUser.html" title="class in com.egar.auction.controllers"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../index.html?com/egar/auction/controller/ControlAdmin.html" target="_top">Frames</a></li>
+<li><a href="../../../../index.html?com/egar/auction/purchaseController/ControlAdmin.html" target="_top">Frames</a></li>
 <li><a href="ControlAdmin.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">

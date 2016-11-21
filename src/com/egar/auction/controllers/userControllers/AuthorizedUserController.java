@@ -15,7 +15,6 @@ import java.util.*;
  */
 public class AuthorizedUserController implements UsersController {
 
-    private AuthorizedUser user;
     private AuctionDatabase database;
     private long idGood = 0;
     private long idBid = 0;
@@ -30,14 +29,15 @@ public class AuthorizedUserController implements UsersController {
     }
 
     /**
-     * Method sets the user to controllers. AuthorizedUserController will manage the user.
+     * Method get the user from controllers to clients.
      *
      * @param name     user name
      * @param password user password
      * @throws UserNotFoundException exception if user not found
      * @throws UserException         exception if admins are not
      */
-    public void connectToUser(String name, String password) throws UserNotFoundException, UserException {
+    public AuthorizedUser connectToUser(String name, String password) throws UserNotFoundException, UserException {
+        AuthorizedUser user = null;
         if (database.getAuthorizedUsers().size() == 0)
             throw new UserException("Пользователей не существует!");
         for (AuthorizedUser a : database.getAuthorizedUsers()) {
@@ -46,24 +46,7 @@ public class AuthorizedUserController implements UsersController {
         }
         if (user == null)
             throw new UserNotFoundException();
-    }
-
-    /**
-     * Returns the reference AuthorizedUserController to the user
-     *
-     * @return user which manage controllers
-     */
-    public AuthorizedUser getUser() {
         return user;
-    }
-
-    /**
-     * Establishes to the reference user a new object AuthorizedUser
-     *
-     * @param user user which manage controllers
-     */
-    public void setUser(AuthorizedUser user) {
-        this.user = user;
     }
 
     /**
@@ -78,8 +61,8 @@ public class AuthorizedUserController implements UsersController {
     public void addGood(Category category, String name, String description, double minPrice, int count, int day, int hour,
                         double maxPrice, AuthorizedUser owner, double weight, double length, double width, double height) {
         Calendar endDate = new GregorianCalendar();
-        endDate.add(Calendar.DAY_OF_YEAR,day);
-        endDate.add(Calendar.HOUR_OF_DAY,hour);
+        endDate.add(Calendar.DAY_OF_YEAR, day);
+        endDate.add(Calendar.HOUR_OF_DAY, hour);
         Good good = new Good(idGood++, category, name, description, minPrice, count, maxPrice, owner, weight, length, width, height);
         good.setEndDateLot(endDate.getTime());
         database.addGood(good);
@@ -91,7 +74,7 @@ public class AuthorizedUserController implements UsersController {
      * @param price price which put to user bid
      * @param good  good which put to user bid
      */
-    public void makeBet(double price, Good good) {
+    public void makeBet(double price, Good good, AuthorizedUser user) {
         Bid bid = new Bid(good, price, user, ++idBid);
         database.addBid(bid);
     }
@@ -102,7 +85,7 @@ public class AuthorizedUserController implements UsersController {
      * @param name     user name
      * @param password user password
      */
-    public void changeUserData(String name, String password) {
+    public void changeUserData(String name, String password, AuthorizedUser user) {
         user.setName(name);
         user.setPassword(password);
     }
@@ -112,7 +95,7 @@ public class AuthorizedUserController implements UsersController {
      *
      * @return list goods
      */
-    public List<Good> listUserGoods() {
+    public List<Good> listUserGoods(AuthorizedUser user) {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
             if (user.equals(good.getOwner()))
@@ -142,7 +125,7 @@ public class AuthorizedUserController implements UsersController {
      *
      * @return list bids
      */
-    public List<Bid> listUserBids() {
+    public List<Bid> listUserBids(AuthorizedUser user) {
         List<Bid> list = new ArrayList<>();
         for (Bid bid : database.getAllBids()) {
             if (user.equals(bid.getBuyer()))
@@ -174,12 +157,6 @@ public class AuthorizedUserController implements UsersController {
      */
     public List<Category> getListCategory() {
         return database.getCategories();
-    }
-
-
-    public HashMap listServiceAndPrice(){
-        HashMap list = new HashMap<>();
-        return list;
     }
 
 }

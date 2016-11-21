@@ -13,30 +13,60 @@ public class Purchase {
     private Good good;
     private DeliveryService service;
     private double priceDelivery;
+    private boolean isDelivered = false;
 
     /**
-     * @param user buyer which belongs this object
-     * @param good good which user win
+     * @param user    buyer which belongs this object
+     * @param good    good which user win
      * @param service service by which delivery good
-     * @param bid bet by good
+     * @param bid     bet by good
      */
-    public Purchase(AuthorizedUser user, Good good, DeliveryService service,Bid bid) {
+    public Purchase(AuthorizedUser user, Good good, DeliveryService service, Bid bid) {
         this.buyer = user;
         this.good = good;
         this.service = service;
         this.bidByGood = bid;
     }
 
+    /**
+     * Return boolean isDelivered
+     *
+     * @return boolean isDelivered
+     */
+    public boolean isDelivered() {
+        return isDelivered;
+    }
+
+    /**
+     * Put isDelivered
+     *
+     * @param delivered boolean isDelivered
+     */
+    public void setBoolIsDelivered(boolean delivered) {
+        isDelivered = delivered;
+    }
+
+    /**
+     * Return price delivery
+     *
+     * @return price
+     */
     public double getPriceDelivery() {
         return priceDelivery;
     }
 
+    /**
+     * Put price
+     *
+     * @param priceDelivery
+     */
     public void setPriceDelivery(double priceDelivery) {
         this.priceDelivery = priceDelivery;
     }
 
     /**
      * Return bet which made by good
+     *
      * @return bid
      */
     public Bid getBidByGood() {
@@ -45,6 +75,7 @@ public class Purchase {
 
     /**
      * Put bid by good
+     *
      * @param bidByGood bet by good
      */
     public void setBidByGood(Bid bidByGood) {

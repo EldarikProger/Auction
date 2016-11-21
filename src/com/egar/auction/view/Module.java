@@ -1,10 +1,14 @@
 package com.egar.auction.view;
 
+import com.egar.auction.controllers.DeliveryServiceController;
+import com.egar.auction.controllers.PurchaseController;
 import com.egar.auction.controllers.userControllers.AdminController;
 import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.controllers.DatabaseController;
 import com.egar.auction.controllers.userControllers.GuestController;
 import com.egar.auction.model.Category;
+import com.egar.auction.model.DeliveryService;
+import com.egar.auction.model.Purchase;
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.MainConsole;
 
@@ -56,11 +60,23 @@ public class Module {
             storage.addCategory(category);
         }
 
+        {
+            DeliveryService service = new DeliveryService(10,12,25,100,60,0.5,2);
+            storage.addDeliveryService(service);
+            service = new DeliveryService(2,30,40,120,100,0.4,4);
+            storage.addDeliveryService(service);
+            service = new DeliveryService(22,22,50,200,50,0.2,5);
+            storage.addDeliveryService(service);
+        }
+
         GuestController guestController = new GuestController(storage);
         DatabaseController databaseController = new DatabaseController(storage);
         AuthorizedUserController authorizedUserController = new AuthorizedUserController(storage);
         AdminController adminController = new AdminController(storage);
-        new MainConsole(adminController, authorizedUserController, databaseController, guestController).show();
+        PurchaseController purchaseController = new PurchaseController(storage);
+        DeliveryServiceController deliveryServiceController = new DeliveryServiceController(storage);
+        new MainConsole(adminController, authorizedUserController, databaseController,
+                guestController, purchaseController,deliveryServiceController).show();
     }
 
 

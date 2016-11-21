@@ -1,6 +1,8 @@
 package com.egar.auction.view.console;
 
 import com.egar.auction.controllers.DatabaseController;
+import com.egar.auction.controllers.DeliveryServiceController;
+import com.egar.auction.controllers.PurchaseController;
 import com.egar.auction.controllers.userControllers.AdminController;
 import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.controllers.userControllers.GuestController;
@@ -15,8 +17,8 @@ import java.util.Scanner;
 /**
  * MainConsole is the common user presentation
  *
- * @version 1.1
  * @author Eldar Ziatdinov
+ * @version 1.1
  */
 public class MainConsole {
 
@@ -30,15 +32,18 @@ public class MainConsole {
     /**
      * Create and show ConsoleView
      *
+     * @param purchaseController       UserController
      * @param adminController          UserController
      * @param authorizedUserController UserController
      * @param databaseController       Controller
      * @param guestController          UserController
      */
-    public MainConsole(AdminController adminController, AuthorizedUserController authorizedUserController, DatabaseController databaseController, GuestController guestController) {
+    public MainConsole(AdminController adminController, AuthorizedUserController authorizedUserController,
+                       DatabaseController databaseController, GuestController guestController, PurchaseController purchaseController,
+                       DeliveryServiceController deliveryServiceController) {
         scanner = new Scanner(System.in);
         adminItemConsole = new AdminItemConsole(adminController, scanner);
-        userItemConsole = new UserItemConsole(authorizedUserController, scanner);
+        userItemConsole = new UserItemConsole(authorizedUserController, scanner, purchaseController, deliveryServiceController);
         consoleCreateUser = new ActionConsoleCreateUser(databaseController, scanner);
         consoleDeleteUser = new ActionConsoleDeleteUser(databaseController, scanner);
         guestItemConsole = new GuestItemConsole(guestController, scanner);
