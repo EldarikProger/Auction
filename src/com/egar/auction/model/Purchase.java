@@ -12,6 +12,7 @@ public class Purchase {
     private Bid bidByGood;
     private Good good;
     private DeliveryService service;
+    private double priceDelivery;
 
     /**
      * @param user buyer which belongs this object
@@ -24,6 +25,14 @@ public class Purchase {
         this.good = good;
         this.service = service;
         this.bidByGood = bid;
+    }
+
+    public double getPriceDelivery() {
+        return priceDelivery;
+    }
+
+    public void setPriceDelivery(double priceDelivery) {
+        this.priceDelivery = priceDelivery;
     }
 
     /**

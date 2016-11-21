@@ -1,9 +1,6 @@
 package com.egar.auction.controllers;
 
-import com.egar.auction.model.AuthorizedUser;
-import com.egar.auction.model.Bid;
-import com.egar.auction.model.Good;
-import com.egar.auction.model.Purchase;
+import com.egar.auction.model.*;
 import com.egar.auction.storage.AuctionDatabase;
 
 import java.util.*;
@@ -16,56 +13,69 @@ import java.util.*;
  */
 public class PurchaseController {
 
-    private AuthorizedUser user;
     private AuctionDatabase database;
 
-    public List<Purchase> getTheGoodsPurchased() {//check may be crate SaleController?
+    public List<Purchase> getTheGoodsPurchased(AuthorizedUser user) {//check may be crate SaleController?
         List<Bid> list;
-        List<Purchase> purchaseList = new ArrayList<>();
-
         for (Good good : database.getAllGoods()) {
-            list = winBidsByGood(good);
-            for(Bid bid : list){
-                if(bid.getBuyer().equals(user)){
-                    purchaseList.add(new Purchase(user,good,null));//check list goods
+            list = winBidsByGood(good); //все выигрышные ставки по товару
+            for (Bid bid : list) {
+                if (bid.getBuyer().equals(user)) {
+                    database.getPurchases().add(new Purchase(user, good, null, bid));//check list goods
                 }
             }
         }
-        return null;
+        return database.getPurchases();
     }
 
     private List<Bid> winBidsByGood(Good good) {
         List<Bid> list = new ArrayList<>();
 
-        for (Bid bid : database.getAllBids()) {
-            if(bid.getGood().equals(good)){
-                list.add(bid);
+        for (Bid bid : database.getAllBids()) { //все ставки по данному товару
+            if (bid.getGood().equals(good)) {
             }
+            list.add(bid);
         }
 
-        Collections.sort(list, new Comparator<Bid>() {
+        Collections.sort(list, new Comparator<Bid>() { //сортировка листа
             @Override
             public int compare(Bid o1, Bid o2) {
-                if(o1.getPrice()<=o2.getPrice())
-                    return 1;
-                else
+                if (o1.getPrice() <= o2.getPrice())
                     return -1;
+                else
+                    return 1;
             }
         });
-
-        for (int i = 0,count = good.getCount(); i< list.size(); i++ , count--){
-            if(count>0) {
-                continue;
-            }
-            else{
-                list.remove(i);
-            }
+        List<Bid> list1 = new ArrayList<>();
+        int count = good.getCount() - 1;
+        if (good.getCount() >= list.size())
+            count = list.size() - 1;
+        for (; count >= 0; count--) {
+            list1.add(list.get(count));
         }
 
-        return list;
+        return list1;
     }
 
-    public String getCommonPriceByGood() {
-        return "";
+    public String getCommonPriceByGood(AuthorizedUser user) {
+        StringBuffer price = new StringBuffer();
+        double sum = 0;
+        for (Purchase purchase : database.getPurchases()) {
+            if (purchase.getBuyer().equals(user)) {
+                price.append("(");
+                price.append(purchase.getGood().getCount());
+                price.append("*");
+                price.append(purchase.getBidByGood().getPrice());
+                price.append("+");
+                price.append(purchase.getPriceDelivery());
+                price.append(")+");
+                sum += purchase.getGood().getCount() * purchase.getBidByGood().getPrice() + purchase.getPriceDelivery();
+            }
+        }
+        if(!price.toString().equals(""))
+            price.deleteCharAt(price.length()-1);
+        price.append("=");
+        price.append(sum);
+        return price.toString();
     }
 }

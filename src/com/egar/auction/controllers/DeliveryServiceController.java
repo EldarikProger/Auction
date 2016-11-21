@@ -4,6 +4,7 @@ import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.AuthorizedUser;
 import com.egar.auction.model.DeliveryService;
 import com.egar.auction.model.Good;
+import com.egar.auction.storage.AuctionDatabase;
 
 /**
  * Class describe management service
@@ -37,7 +38,7 @@ public class DeliveryServiceController implements Controller {
      * @param good Good which need delivery
      * @return price delivery good
      */
-    private double getPriceForDelivery(Good good, AuthorizedUser buyer) throws UserException {
+    public double getPriceForDelivery(Good good, AuthorizedUser buyer) throws UserException {
         double distance = DistanceController.distance(good.getOwner(),buyer);
         if(distance<service.getMinDistance())
             throw new UserException("Сервис не работает на таких расстояниях между покупателем и продавцом!");

@@ -5,8 +5,7 @@ import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.*;
 import com.egar.auction.storage.AuctionDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Class describe management user
@@ -76,9 +75,13 @@ public class AuthorizedUserController implements UsersController {
      * @param minPrice    min price addition good
      * @param maxPrice    max price addition good
      */
-    public void addGood(Category category, String name, String description, double minPrice, int count,
+    public void addGood(Category category, String name, String description, double minPrice, int count, int day, int hour,
                         double maxPrice, AuthorizedUser owner, double weight, double length, double width, double height) {
+        Calendar endDate = new GregorianCalendar();
+        endDate.add(Calendar.DAY_OF_YEAR,day);
+        endDate.add(Calendar.HOUR_OF_DAY,hour);
         Good good = new Good(idGood++, category, name, description, minPrice, count, maxPrice, owner, weight, length, width, height);
+        good.setEndDateLot(endDate.getTime());
         database.addGood(good);
     }
 
@@ -171,6 +174,12 @@ public class AuthorizedUserController implements UsersController {
      */
     public List<Category> getListCategory() {
         return database.getCategories();
+    }
+
+
+    public HashMap listServiceAndPrice(){
+        HashMap list = new HashMap<>();
+        return list;
     }
 
 }

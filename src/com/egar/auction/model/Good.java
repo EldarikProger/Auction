@@ -1,5 +1,7 @@
 package com.egar.auction.model;
 
+import java.util.Date;
+
 /**
  * Class describe good and it data
  *
@@ -21,6 +23,8 @@ public class Good {
     private int count;
 
     private boolean goodSold;
+
+    private Date endDateLot;
 
     /**
      * Create lot
@@ -53,6 +57,22 @@ public class Good {
         this.height = height;
         this.goodSold = false;
         this.count = count;
+    }
+
+    /**
+     * Return end date
+     * @return Date endTimer
+     */
+    public Date getEndDateLot() {
+        return endDateLot;
+    }
+
+    /**
+     * Put end date lot
+     * @param endDateLot end date
+     */
+    public void setEndDateLot(Date endDateLot) {
+        this.endDateLot = endDateLot;
     }
 
     /**
