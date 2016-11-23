@@ -92,9 +92,10 @@ public class UserActionConsole {
         double minPrice = scanner.nextDouble();
         System.out.println("Введите max цену: ");
         double maxPrice = scanner.nextDouble();
-        System.out.println("Сколько дней, часов длится аукцион для товара: ");
+        System.out.println("Сколько дней, часов, минут длится аукцион для товара: ");
         int day = scanner.nextInt();
         int hour = scanner.nextInt();
+        int minutes = scanner.nextInt();
         System.out.println("Введите длину, ширину, высоту товара: ");
         double length = scanner.nextDouble();
         double width = scanner.nextDouble();
@@ -105,7 +106,7 @@ public class UserActionConsole {
         int count = scanner.nextInt();
         try {
             Category category = selectCategory();
-            authorizedUserController.addGood(category, nameGood, description, minPrice, count, day, hour, maxPrice,
+            authorizedUserController.addGood(category, nameGood, description, minPrice, count, day, hour, minutes, maxPrice,
                      myUser, weight, length, width, height);
             System.out.println("Товар добавлен!");
         } catch (UserException e) {
