@@ -6,11 +6,11 @@ import com.egar.auction.controllers.userControllers.AdminController;
 import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.controllers.DatabaseController;
 import com.egar.auction.controllers.userControllers.GuestController;
-import com.egar.auction.model.Category;
-import com.egar.auction.model.DeliveryService;
-import com.egar.auction.model.Purchase;
+import com.egar.auction.model.*;
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.MainConsole;
+
+import java.util.Date;
 
 /**
  * Class Module create database and all controllers.
@@ -69,12 +69,29 @@ public class Module {
             storage.addDeliveryService(service);
         }
 
+
+
+
         GuestController guestController = new GuestController(storage);
         DatabaseController databaseController = new DatabaseController(storage);
         AuthorizedUserController authorizedUserController = new AuthorizedUserController(storage);
         AdminController adminController = new AdminController(storage);
         PurchaseController purchaseController = new PurchaseController(storage);
         DeliveryServiceController deliveryServiceController = new DeliveryServiceController(storage);
+
+        //тест
+        AuthorizedUser user = new AuthorizedUser("q","1",22);
+        storage.addAuthorizedUser(user);
+        authorizedUserController.addGood(storage.getCategories().get(0),"qw","qw",1,2,0,0,1,200,user,10,2,3,4);
+
+        System.out.println(storage.getAllGoods().get(0).isGoodSold());
+        try {
+            Thread.sleep(65000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(storage.getAllGoods().get(0).isGoodSold());
+
         new MainConsole(adminController, authorizedUserController, databaseController,
                 guestController, purchaseController,deliveryServiceController).show();
     }
