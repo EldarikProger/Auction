@@ -19,19 +19,27 @@ public class PurchaseController {
         this.database = database;
     }
 
-    public List<Purchase> getTheGoodsPurchased(AuthorizedUser user) {//check may be crate SaleController?
+    public List<Purchase> getTheGoodsPurchased(AuthorizedUser user) {
         List<Bid> list;
-        for (Good good : database.getAllGoods()) {
-            if(good.isGoodSold()) { //если овар продан
+        for (Good good : database.getAllGoods()) { //идем по всем товарам
+            if (good.isGoodSold()) { //если товар продан
                 list = winBidsByGood(good); //все выигрышные ставки по товару
-                for (Bid bid : list) {
-                    if (bid.getBuyer().equals(user) && !betIsPurchases(bid)) {
-                        database.getPurchases().add(new Purchase(user, good, null, bid));//check list goods
+                for (Bid bid : list) { //идем по выйигрышным ставкам
+                    boolean a = bid.getBuyer().equals(user);
+                    boolean b = !betIsPurchases(bid); //если ставка не отслеживается как покупка
+                    if (a && b) {
+                        database.getPurchases().add(new Purchase(user, good, null, bid));//добавляем в покупки
                     }
                 }
             }
         }
-        return database.getPurchases();
+
+        List<Purchase> purchaseList = new ArrayList<>();
+        for (Purchase purchase : database.getPurchases()){
+            if (purchase.getBuyer().equals(user))
+                purchaseList.add(purchase);
+        }
+        return purchaseList;
     }
 
     private boolean betIsPurchases(Bid myBet) { //ставка отслеживается как покупка
@@ -54,17 +62,18 @@ public class PurchaseController {
         Collections.sort(list, new Comparator<Bid>() { //сортировка листа
             @Override
             public int compare(Bid o1, Bid o2) {
-                if (o1.getPrice() <= o2.getPrice())
-                    return -1;
-                else
+                if (o1.getPrice() < o2.getPrice())
                     return 1;
+                else
+                    return -1;
             }
         });
         List<Bid> list1 = new ArrayList<>();
-        int count = good.getCount() - 1;
+
         if (good.getCount() >= list.size())
-            count = list.size() - 1;
-        for (; count >= 0; count--) {
+            return list;
+
+        for (int count = 0; count < good.getCount(); count++) {
             list1.add(list.get(count));
         }
 
@@ -77,7 +86,7 @@ public class PurchaseController {
         for (Purchase purchase : database.getPurchases()) {
             if (!purchase.isDelivered() && purchase.getBuyer().equals(user)) {
                 price.append("(");
-                price.append(purchase.getGood().getCount());
+                price.append("1");
                 price.append("*");
                 price.append(purchase.getBidByGood().getPrice());
                 price.append("+");
@@ -96,7 +105,8 @@ public class PurchaseController {
         }
     }
 
-    public void setDeliveryServiceToPurchase(Purchase purchase, DeliveryService deliveryService){
+    public void setDeliveryServiceToPurchase(Purchase purchase, DeliveryService deliveryService, double price) {
         purchase.setService(deliveryService);
+        purchase.setPriceDelivery(price);
     }
 }

@@ -6,6 +6,8 @@ import com.egar.auction.model.Admin;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,7 +19,7 @@ import java.util.Scanner;
  */
 public class AdminActionConsole {
 
-    private Scanner scanner;
+    private BufferedReader br;
     private AdminController adminController;
     private Admin myAdmin;
 
@@ -25,11 +27,11 @@ public class AdminActionConsole {
      * Create AdminActionConsole for presentation it actions
      * @param admin user which sing in
      * @param adminController controller for manage
-     * @param scanner to input data
+     * @param br to input data
      */
-    public AdminActionConsole(AdminController adminController, Scanner scanner, Admin admin) {
+    public AdminActionConsole(AdminController adminController, BufferedReader br, Admin admin) {
         this.adminController = adminController;
-        this.scanner = scanner;
+        this.br = br;
         this.myAdmin = admin;
     }
 
@@ -89,12 +91,12 @@ public class AdminActionConsole {
     /**
      * Method change data users
      */
-    public void changeAdminData(){
+    public void changeAdminData() throws IOException {
         System.out.println();
         System.out.println("Введите имя:");
-        String name = scanner.next();
+        String name = br.readLine();
         System.out.println("Введите пароль:");
-        String password = scanner.next();
+        String password = br.readLine();
         adminController.changeAdminData(name, password, myAdmin);
     }
 
@@ -106,7 +108,15 @@ public class AdminActionConsole {
         for (Category c : list) {
             System.out.println((i++) + ") " + c.getName());
         }
-        int j = scanner.nextInt();
+        int j;
+        while (true) {
+            try {
+                j = Integer.parseInt(br.readLine());
+                break;
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Вы ввели не число, введите число заново");
+            }
+        }
         if (j <= 0 || j > list.size())
             throw new UserException("Вы выбрали не существующую категорию!");
         return list.get(j-1);
@@ -120,7 +130,15 @@ public class AdminActionConsole {
             for (Good c : list) {
                 System.out.println((i++) + ") " + c.toString());
             }
-            int j = scanner.nextInt();
+            int j;
+            while (true) {
+                try {
+                    j = Integer.parseInt(br.readLine());
+                    break;
+                } catch (IOException | NumberFormatException e) {
+                    System.out.println("Вы ввели не число, введите число заново");
+                }
+            }
             if (j <= 0 || j > list.size())
                 throw new UserException("Вы выбрали не существующую товар!");
             return list.get(j - 1);

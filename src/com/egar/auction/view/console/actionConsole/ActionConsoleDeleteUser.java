@@ -2,6 +2,8 @@ package com.egar.auction.view.console.actionConsole;
 
 import com.egar.auction.controllers.DatabaseController;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -12,29 +14,29 @@ import java.util.Scanner;
  */
 public class ActionConsoleDeleteUser {
 
-    private Scanner scanner;
+    private BufferedReader br;
     private DatabaseController databaseController;
 
     /**
      * Create action console
      *
      * @param databaseController controller for delete users
-     * @param scanner to input data
+     * @param br to input data
      */
-    public ActionConsoleDeleteUser(DatabaseController databaseController, Scanner scanner) {
-        this.scanner = scanner;
+    public ActionConsoleDeleteUser(DatabaseController databaseController, BufferedReader br) {
+        this.br = br;
         this.databaseController = databaseController;
     }
 
     /**
      * Show console for delete AuthorizedUser
      */
-    public void showDeleteUser(){
+    public void showDeleteUser() throws IOException {
         System.out.println();
         System.out.println("Введите имя:");
-        String name = scanner.next();
+        String name = br.readLine();
         System.out.println("Введите пароль:");
-        String password = scanner.next();
+        String password = br.readLine();
         databaseController.deleteAuthorizedUser(name, password);
         System.out.println("Пользователь удален!");
     }
@@ -42,12 +44,12 @@ public class ActionConsoleDeleteUser {
     /**
      * Show console for delete Admin
      */
-    public void showDeleteAdmin(){
+    public void showDeleteAdmin() throws IOException {
         System.out.println();
         System.out.println("Введите имя:");
-        String name = scanner.next();
+        String name = br.readLine();
         System.out.println("Введите пароль:");
-        String password = scanner.next();
+        String password = br.readLine();
         databaseController.deleteAdmin(name, password);
         System.out.println("Администратор удален!");
     }

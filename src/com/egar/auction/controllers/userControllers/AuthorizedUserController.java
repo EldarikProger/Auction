@@ -58,11 +58,12 @@ public class AuthorizedUserController implements UsersController {
      * @param minPrice    min price addition good
      * @param maxPrice    max price addition good
      */
-    public void addGood(Category category, String name, String description, double minPrice, int count, int day, int hour,
+    public void addGood(Category category, String name, String description, double minPrice, int count, int day, int hour, int minutes,
                         double maxPrice, AuthorizedUser owner, double weight, double length, double width, double height) {
         Calendar endDate = new GregorianCalendar();
         endDate.add(Calendar.DAY_OF_YEAR, day);
         endDate.add(Calendar.HOUR_OF_DAY, hour);
+        endDate.add(Calendar.MINUTE, minutes);
         Good good = new Good(idGood++, category, name, description, minPrice, count, maxPrice, owner, weight, length, width, height);
         good.setEndDateLot(endDate.getTime());
         database.addGood(good);
@@ -114,7 +115,7 @@ public class AuthorizedUserController implements UsersController {
     public List<Good> listAllGoodsByCategory(Category category) {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
-            if (good.getCategory() == category)
+            if (good.getCategory() == category && !good.isGoodSold())
                 list.add(good);
         }
         return list;

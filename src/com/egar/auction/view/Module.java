@@ -61,11 +61,11 @@ public class Module {
         }
 
         {
-            DeliveryService service = new DeliveryService(10,12,25,100,60,0.5,2);
+            DeliveryService service = new DeliveryService(0.1,1.2,25,100,60,0.05,2);
             storage.addDeliveryService(service);
-            service = new DeliveryService(2,30,40,120,100,0.4,4);
+            service = new DeliveryService(0.2,3,40,120,100,0.04,4);
             storage.addDeliveryService(service);
-            service = new DeliveryService(22,22,50,200,50,0.2,5);
+            service = new DeliveryService(2.2,2.2,50,200,50,0.02,5);
             storage.addDeliveryService(service);
         }
 

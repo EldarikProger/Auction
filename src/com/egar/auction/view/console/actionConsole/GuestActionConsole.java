@@ -5,6 +5,8 @@ import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,15 +19,15 @@ import java.util.Scanner;
 public class GuestActionConsole {
 
     private GuestController guestController;
-    private Scanner scanner;
+    private BufferedReader br;
 
     /**
      * Create GuestActionConsole for presentation it actions
      * @param guestController controller for manage
-     * @param scanner to input data
+     * @param br to input data
      */
-    public GuestActionConsole(GuestController guestController, Scanner scanner) {
-        this.scanner = scanner;
+    public GuestActionConsole(GuestController guestController, BufferedReader br) {
+        this.br = br;
         this.guestController = guestController;
     }
 
@@ -60,7 +62,15 @@ public class GuestActionConsole {
             for (Good c : list) {
                 System.out.println((i++) + ") " + c.toString());
             }
-            int j = scanner.nextInt();
+            int j;
+            while (true) {
+                try {
+                    j = Integer.parseInt(br.readLine());
+                    break;
+                } catch (IOException | NumberFormatException e) {
+                    System.out.println("Вы ввели не число, введите число заново");
+                }
+            }
             if (j <= 0 || j > list.size())
                 throw new UserException("Вы выбрали не существующую товар!");
             return list.get(j - 1);
@@ -76,7 +86,15 @@ public class GuestActionConsole {
         for (Category c : list) {
             System.out.println((i++) + ") " + c.getName());
         }
-        int j = scanner.nextInt();
+        int j;
+        while (true) {
+            try {
+                j = Integer.parseInt(br.readLine());
+                break;
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Вы ввели не число, введите число заново");
+            }
+        }
         if (j <= 0 || j > list.size())
             throw new UserException("Вы выбрали не существующую категорию!");
         return list.get(j-1);

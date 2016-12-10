@@ -6,6 +6,8 @@ import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.Admin;
 import com.egar.auction.view.console.actionConsole.AdminActionConsole;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -16,7 +18,7 @@ import java.util.Scanner;
  */
 public class AdminItemConsole {
 
-    private Scanner scanner;
+    private BufferedReader br;
     private AdminController adminController;
     private AdminActionConsole actionConsole;
     private Admin myAdmin;
@@ -25,12 +27,12 @@ public class AdminItemConsole {
      * Create item and action console for admin
      *
      * @param adminController manage controller for admin
-     * @param scanner         to input data
+     * @param br         to input data
      */
-    public AdminItemConsole(AdminController adminController, Scanner scanner) {
-        this.scanner = scanner;
+    public AdminItemConsole(AdminController adminController, BufferedReader br) {
+        this.br = br;
         this.adminController = adminController;
-        actionConsole = new AdminActionConsole(adminController, scanner, null);
+        actionConsole = new AdminActionConsole(adminController, br, null);
     }
 
     /**
@@ -71,21 +73,21 @@ public class AdminItemConsole {
                         System.out.println("Вы выбрали несуществующий вариант!");
                 }
             }
-        } catch (UserNotFoundException | UserException e) {
+        } catch (UserNotFoundException | UserException | IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void connect() throws UserNotFoundException, UserException {
+    private void connect() throws UserNotFoundException, UserException, IOException {
         System.out.println();
         System.out.println("Введите имя:");
-        String name = scanner.next();
+        String name = br.readLine();
         System.out.println("Введите пароль:");
-        String password = scanner.next();
+        String password = br.readLine();
         myAdmin = adminController.connectToAdmin(name, password);
     }
 
-    private int menuAdmin() {
+    private int menuAdmin() throws IOException {
         System.out.println();
         System.out.println("Выберите одно из действий");
         System.out.println("1) Посмотреть список пользователей");
@@ -95,7 +97,16 @@ public class AdminItemConsole {
         System.out.println("5) Посмотреть список всех ставок по товару");
         System.out.println("6) Ввести свои новые данные");
         System.out.println("7) Выход");
-        return scanner.nextInt();
+        int a;
+        while (true) {
+            try {
+                a = Integer.parseInt(br.readLine());
+                break;
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Вы ввели не число, введите число заново");
+            }
+        }
+        return a;
     }
 
 }

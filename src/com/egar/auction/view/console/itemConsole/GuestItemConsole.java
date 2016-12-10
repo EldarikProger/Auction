@@ -5,17 +5,19 @@ import com.egar.auction.controllers.userControllers.GuestController;
 import com.egar.auction.model.Guest;
 import com.egar.auction.view.console.actionConsole.GuestActionConsole;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
  * GuestItemConsole is the guest presentation
  *
- * @version 1.1
  * @author Eldar Ziatdinov
+ * @version 1.1
  */
 public class GuestItemConsole {
 
-    private Scanner scanner;
+    private BufferedReader br;
     private GuestActionConsole actionConsole;
     private Guest guest;
 
@@ -23,54 +25,67 @@ public class GuestItemConsole {
      * Create item and action console for guest
      *
      * @param guestController manage controller for guest
-     * @param scanner to input data
+     * @param br              to input data
      */
-    public GuestItemConsole(GuestController guestController, Scanner scanner) {
-        this.scanner = scanner;
-        actionConsole = new GuestActionConsole(guestController, scanner);
+    public GuestItemConsole(GuestController guestController, BufferedReader br) {
+        this.br = br;
+        actionConsole = new GuestActionConsole(guestController, br);
     }
 
     /**
      * Method show view guest item console
      */
     public void show() {
-        connect();
-        System.out.println();
-        System.out.println("Гость " + guest.getName());
-        boolean flag = true;
-        while (flag) {
-            switch (menuGuest()) {
-                case 1:
-                    actionConsole.viewAllGoodsByCategory();
-                    break;
-                case 2:
-                    actionConsole.viewAllBidsByGood();
-                    break;
-                case 3:
-                    guest = null;
-                    actionConsole = null;
-                    flag = false;
-                    break;
-                default:
-                    System.out.println("Вы выбрали несуществующий вариант!");
+        try {
+            connect();
+            System.out.println();
+            System.out.println("Гость " + guest.getName());
+            boolean flag = true;
+            while (flag) {
+                switch (menuGuest()) {
+                    case 1:
+                        actionConsole.viewAllGoodsByCategory();
+                        break;
+                    case 2:
+                        actionConsole.viewAllBidsByGood();
+                        break;
+                    case 3:
+                        guest = null;
+                        actionConsole = null;
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("Вы выбрали несуществующий вариант!");
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    private void connect(){
+    private void connect() throws IOException {
         System.out.println();
         System.out.println("Введите имя:");
-        String name = scanner.next();
+        String name = br.readLine();
         guest = new Guest(name);
     }
 
-    private int menuGuest(){
+    private int menuGuest() throws IOException {
         System.out.println();
         System.out.println("Выберите одно из действий");
         System.out.println("1) Посмотреть список товаров по категории");
         System.out.println("2) Посмотреть список всех ставок по товару");
         System.out.println("3) Выход");
-        return scanner.nextInt();
+        int a;
+        while (true) {
+            try {
+                a = Integer.parseInt(br.readLine());
+                break;
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Вы ввели не число, введите число заново");
+            }
+        }
+        return a;
     }
 
 }

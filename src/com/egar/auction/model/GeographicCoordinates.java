@@ -17,6 +17,7 @@ public class GeographicCoordinates {
 
     /**
      * Create coordinate
+     *
      * @param degreesA degrees latitude
      * @param minutesA minutes latitude
      * @param secondsA seconds latitude
@@ -36,22 +37,25 @@ public class GeographicCoordinates {
 
     /**
      * Return angle latitude
+     *
      * @return angle latitude
      */
-    public double getAngleA(){
-        return degreesA + minutesA/60 + secondsA/3600;
+    public double getAngleA() {
+        return (degreesA + minutesA / 60 + secondsA / 3600) * (Math.PI / 180);
     }
 
     /**
      * Return angle longitude
+     *
      * @return angle longitude
      */
-    public double getAngleB(){
-        return degreesB + minutesB/60 + secondsB/3600;
+    public double getAngleB() {
+        return (degreesB + minutesB / 60 + secondsB / 3600) * (Math.PI / 180);
     }
 
     /**
      * Return degrees latitude
+     *
      * @return degrees latitude
      */
     public double getDegreesA() {
@@ -60,6 +64,7 @@ public class GeographicCoordinates {
 
     /**
      * Put degrees latitude
+     *
      * @param degreesA degrees latitude
      */
     public void setDegreesA(double degreesA) {
@@ -68,6 +73,7 @@ public class GeographicCoordinates {
 
     /**
      * Return minutes latitude
+     *
      * @return minutes latitude
      */
     public double getMinutesA() {
@@ -75,7 +81,8 @@ public class GeographicCoordinates {
     }
 
     /**
-     *  Put minutes latitude
+     * Put minutes latitude
+     *
      * @param minutesA minutes latitude
      */
     public void setMinutesA(double minutesA) {
@@ -84,6 +91,7 @@ public class GeographicCoordinates {
 
     /**
      * Return seconds latitude
+     *
      * @return seconds latitude
      */
     public double getSecondsA() {
@@ -92,6 +100,7 @@ public class GeographicCoordinates {
 
     /**
      * Put seconds latitude
+     *
      * @param secondsA seconds latitude
      */
     public void setSecondsA(double secondsA) {
@@ -100,6 +109,7 @@ public class GeographicCoordinates {
 
     /**
      * Return degrees longitude
+     *
      * @return degrees longitude
      */
     public double getDegreesB() {
@@ -108,6 +118,7 @@ public class GeographicCoordinates {
 
     /**
      * Put degrees longitude
+     *
      * @param degreesB degrees longitude
      */
     public void setDegreesB(double degreesB) {
@@ -116,6 +127,7 @@ public class GeographicCoordinates {
 
     /**
      * Return minutes longitude
+     *
      * @return minutes longitude
      */
     public double getMinutesB() {
@@ -123,7 +135,8 @@ public class GeographicCoordinates {
     }
 
     /**
-     *  Put minutes longitude
+     * Put minutes longitude
+     *
      * @param minutesB minutes longitude
      */
     public void setMinutesB(double minutesB) {
@@ -132,6 +145,7 @@ public class GeographicCoordinates {
 
     /**
      * Return seconds longitude
+     *
      * @return seconds longitude
      */
     public double getSecondsB() {
@@ -140,6 +154,7 @@ public class GeographicCoordinates {
 
     /**
      * Put seconds longitude
+     *
      * @param secondsB seconds longitude
      */
     public void setSecondsB(double secondsB) {

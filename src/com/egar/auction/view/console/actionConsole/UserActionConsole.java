@@ -5,8 +5,11 @@ import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.AuthorizedUser;
 import com.egar.auction.model.Category;
+import com.egar.auction.model.GeographicCoordinates;
 import com.egar.auction.model.Good;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,23 +22,24 @@ import java.util.Scanner;
 public class UserActionConsole {
 
     private AuthorizedUserController authorizedUserController;
-    private Scanner scanner;
+    private BufferedReader br;
     private AuthorizedUser myUser;
 
     /**
      * Create UserActionConsole for presentation it actions
      *
      * @param authorizedUserController controller for manage
-     * @param scanner                  to input data
+     * @param br                       to input data
      */
-    public UserActionConsole(AuthorizedUserController authorizedUserController, Scanner scanner, AuthorizedUser user) {
-        this.scanner = scanner;
+    public UserActionConsole(AuthorizedUserController authorizedUserController, BufferedReader br, AuthorizedUser user) {
+        this.br = br;
         this.authorizedUserController = authorizedUserController;
         this.myUser = user;
     }
 
     /**
      * Put user for manage
+     *
      * @param myUser
      */
     public void setMyUser(AuthorizedUser myUser) {
@@ -83,30 +87,42 @@ public class UserActionConsole {
      * Method add good to user
      */
     public void addGood() {
-        System.out.println();
-        System.out.println("Введите название товара: ");
-        String nameGood = scanner.next();
-        System.out.println("Введите описание товара: ");
-        String description = scanner.next();
-        System.out.println("Введите min цену: ");
-        double minPrice = scanner.nextDouble();
-        System.out.println("Введите max цену: ");
-        double maxPrice = scanner.nextDouble();
-        System.out.println("Сколько дней, часов длится аукцион для товара: ");
-        int day = scanner.nextInt();
-        int hour = scanner.nextInt();
-        System.out.println("Введите длину, ширину, высоту товара: ");
-        double length = scanner.nextDouble();
-        double width = scanner.nextDouble();
-        double height = scanner.nextDouble();
-        System.out.println("Введите массу товара: ");
-        double weight = scanner.nextDouble();
-        System.out.println("Введите количество вашего товара: ");
-        int count = scanner.nextInt();
+        String nameGood, description;
+        double minPrice, maxPrice, length, width, height, weight;
+        int day, hour, minutes, count;
+        while (true) {
+            try {
+                System.out.println();
+                System.out.println("Введите название товара: ");
+                nameGood = br.readLine();
+                System.out.println("Введите описание товара: ");
+                description = br.readLine();
+                System.out.println("Введите min цену: ");
+                minPrice = Double.parseDouble(br.readLine());
+                System.out.println("Введите max цену: ");
+                maxPrice = Double.parseDouble(br.readLine());
+                System.out.println("Сколько дней, часов и минут длится аукцион для товара: ");
+                day = Integer.parseInt(br.readLine());
+                hour = Integer.parseInt(br.readLine());
+                minutes = Integer.parseInt(br.readLine());
+                System.out.println("Введите длину, ширину, высоту товара: ");
+                length = Double.parseDouble(br.readLine());
+                width = Double.parseDouble(br.readLine());
+                height = Double.parseDouble(br.readLine());
+                System.out.println("Введите массу товара: ");
+                weight = Double.parseDouble(br.readLine());
+                System.out.println("Введите количество вашего товара: ");
+                count = Integer.parseInt(br.readLine());
+                break;
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Неккоректный ввод данных, введите заново:");
+            }
+        }
+
         try {
             Category category = selectCategory();
-            authorizedUserController.addGood(category, nameGood, description, minPrice, count, day, hour, maxPrice,
-                     myUser, weight, length, width, height);
+            authorizedUserController.addGood(category, nameGood, description, minPrice, count, day, hour, minutes, maxPrice,
+                    myUser, weight, length, width, height);
             System.out.println("Товар добавлен!");
         } catch (UserException e) {
             System.out.println(e.getMessage());
@@ -122,8 +138,16 @@ public class UserActionConsole {
             Good good = selectGood(goodList);
             System.out.println();
             System.out.println("Введите цену(ставку): ");
-            double price = scanner.nextDouble();
-            authorizedUserController.makeBet(price, good,myUser);
+            double price;
+            while (true) {
+                try {
+                    price = Double.parseDouble(br.readLine());
+                    break;
+                } catch (IOException | NumberFormatException e) {
+                    System.out.println("Вы ввели не корректные данные, введите число заново");
+                }
+            }
+            authorizedUserController.makeBet(price, good, myUser);
             System.out.println("Ставка сделана!");
         } catch (UserException e) {
             System.out.println(e.getMessage());
@@ -133,14 +157,32 @@ public class UserActionConsole {
     /**
      * Method change user data
      */
-    public void changeUserData() {
+    public void changeUserData() throws IOException {
         System.out.println();
         System.out.println("Введите имя:");
-        String name = scanner.next();
+        String name = br.readLine();
         System.out.println("Введите пароль:");
-        String password = scanner.next();
-        authorizedUserController.changeUserData(name, password,myUser);
+        String password = br.readLine();
+        authorizedUserController.changeUserData(name, password, myUser);
     }
+
+    public void addUserCoordinate(){
+        try {
+            System.out.println("Введите широту и долготу: ");
+            System.out.println("Введите градусы, минуты, секунды широты: ");
+            double degreesA = Double.parseDouble(br.readLine());
+            double minutesA = Double.parseDouble(br.readLine());
+            double secondsA = Double.parseDouble(br.readLine());
+            System.out.println("Введите градусы, минуты, секунды долготы: ");
+            double degreesB = Double.parseDouble(br.readLine());
+            double minutesB = Double.parseDouble(br.readLine());
+            double secondsB = Double.parseDouble(br.readLine());
+            myUser.setCoordinates(new GeographicCoordinates(degreesA,minutesA,secondsA,degreesB,minutesB,secondsB));
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Вы ввели некоректные данные!");
+        }
+    }
+
 
     private Good selectGood(List<Good> list) throws UserException {
         System.out.println();
@@ -150,7 +192,15 @@ public class UserActionConsole {
             for (Good c : list) {
                 System.out.println((i++) + ") " + c.toString());
             }
-            int j = scanner.nextInt();
+            int j;
+            while (true) {
+                try {
+                    j = Integer.parseInt(br.readLine());
+                    break;
+                } catch (IOException | NumberFormatException e) {
+                    System.out.println("Вы ввели не число, введите число заново");
+                }
+            }
             if (j <= 0 || j > list.size())
                 throw new UserException("Вы выбрали не существующую товар!");
             return list.get(j - 1);
@@ -166,7 +216,15 @@ public class UserActionConsole {
         for (Category c : list) {
             System.out.println((i++) + ") " + c.getName());
         }
-        int j = scanner.nextInt();
+        int j;
+        while (true) {
+            try {
+                j = Integer.parseInt(br.readLine());
+                break;
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Вы ввели не число, введите число заново");
+            }
+        }
         if (j <= 0 || j > list.size())
             throw new UserException("Вы выбрали не существующую категорию!");
         return list.get(j - 1);

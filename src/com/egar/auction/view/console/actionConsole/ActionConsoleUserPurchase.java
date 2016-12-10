@@ -2,11 +2,16 @@ package com.egar.auction.view.console.actionConsole;
 
 import com.egar.auction.controllers.DeliveryServiceController;
 import com.egar.auction.controllers.PurchaseController;
+import com.egar.auction.exceptions.DistanceException;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.model.AuthorizedUser;
 import com.egar.auction.model.DeliveryService;
+import com.egar.auction.model.PriceService;
 import com.egar.auction.model.Purchase;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,14 +19,18 @@ public class ActionConsoleUserPurchase {
 
     private PurchaseController purchaseController;
     private DeliveryServiceController deliveryServiceController;
-    AuthorizedUser myUser;
-    Scanner scanner;
+    private AuthorizedUser myUser;
+    private BufferedReader br;
+
+    public void setMyUser(AuthorizedUser myUser) {
+        this.myUser = myUser;
+    }
 
     public ActionConsoleUserPurchase(PurchaseController purchaseController, AuthorizedUser myUser,
-                                     Scanner scanner, DeliveryServiceController deliveryServiceController) {
+                                     BufferedReader br, DeliveryServiceController deliveryServiceController) {
         this.purchaseController = purchaseController;
         this.myUser = myUser;
-        this.scanner = scanner;
+        this.br = br;
         this.deliveryServiceController = deliveryServiceController;
     }
 
@@ -32,10 +41,12 @@ public class ActionConsoleUserPurchase {
     public void installDeliveryService() {
         try {
             Purchase purchase = selectPurchase(purchaseController.getTheGoodsPurchased(myUser));
-            printList(deliveryServiceController.getPriceAllServiceForPurchase(purchase, myUser));
-            DeliveryService service = selectService(deliveryServiceController.getListDeliveryService());
-            purchaseController.setDeliveryServiceToPurchase(purchase, service);
-        } catch (UserException e) {
+            List<PriceService> list = deliveryServiceController.getPriceAllServiceForPurchase(purchase, myUser);
+            printList(list);
+            PriceService priceService = selectService(list);
+            purchaseController.setDeliveryServiceToPurchase(purchase, priceService.getService(),
+                    Double.parseDouble(priceService.getPrice()));
+        } catch (UserException | DistanceException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -52,7 +63,15 @@ public class ActionConsoleUserPurchase {
             for (Purchase c : list) {
                 System.out.println((i++) + ") " + c.toString());
             }
-            int j = scanner.nextInt();
+            int j;
+            while (true) {
+                try {
+                    j = Integer.parseInt(br.readLine());
+                    break;
+                } catch (IOException | NumberFormatException e) {
+                    System.out.println("Вы ввели не число, введите число заново");
+                }
+            }
             if (j <= 0 || j > list.size())
                 throw new UserException("Вы выбрали не существующую покупку!");
             return list.get(j - 1);
@@ -60,16 +79,34 @@ public class ActionConsoleUserPurchase {
             throw new UserException("Список покупок пуст!");
     }
 
-    private DeliveryService selectService(List<DeliveryService> list) throws UserException {
+    private PriceService selectService(List<PriceService> list) throws UserException {
         System.out.println();
         if (list.size() != 0) {
             System.out.println("Выберите сервис доставки:");
             int i = 1;
-            for (DeliveryService c : list) {
-                System.out.println((i++) + ") " + c.toString());
+            Iterator<PriceService> iter = list.iterator();
+            while (iter.hasNext()) { //удаление ненужных сервисов
+                PriceService s = iter.next();
+                try {
+                    Double.parseDouble(s.getPrice());
+                } catch (NumberFormatException e){
+                    iter.remove();
+                }
+
             }
-            int j = scanner.nextInt();
-            if (j <= 0 || j > list.size())
+            for (PriceService c : list) { //печать сервисов
+                    System.out.println((i++) + ") " + c.toString());
+            }
+            int j;
+            while (true) {
+                try {
+                    j = Integer.parseInt(br.readLine());
+                    break;
+                } catch (IOException | NumberFormatException e) {
+                    System.out.println("Вы ввели не число, введите число заново");
+                }
+            }
+            if (j <= 0 || j > i-1)
                 throw new UserException("Вы выбрали не существующий сервис!");
             return list.get(j - 1);
         } else

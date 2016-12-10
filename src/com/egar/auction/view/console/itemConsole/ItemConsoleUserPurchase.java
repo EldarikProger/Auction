@@ -5,25 +5,28 @@ import com.egar.auction.controllers.PurchaseController;
 import com.egar.auction.model.AuthorizedUser;
 import com.egar.auction.view.console.actionConsole.ActionConsoleUserPurchase;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ItemConsoleUserPurchase {
 
     private AuthorizedUser myUser;
-    private Scanner scanner;
+    private BufferedReader br;
     private PurchaseController purchaseController;
     private ActionConsoleUserPurchase actionConsole;
 
-    public ItemConsoleUserPurchase(AuthorizedUser myUser, Scanner scanner,
+    public ItemConsoleUserPurchase(AuthorizedUser myUser, BufferedReader br,
                                    PurchaseController purchaseController, DeliveryServiceController deliveryServiceController) {
         this.myUser = myUser;
-        this.scanner = scanner;
+        this.br = br;
         this.purchaseController = purchaseController;
-        this.actionConsole = new ActionConsoleUserPurchase(purchaseController, myUser, scanner, deliveryServiceController);
+        this.actionConsole = new ActionConsoleUserPurchase(purchaseController, myUser, br, deliveryServiceController);
     }
 
     public void setMyUser(AuthorizedUser myUser) {
         this.myUser = myUser;
+        actionConsole.setMyUser(myUser);
     }
 
     public void show() {
@@ -61,7 +64,16 @@ public class ItemConsoleUserPurchase {
         System.out.println("2) Усановить сервис досавки для покупки");
         System.out.println("3) Расчет общей суммы покупок с учетом доставки");
         System.out.println("4) Выход");
-        return scanner.nextInt();
+        int a;
+        while (true) {
+            try {
+                a = Integer.parseInt(br.readLine());
+                break;
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Вы ввели не число, введите число заново");
+            }
+        }
+        return a;
     }
 
 }

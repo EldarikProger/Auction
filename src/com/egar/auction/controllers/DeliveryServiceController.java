@@ -1,10 +1,8 @@
 package com.egar.auction.controllers;
 
+import com.egar.auction.exceptions.DistanceException;
 import com.egar.auction.exceptions.UserException;
-import com.egar.auction.model.AuthorizedUser;
-import com.egar.auction.model.DeliveryService;
-import com.egar.auction.model.Good;
-import com.egar.auction.model.Purchase;
+import com.egar.auction.model.*;
 import com.egar.auction.storage.AuctionDatabase;
 
 import java.util.ArrayList;
@@ -37,22 +35,15 @@ public class DeliveryServiceController implements Controller {
      * @param user     AuthorizedUser
      * @return string list price and service
      */
-    public List<String> getPriceAllServiceForPurchase(Purchase purchase, AuthorizedUser user) {
-        List<String> list = new ArrayList<>();
-        StringBuilder stringBuilder;
+    public List<PriceService> getPriceAllServiceForPurchase(Purchase purchase, AuthorizedUser user) throws DistanceException {
+        List<PriceService> list = new ArrayList<>();
+        String price;
         for (DeliveryService service : database.getServices()) {
-            stringBuilder = new StringBuilder();
             try {
-                stringBuilder.append("Price: ");
-                stringBuilder.append(String.valueOf(getPriceForDelivery(purchase.getGood(), user, service)));
-                stringBuilder.append(" ");
-                stringBuilder.append(service.toString());
+                list.add(new PriceService(String.valueOf(getPriceForDelivery(purchase.getGood(), user, service)), service));
             } catch (UserException e) {
-                stringBuilder.append(e.getMessage());
-                stringBuilder.append(" ");
-                stringBuilder.append(service.toString());
+                list.add(new PriceService(e.getMessage(),service));
             }
-            list.add(stringBuilder.toString());
         }
         return list;
     }
@@ -72,7 +63,7 @@ public class DeliveryServiceController implements Controller {
      * @param good Good which need delivery
      * @return price delivery good
      */
-    private double getPriceForDelivery(Good good, AuthorizedUser buyer, DeliveryService service) throws UserException {
+    private double getPriceForDelivery(Good good, AuthorizedUser buyer, DeliveryService service) throws UserException, DistanceException {
         double distance = DistanceController.distance(good.getOwner(), buyer);
         if (distance < service.getMinDistance())
             throw new UserException("Сервис не работает на таких расстояниях между покупателем и продавцом!");
@@ -80,7 +71,7 @@ public class DeliveryServiceController implements Controller {
             throw new UserException("Сервис не подходит! Товар тяжелее чем заданное значение.");
         if (good.getVolume() > service.getMaxVolume())
             throw new UserException("Сервис не подходит! Размеры товара выше чем заданное значение.");
-        return good.getVolume() * service.getVolumePrice() + good.getCount() * service.getCountPrice() +
+        return good.getVolume() * service.getVolumePrice() /*+ good.getCount() * service.getCountPrice()*/ +
                 good.getWeight() * service.getWeightPrice() + distance * service.getDistancePrice();
     }
 

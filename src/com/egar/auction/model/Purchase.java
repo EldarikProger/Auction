@@ -16,13 +16,13 @@ public class Purchase {
     private boolean isDelivered = false;
 
     /**
-     * @param user    buyer which belongs this object
+     * @param buyer    buyer which belongs this object
      * @param good    good which user win
      * @param service service by which delivery good
      * @param bid     bet by good
      */
-    public Purchase(AuthorizedUser user, Good good, DeliveryService service, Bid bid) {
-        this.buyer = user;
+    public Purchase(AuthorizedUser buyer, Good good, DeliveryService service, Bid bid) {
+        this.buyer = buyer;
         this.good = good;
         this.service = service;
         this.bidByGood = bid;
@@ -134,5 +134,17 @@ public class Purchase {
      */
     public void setService(DeliveryService service) {
         this.service = service;
+    }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "buyer=" + buyer +
+                ", bidByGood=" + bidByGood +
+                ", good=" + good +
+                ", service=" + service +
+                ", priceDelivery=" + priceDelivery +
+                ", isDelivered=" + isDelivered +
+                '}';
     }
 }
