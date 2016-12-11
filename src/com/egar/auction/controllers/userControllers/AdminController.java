@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.userControllers;
 
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
@@ -14,28 +14,29 @@ import java.util.List;
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class ControlAdmin implements UsersController {
+public class AdminController implements UsersController {
+
     private AuctionDatabase database;
-    private Admin admin;
 
     /**
-     * Create admin controller
+     * Create admin controllers
      *
      * @param database storage
      */
-    public ControlAdmin(AuctionDatabase database) {
+    public AdminController(AuctionDatabase database) {
         this.database = database;
     }
 
     /**
-     * Method sets the admin to controller. ControlAdmin will manage the admin.
+     * Method sets the admin to controllers. AdminController will manage the admin.
      *
      * @param name user name
      * @param password user password
      * @throws UserNotFoundException exception if user not found
      * @throws UserException exception if admins are not
      */
-    public void connectToAdmin(String name, String password) throws UserNotFoundException, UserException {
+    public Admin connectToAdmin(String name, String password) throws UserNotFoundException, UserException {
+        Admin admin = null;
         if (database.getAdmins().size() == 0)
             throw new UserException("Администраторов не существует");
         for (Admin a : database.getAdmins()) {
@@ -44,23 +45,6 @@ public class ControlAdmin implements UsersController {
         }
         if (admin == null)
             throw new UserNotFoundException();
-    }
-
-    /**
-     * Returns the reference ControlAdmin to the admin
-     *
-     * @param admin user which manage controller
-     */
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
-
-    /**
-     * Establishes to the reference admin a new object Admin
-     *
-     * @return user which manage controller
-     */
-    public Admin getAdmin() {
         return admin;
     }
 
@@ -70,7 +54,7 @@ public class ControlAdmin implements UsersController {
      * @param name user name
      * @param password user password
      */
-    public void changeAdminData(String name, String password) {
+    public void changeAdminData(String name, String password, Admin admin) {
         admin.setName(name);
         admin.setPassword(password);
     }
@@ -80,7 +64,7 @@ public class ControlAdmin implements UsersController {
      *
      * @return list users
      */
-    public List viewListUsers() {
+    public List listAllUsers() {
         return database.getAuthorizedUsers();
     }
 
@@ -89,7 +73,7 @@ public class ControlAdmin implements UsersController {
      *
      * @return list admins
      */
-    public List viewListAdmins() {
+    public List listAllAdmins() {
         return database.getAdmins();
     }
 
@@ -100,7 +84,7 @@ public class ControlAdmin implements UsersController {
      * @return list goods
      */
     @Override
-    public List<Good> viewAllGoodsByCategory(Category category) {
+    public List<Good> listAllGoodsByCategory(Category category) {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
             if (good.getCategory() == category)
@@ -116,7 +100,7 @@ public class ControlAdmin implements UsersController {
      * @return list bids
      */
     @Override
-    public List<Bid> viewAllBidsByGood(Good good) {
+    public List<Bid> listAllBidsByGood(Good good) {
         List<Bid> list = new ArrayList<>();
         for (Bid bid : database.getAllBids()) {
             if (bid.getGood().equals(good))
@@ -149,6 +133,15 @@ public class ControlAdmin implements UsersController {
             l = 0;
         }
         return list;
+    }
+
+    /**
+     * Method return list Category
+     *
+     * @return list Category
+     */
+    public List<Category> getListCategory(){
+        return database.getCategories();
     }
 
 }

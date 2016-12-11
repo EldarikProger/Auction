@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.userControllers;
 
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
@@ -14,30 +14,31 @@ import java.util.List;
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class ControlAuthorizedUser implements UsersController {
-    private AuthorizedUser user;
+public class AuthorizedUserController implements UsersController {
+
     private AuctionDatabase database;
-    private static long idGood = 0;
-    private static long idBid = 0;
+    private long idGood = 0;
+    private long idBid = 0;
 
     /**
-     * Create user controller
+     * Create user controllers
      *
      * @param database storage
      */
-    public ControlAuthorizedUser(AuctionDatabase database) {
+    public AuthorizedUserController(AuctionDatabase database) {
         this.database = database;
     }
 
     /**
-     * Method sets the user to controller. ControlAuthorizedUser will manage the user.
+     * Method sets the user to controllers. AuthorizedUserController will manage the user.
      *
      * @param name user name
      * @param password user password
      * @throws UserNotFoundException exception if user not found
      * @throws UserException exception if admins are not
      */
-    public void connectToUser(String name, String password) throws UserNotFoundException, UserException {
+    public AuthorizedUser connectToUser(String name, String password) throws UserNotFoundException, UserException {
+        AuthorizedUser user = null;
         if (database.getAuthorizedUsers().size() == 0)
             throw new UserException("Пользователей не существует!");
         for (AuthorizedUser a : database.getAuthorizedUsers()) {
@@ -46,24 +47,7 @@ public class ControlAuthorizedUser implements UsersController {
         }
         if (user == null)
             throw new UserNotFoundException();
-    }
-
-    /**
-     * Returns the reference ControlAuthorizedUser to the user
-     *
-     * @return user which manage controller
-     */
-    public AuthorizedUser getUser() {
         return user;
-    }
-
-    /**
-     * Establishes to the reference user a new object AuthorizedUser
-     *
-     * @param user user which manage controller
-     */
-    public void setUser(AuthorizedUser user) {
-        this.user = user;
     }
 
     /**
@@ -75,7 +59,7 @@ public class ControlAuthorizedUser implements UsersController {
      * @param minPrice min price addition good
      * @param maxPrice max price addition good
      */
-    public void addGood(Category category, String name, String description, double minPrice, double maxPrice) {
+    public void addGood(Category category, String name, String description, double minPrice, double maxPrice,AuthorizedUser user) {
         Good good = new Good(category, name, description, minPrice, maxPrice, user, ++idGood);
         database.addGood(good);
     }
@@ -86,7 +70,7 @@ public class ControlAuthorizedUser implements UsersController {
      * @param price price which put to user bid
      * @param good good which put to user bid
      */
-    public void makeBet(double price, Good good) {
+    public void makeBet(double price, Good good, AuthorizedUser user) {
         Bid bid = new Bid(good, price, user, ++idBid);
         database.addBid(bid);
     }
@@ -97,7 +81,7 @@ public class ControlAuthorizedUser implements UsersController {
      * @param name user name
      * @param password user password
      */
-    public void changeUserData(String name, String password) {
+    public void changeUserData(String name, String password, AuthorizedUser user) {
         user.setName(name);
         user.setPassword(password);
     }
@@ -107,7 +91,7 @@ public class ControlAuthorizedUser implements UsersController {
      *
      * @return list goods
      */
-    public List<Good> viewUserGoods() {
+    public List<Good> listUserGoods(AuthorizedUser user) {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
             if (user.equals(good.getOwner()))
@@ -123,7 +107,7 @@ public class ControlAuthorizedUser implements UsersController {
      * @return list goods
      */
     @Override
-    public List<Good> viewAllGoodsByCategory(Category category) {
+    public List<Good> listAllGoodsByCategory(Category category) {
         List<Good> list = new ArrayList<>();
         for (Good good : database.getAllGoods()) {
             if (good.getCategory() == category)
@@ -137,7 +121,7 @@ public class ControlAuthorizedUser implements UsersController {
      *
      * @return list bids
      */
-    public List<Bid> viewUserBids() {
+    public List<Bid> listUserBids(AuthorizedUser user) {
         List<Bid> list = new ArrayList<>();
         for (Bid bid : database.getAllBids()) {
             if (user.equals(bid.getBuyer()))
@@ -153,13 +137,22 @@ public class ControlAuthorizedUser implements UsersController {
      * @return list bids
      */
     @Override
-    public List<Bid> viewAllBidsByGood(Good good) {
+    public List<Bid> listAllBidsByGood(Good good) {
         List<Bid> list = new ArrayList<>();
         for (Bid bid : database.getAllBids()) {
             if (bid.getGood().equals(good))
                 list.add(bid);
         }
         return list;
+    }
+
+    /**
+     * Method return list Category
+     *
+     * @return list Category
+     */
+    public List<Category> getListCategory(){
+        return database.getCategories();
     }
 
 }

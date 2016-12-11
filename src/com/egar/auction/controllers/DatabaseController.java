@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers;
 
 import com.egar.auction.model.Admin;
 import com.egar.auction.storage.AuctionDatabase;
@@ -7,22 +7,23 @@ import com.egar.auction.model.AuthorizedUser;
 import java.util.List;
 
 /**
- * ControlDatabase manage storage.
- * ControlDatabase create and delete users.
+ * DatabaseController manage storage.
+ * DatabaseController create and delete users.
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class ControlDatabase implements Controller {
+public class DatabaseController implements Controller {
+
     private AuctionDatabase database;
-    private static long userId = 0;
+    private long userId = 0;
 
     /**
-     * Create ControlDatabase
+     * Create DatabaseController
      *
      * @param database storage
      */
-    public ControlDatabase(AuctionDatabase database) {
+    public DatabaseController(AuctionDatabase database) {
         this.database = database;
     }
 

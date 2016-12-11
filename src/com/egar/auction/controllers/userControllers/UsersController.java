@@ -1,5 +1,6 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers.userControllers;
 
+import com.egar.auction.controllers.Controller;
 import com.egar.auction.model.Bid;
 import com.egar.auction.model.Category;
 import com.egar.auction.model.Good;
@@ -20,7 +21,7 @@ public interface UsersController extends Controller {
      * @param category category good at which selecting
      * @return list good
      */
-    List<Good> viewAllGoodsByCategory(Category category);
+    List<Good> listAllGoodsByCategory(Category category);
 
     /**
      * Method return list all bets by good
@@ -28,5 +29,5 @@ public interface UsersController extends Controller {
      * @param good category good at which selecting
      * @return list bid
      */
-    List<Bid> viewAllBidsByGood(Good good);
+    List<Bid> listAllBidsByGood(Good good);
 }

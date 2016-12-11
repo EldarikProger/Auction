@@ -1,4 +1,4 @@
-package com.egar.auction.controller;
+package com.egar.auction.controllers;
 
 /**
  * Interface gives a description of all controllers
