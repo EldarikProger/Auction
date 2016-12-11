@@ -20,11 +20,9 @@ public class GuestController implements UsersController {
 
     /**
      * Create guest controllers
-     *
-     * @param database
      */
-    public GuestController(AuctionDatabase database) {
-        this.database = database;
+    public GuestController() {
+        this.database = AuctionDatabase.getInstance();
     }
 
     /**
@@ -64,7 +62,7 @@ public class GuestController implements UsersController {
      *
      * @return list Category
      */
-    public List<Category> getListCategory(){
+    public List<Category> getListCategory() {
         return database.getCategories();
     }
 

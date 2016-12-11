@@ -22,20 +22,18 @@ public class AuthorizedUserController implements UsersController {
 
     /**
      * Create user controllers
-     *
-     * @param database storage
      */
-    public AuthorizedUserController(AuctionDatabase database) {
-        this.database = database;
+    public AuthorizedUserController() {
+        this.database = AuctionDatabase.getInstance();
     }
 
     /**
      * Method sets the user to controllers. AuthorizedUserController will manage the user.
      *
-     * @param name user name
+     * @param name     user name
      * @param password user password
      * @throws UserNotFoundException exception if user not found
-     * @throws UserException exception if admins are not
+     * @throws UserException         exception if admins are not
      */
     public AuthorizedUser connectToUser(String name, String password) throws UserNotFoundException, UserException {
         AuthorizedUser user = null;
@@ -53,13 +51,13 @@ public class AuthorizedUserController implements UsersController {
     /**
      * Addition to the user a thing
      *
-     * @param category category addition good
-     * @param name name addition good
+     * @param category    category addition good
+     * @param name        name addition good
      * @param description description addition good
-     * @param minPrice min price addition good
-     * @param maxPrice max price addition good
+     * @param minPrice    min price addition good
+     * @param maxPrice    max price addition good
      */
-    public void addGood(Category category, String name, String description, double minPrice, double maxPrice,AuthorizedUser user) {
+    public void addGood(Category category, String name, String description, double minPrice, double maxPrice, AuthorizedUser user) {
         Good good = new Good(category, name, description, minPrice, maxPrice, user, ++idGood);
         database.addGood(good);
     }
@@ -68,7 +66,7 @@ public class AuthorizedUserController implements UsersController {
      * To bid by the user for the goods
      *
      * @param price price which put to user bid
-     * @param good good which put to user bid
+     * @param good  good which put to user bid
      */
     public void makeBet(double price, Good good, AuthorizedUser user) {
         Bid bid = new Bid(good, price, user, ++idBid);
@@ -78,7 +76,7 @@ public class AuthorizedUserController implements UsersController {
     /**
      * Change user name and password
      *
-     * @param name user name
+     * @param name     user name
      * @param password user password
      */
     public void changeUserData(String name, String password, AuthorizedUser user) {
@@ -151,7 +149,7 @@ public class AuthorizedUserController implements UsersController {
      *
      * @return list Category
      */
-    public List<Category> getListCategory(){
+    public List<Category> getListCategory() {
         return database.getCategories();
     }
 

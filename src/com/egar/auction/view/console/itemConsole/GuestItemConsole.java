@@ -3,6 +3,7 @@ package com.egar.auction.view.console.itemConsole;
 
 import com.egar.auction.controllers.userControllers.GuestController;
 import com.egar.auction.model.Guest;
+import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.actionConsole.GuestActionConsole;
 
 import java.util.Scanner;
@@ -22,12 +23,10 @@ public class GuestItemConsole {
     /**
      * Create item and action console for guest
      *
-     * @param guestController manage controller for guest
      * @param scanner to input data
      */
-    public GuestItemConsole(GuestController guestController, Scanner scanner) {
+    public GuestItemConsole(Scanner scanner) {
         this.scanner = scanner;
-        actionConsole = new GuestActionConsole(guestController, scanner);
     }
 
     /**
@@ -35,6 +34,7 @@ public class GuestItemConsole {
      */
     public void show() {
         connect();
+        actionConsole = new GuestActionConsole(new GuestController(), scanner);
         System.out.println();
         System.out.println("Гость " + guest.getName());
         boolean flag = true;
@@ -48,6 +48,7 @@ public class GuestItemConsole {
                     break;
                 case 3:
                     guest = null;
+                    actionConsole = null;
                     flag = false;
                     break;
                 default:

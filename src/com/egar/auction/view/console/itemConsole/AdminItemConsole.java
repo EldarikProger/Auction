@@ -4,6 +4,7 @@ import com.egar.auction.controllers.userControllers.AdminController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.Admin;
+import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.actionConsole.AdminActionConsole;
 
 import java.util.Scanner;
@@ -24,13 +25,11 @@ public class AdminItemConsole {
     /**
      * Create item and action console for admin
      *
-     * @param adminController manage controller for admin
      * @param scanner         to input data
      */
-    public AdminItemConsole(AdminController adminController, Scanner scanner) {
+    public AdminItemConsole(Scanner scanner) {
         this.scanner = scanner;
-        this.adminController = adminController;
-
+        adminController = new AdminController();
     }
 
     /**
@@ -65,6 +64,7 @@ public class AdminItemConsole {
                         break;
                     case 7:
                         admin = null;
+                        actionConsole = null;
                         nextRun = false;
                         break;
                     default:

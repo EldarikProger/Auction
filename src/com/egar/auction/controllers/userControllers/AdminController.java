@@ -20,11 +20,9 @@ public class AdminController implements UsersController {
 
     /**
      * Create admin controllers
-     *
-     * @param database storage
      */
-    public AdminController(AuctionDatabase database) {
-        this.database = database;
+    public AdminController() {
+        this.database = AuctionDatabase.getInstance();
     }
 
     /**

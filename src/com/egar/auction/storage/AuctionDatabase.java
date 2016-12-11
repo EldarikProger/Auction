@@ -20,10 +20,45 @@ public class AuctionDatabase {
     private List<Good> allGoods;
     private List<Category> categories;
 
+    private static AuctionDatabase instanceDB;
+
+    public static AuctionDatabase getInstance() {
+        if (instanceDB == null) {
+            instanceDB = new AuctionDatabase();
+            Category category = new Category("CLOTHING");
+            instanceDB.addCategory(category);
+            category = new Category("SHOES");
+            instanceDB.addCategory(category);
+            category = new Category("TELEPHONE");
+            instanceDB.addCategory(category);
+            category = new Category("AUTO");
+            instanceDB.addCategory(category);
+            category = new Category("JEWELRY");
+            instanceDB.addCategory(category);
+            category = new Category("WATCH");
+            instanceDB.addCategory(category);
+            category = new Category("COMPUTER_EQUIPMENT");
+            instanceDB.addCategory(category);
+            category = new Category("ELECTRONICS");
+            instanceDB.addCategory(category);
+            category = new Category("SPORTS_WEAR");
+            instanceDB.addCategory(category);
+            category = new Category("BUILDING_TOOLS");
+            instanceDB.addCategory(category);
+            category = new Category("FURNITURE");
+            instanceDB.addCategory(category);
+            category = new Category("FOOD");
+            instanceDB.addCategory(category);
+            category = new Category("MUSICAL_INSTRUMENTS");
+            instanceDB.addCategory(category);
+        }
+        return instanceDB;
+    }
+
     /**
      * Create database
      */
-    public AuctionDatabase() {
+    private AuctionDatabase() {
         allBids = new ArrayList<>();
         admins = new ArrayList<>();
         authorizedUsers = new ArrayList<>();
@@ -72,7 +107,7 @@ public class AuctionDatabase {
      *
      * @param category Category which addition in the storage
      */
-    public void addCategory(Category category){
+    public void addCategory(Category category) {
         categories.add(category);
     }
 

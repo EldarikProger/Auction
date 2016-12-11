@@ -15,8 +15,8 @@ import java.util.Scanner;
 /**
  * MainConsole is the common user presentation
  *
- * @version 1.1
  * @author Eldar Ziatdinov
+ * @version 1.1
  */
 public class MainConsole {
 
@@ -30,18 +30,12 @@ public class MainConsole {
     /**
      * Create and show ConsoleView
      *
-     * @param adminController          UserController
-     * @param authorizedUserController UserController
-     * @param databaseController       Controller
-     * @param guestController          UserController
+     * @param databaseController Controller
      */
-    public MainConsole(AdminController adminController, AuthorizedUserController authorizedUserController, DatabaseController databaseController, GuestController guestController) {
+    public MainConsole(DatabaseController databaseController) {
         scanner = new Scanner(System.in);
-        adminItemConsole = new AdminItemConsole(adminController, scanner);
-        userItemConsole = new UserItemConsole(authorizedUserController, scanner);
         consoleCreateUser = new ActionConsoleCreateUser(databaseController, scanner);
         consoleDeleteUser = new ActionConsoleDeleteUser(databaseController, scanner);
-        guestItemConsole = new GuestItemConsole(guestController, scanner);
     }
 
     /**
@@ -60,13 +54,19 @@ public class MainConsole {
                     consoleCreateUser.showCreateAdmin();
                     break;
                 case 3:
+                    userItemConsole = new UserItemConsole(scanner);
                     userItemConsole.show();
+                    userItemConsole = null;
                     break;
                 case 4:
+                    guestItemConsole = new GuestItemConsole(scanner);
                     guestItemConsole.show();
+                    guestItemConsole = null;
                     break;
                 case 5:
+                    adminItemConsole = new AdminItemConsole(scanner);
                     adminItemConsole.show();
+                    adminItemConsole = null;
                     break;
                 case 6:
                     consoleDeleteUser.showDeleteUser();

@@ -4,6 +4,7 @@ import com.egar.auction.controllers.userControllers.AuthorizedUserController;
 import com.egar.auction.exceptions.UserException;
 import com.egar.auction.exceptions.UserNotFoundException;
 import com.egar.auction.model.AuthorizedUser;
+import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.view.console.actionConsole.UserActionConsole;
 
 import java.util.Scanner;
@@ -24,12 +25,11 @@ public class UserItemConsole {
     /**
      * Create item and action console for user
      *
-     * @param authorizedUserController manage controller for user
-     * @param scanner                  to input data
+     * @param scanner to input data
      */
-    public UserItemConsole(AuthorizedUserController authorizedUserController, Scanner scanner) {
-        this.authorizedUserController = authorizedUserController;
+    public UserItemConsole(Scanner scanner) {
         this.scanner = scanner;
+        authorizedUserController = new AuthorizedUserController();
     }
 
     /**
@@ -67,6 +67,8 @@ public class UserItemConsole {
                         break;
                     case 8:
                         user = null;
+                        authorizedUserController = null;
+                        actionConsole = null;
                         nextRun = false;
                         break;
                     default:
