@@ -1,14 +1,19 @@
 package com.egar.auction.model;
 
+import java.io.Serializable;
+
 /**
  * Category describe category goods
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class Category {
+public class Category implements Serializable{
 
     private String name;
+
+    public Category() {
+    }
 
     public Category(String name) {
         this.name = name;

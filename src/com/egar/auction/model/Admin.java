@@ -1,12 +1,14 @@
 package com.egar.auction.model;
 
+import java.io.Serializable;
+
 /**
  * Admin is the user. Class Admin have admin data
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class Admin implements User {
+public class Admin implements User,Serializable {
 
     private String name;
     private String password;
@@ -23,6 +25,9 @@ public class Admin implements User {
         this.name = name;
         this.password = password;
         this.id = id;
+    }
+
+    public Admin() {
     }
 
     /**

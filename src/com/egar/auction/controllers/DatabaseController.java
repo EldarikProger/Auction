@@ -1,6 +1,7 @@
 package com.egar.auction.controllers;
 
 import com.egar.auction.model.Admin;
+import com.egar.auction.model.Guest;
 import com.egar.auction.storage.AuctionDatabase;
 import com.egar.auction.model.AuthorizedUser;
 
@@ -45,6 +46,14 @@ public class DatabaseController implements Controller {
      */
     public void createAdmin(String name, String password) {
         database.addAdmin(new Admin(name, password, ++userId));
+    }
+
+    /**
+     * createGuest
+     * @param name
+     */
+    public void createGuest(String name){
+        database.addGuest(new Guest(name));
     }
 
     /**

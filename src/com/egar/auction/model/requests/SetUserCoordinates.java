@@ -1,15 +1,18 @@
-package com.egar.auction.model;
+package com.egar.auction.model.requests;
+
+import com.egar.auction.model.AuthorizedUser;
 
 import java.io.Serializable;
 
 /**
- * GeographicCoordinates describe user coordinates: longitude latitude
+ * Team to set user coordinates
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class GeographicCoordinates implements Serializable{
+public class SetUserCoordinates implements Request, Serializable {
 
+    private AuthorizedUser user;
     private double degreesA; //latitude
     private double minutesA;
     private double secondsA;
@@ -17,22 +20,18 @@ public class GeographicCoordinates implements Serializable{
     private double minutesB;
     private double secondsB;
 
-    public GeographicCoordinates() {
-    }
-
     /**
-     * Create coordinate
-     *
-
      * @param degreesA degrees latitude
      * @param minutesA minutes latitude
      * @param secondsA seconds latitude
      * @param degreesB degrees longitude
      * @param minutesB minutes longitude
      * @param secondsB seconds longitude
+     * @see SetUserCoordinates#SetUserCoordinates()
      */
-    public GeographicCoordinates(double degreesA,
-                                 double minutesA, double secondsA, double degreesB, double minutesB, double secondsB) {
+    public SetUserCoordinates(AuthorizedUser user, double degreesA,
+                              double minutesA, double secondsA, double degreesB, double minutesB, double secondsB) {
+        this.user = user;
         this.degreesA = degreesA;
         this.minutesA = minutesA;
         this.secondsA = secondsA;
@@ -42,21 +41,26 @@ public class GeographicCoordinates implements Serializable{
     }
 
     /**
-     * Return angle latitude
-     *
-     * @return angle latitude
+     * getUser
+     * @return user
      */
-    public double getAngleA() {
-        return (degreesA + minutesA / 60 + secondsA / 3600) * (Math.PI / 180);
+    public AuthorizedUser getUser() {
+        return user;
     }
 
     /**
-     * Return angle longitude
-     *
-     * @return angle longitude
+     * setUser
+     * @param user
      */
-    public double getAngleB() {
-        return (degreesB + minutesB / 60 + secondsB / 3600) * (Math.PI / 180);
+    public void setUser(AuthorizedUser user) {
+        this.user = user;
+    }
+
+    /**
+     * Create request to set coordinates
+     */
+    public SetUserCoordinates() {
+
     }
 
     /**
@@ -166,4 +170,5 @@ public class GeographicCoordinates implements Serializable{
     public void setSecondsB(double secondsB) {
         this.secondsB = secondsB;
     }
+
 }

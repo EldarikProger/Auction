@@ -1,12 +1,14 @@
 package com.egar.auction.exceptions;
 
+import java.io.Serializable;
+
 /**
  * Common user exception
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class UserException extends Exception {
+public class UserException extends Exception implements Serializable {
 
     /**
      * Create UserException

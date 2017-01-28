@@ -69,6 +69,10 @@ public class AuthorizedUserController implements UsersController {
         database.addGood(good);
     }
 
+    public void setUserCoordinates(AuthorizedUser user, double degreesA,double minutesA,double secondsA,double degreesB,double minutesB,double secondsB){
+        user.setCoordinates(new GeographicCoordinates(degreesA,minutesA,secondsA,degreesB,minutesB,secondsB));
+    }
+
     /**
      * To bid by the user for the goods
      *

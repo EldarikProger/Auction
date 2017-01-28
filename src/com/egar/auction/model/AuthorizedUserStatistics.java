@@ -1,13 +1,15 @@
 package com.egar.auction.model;
 
 
+import java.io.Serializable;
+
 /**
  * Describe user statistics
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class AuthorizedUserStatistics {
+public class AuthorizedUserStatistics implements Serializable{
 
     private AuthorizedUser user;
     private int numberGoods;
@@ -24,6 +26,9 @@ public class AuthorizedUserStatistics {
         this.numberGoods = numberGoods;
         this.user = user;
         this.numberBids = numberBids;
+    }
+
+    public AuthorizedUserStatistics() {
     }
 
     /**

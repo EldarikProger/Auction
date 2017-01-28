@@ -1,7 +1,9 @@
 package com.egar.auction.exceptions;
 
 
-public class DistanceException extends Exception{
+import java.io.Serializable;
+
+public class DistanceException extends Exception implements Serializable{
 
     /**
      * Create UserException

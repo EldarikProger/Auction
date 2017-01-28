@@ -1,12 +1,18 @@
 package com.egar.auction.model;
 
+import java.io.Serializable;
+
 /**
  * Link price delivery with service
  */
-public class PriceService {
+public class PriceService implements Serializable
+{
 
     private String price;
     private DeliveryService service;
+
+    public PriceService() {
+    }
 
     /**
      * Return price

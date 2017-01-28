@@ -1,5 +1,6 @@
 package com.egar.auction.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class Good {
+public class Good implements Serializable{
 
     private long id;
     private Category category;
@@ -57,6 +58,9 @@ public class Good {
         this.height = height;
         this.goodSold = false;
         this.count = count;
+    }
+
+    public Good() {
     }
 
     /**

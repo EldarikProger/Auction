@@ -1,12 +1,14 @@
 package com.egar.auction.model;
 
+import java.io.Serializable;
+
 /**
  * Class describe delivery service and it opportunities
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class DeliveryService {
+public class DeliveryService implements Serializable{
     private double weightPrice;
     private double volumePrice;
     private double distancePrice;
@@ -33,6 +35,9 @@ public class DeliveryService {
         this.maxVolume = maxVolume;
         this.distancePrice = distancePrice;
         this.countPrice = countPrice;
+    }
+
+    public DeliveryService() {
     }
 
     /**

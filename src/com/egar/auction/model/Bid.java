@@ -1,12 +1,14 @@
 package com.egar.auction.model;
 
+import java.io.Serializable;
+
 /**
  * Class describe bid (user bet) and it data
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class Bid {
+public class Bid implements Serializable{
 
     private long id;
     private Good good;
@@ -26,6 +28,9 @@ public class Bid {
         this.price = price;
         this.buyer = buyer;
         this.id = id;
+    }
+
+    public Bid() {
     }
 
     /**

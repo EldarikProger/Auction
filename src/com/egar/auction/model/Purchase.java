@@ -1,16 +1,22 @@
 package com.egar.auction.model;
 
+import java.io.Serializable;
+
 /**
  * Class associate good with service
  *
  * @author Eldar Ziatdinov
  * @version 1.0
  */
-public class Purchase {
+public class Purchase implements Serializable{
 
     private AuthorizedUser buyer;
     private Bid bidByGood;
     private Good good;
+
+    public Purchase() {
+    }
+
     private DeliveryService service;
     private double priceDelivery;
     private boolean isDelivered = false;

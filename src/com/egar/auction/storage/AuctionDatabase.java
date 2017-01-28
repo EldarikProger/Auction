@@ -16,6 +16,7 @@ public class AuctionDatabase {
 
     private List<AuthorizedUser> authorizedUsers;
     private List<Admin> admins;
+    private List<Guest> guests;
     private List<Bid> allBids;
     private List<Good> allGoods;
     private List<Category> categories;
@@ -33,6 +34,7 @@ public class AuctionDatabase {
         categories = new ArrayList<>();
         purchases = new ArrayList<>();
         services = new ArrayList<>();
+        guests = new ArrayList<>();
     }
 
     /**
@@ -88,6 +90,12 @@ public class AuctionDatabase {
     public void addAdmin(Admin admin) {
         admins.add(admin);
     }
+
+    /**
+     * Add guest
+     * @param guest
+     */
+    public void addGuest(Guest guest){ guests.add(guest);}
 
     /**
      * Add bid
@@ -161,5 +169,19 @@ public class AuctionDatabase {
         return categories;
     }
 
+    /**
+     * getGuests
+     * @return
+     */
+    public List<Guest> getGuests() {
+        return guests;
+    }
 
+    /**
+     * setGuests
+     * @param guests
+     */
+    public void setGuests(List<Guest> guests) {
+        this.guests = guests;
+    }
 }
